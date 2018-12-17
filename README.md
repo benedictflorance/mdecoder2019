@@ -1,5 +1,5 @@
-# Mdecoder 2018
-An platform to host math puzzles for an online event in Pragyan 2018.
+# Mdecoder 2019
+An platform to host math puzzles for an online event in Pragyan 2019.
 
 ## Getting Started:
 
