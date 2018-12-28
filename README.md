@@ -21,24 +21,40 @@ An platform to host math puzzles for an online event in Pragyan 2019.
 ```
     git clone https://github.com/benedictflorance/mdecoder2019.git
 ```
-3. Copy .env.example as .env file.
+3. Install all npm dependencies.
+```
+    sudo npm install
+```
+4. Copy .env.example as .env file.
 ```
     cp .env.example .env
 ```
-4. Generate application key.
+5. Generate application key.
 ```
     php artisan key:generate
 ```
-5. Fill details in .env file.
-6. Install dependencies.
+6. Fill details in .env file.
+7. Install dependencies.
 ```
     composer install
 ```
-7. Run migrations with seeds.
+8. Run migrations with seeds.
 ```
     php artisan migrate:fresh --seed
 ```
-8. The project is now ready to be served. It can be done using the command,
+9. Make ReactJS Frontend For Laravel backend.
+```
+    php artisan preset react
+```
+10. Check for all npm dependencies
+```
+    sudo npm install
+```
+11. compile all of our assets and put bundled javascript file into the public >> js  >>  app.js file
+```
+    npm run dev
+```
+12. The project is now ready to be served. It can be done using the command,
 ```
     php artisan serve
 ```
