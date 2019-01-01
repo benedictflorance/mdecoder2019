@@ -8,7 +8,6 @@
         <title>Mdecoder2019</title>
     </head>
     <body>
-    <h2 style="text-align: center"> Laravel and React application </h2>
         <div id="App"></div>
         <script src="{{mix('js/app.js')}}" ></script>
     </body>
