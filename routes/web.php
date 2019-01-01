@@ -15,6 +15,7 @@
  */
 
 Route::get('login', 'BaseController@renderUserLogin');
+Route::view('/{path?}', 'Main');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::put('level', 'UserDayStatusesController@updateLevel');
@@ -33,3 +34,4 @@ Route::post('auth/login', 'AuthController@authUser');
 Route::get('contest/time','DayDetailsController@getContestRemainingTiming');
 Route::get('users/score','ScoreLogsController@getUsersScores');
 Route::get('/{wildcard}', 'BaseController@renderIndex')->where('wildcard', '.*')->middleware('checkIfLoggedIn');
+

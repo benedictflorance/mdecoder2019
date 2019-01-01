@@ -10232,8 +10232,11 @@ module.exports = __webpack_require__(218);
 
 /***/ }),
 /* 89 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Example__ = __webpack_require__(115);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -10249,7 +10252,7 @@ __webpack_require__(90);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__webpack_require__(115);
+
 
 /***/ }),
 /* 90 */
@@ -41159,7 +41162,6 @@ module.exports = function spread(callback) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(132);
@@ -41219,11 +41221,11 @@ var Example = function (_Component) {
     return Example;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Example);
+/* unused harmony default export */ var _unused_webpack_default_export = (Example);
 
 
-if (document.getElementById('example')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Example, null), document.getElementById('example'));
+if (document.getElementById('App')) {
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Example, null), document.getElementById('App'));
 }
 
 /***/ }),
