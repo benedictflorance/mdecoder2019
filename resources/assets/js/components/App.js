@@ -11,7 +11,7 @@ export default class App extends Component {
             <BrowserRouter>
               <div>
                 <Switch>
-                  <Route exact path="/leaderboard" component = {bottomNavigation} />
+                  <Route exact path="/leaderboard" component = {Leaderboard} />
                 </Switch>
               </div>
             </BrowserRouter>
