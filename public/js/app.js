@@ -39424,7 +39424,7 @@ var App = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { exact: true, path: '/leaderboard', component: __WEBPACK_IMPORTED_MODULE_4__Login__["a" /* default */] })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { exact: true, path: '/leaderboard', component: __WEBPACK_IMPORTED_MODULE_3__Leaderboard__["a" /* default */] })
                     )
                 )
             );
@@ -65474,7 +65474,7 @@ var Leaderboard = function (_Component3) {
   return Leaderboard;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Leaderboard);
+/* harmony default export */ __webpack_exports__["a"] = (Leaderboard);
 
 /***/ }),
 /* 173 */
@@ -80848,7 +80848,7 @@ SignIn.propTypes = {
   classes: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_13__material_ui_core_styles_withStyles___default()(styles)(SignIn));
+/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_13__material_ui_core_styles_withStyles___default()(styles)(SignIn));
 
 /***/ }),
 /* 330 */

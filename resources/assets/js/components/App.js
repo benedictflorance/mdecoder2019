@@ -9,7 +9,7 @@ export default class App extends Component {
             <BrowserRouter>
               <div>
                 <Switch>
-                  <Route exact path="/leaderboard" component = {Login} />
+                  <Route exact path="/leaderboard" component = {Leaderboard} />
                 </Switch>
               </div>
             </BrowserRouter>
