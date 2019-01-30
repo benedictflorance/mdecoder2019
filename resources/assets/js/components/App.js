@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter , Route , Switch } from 'react-router-dom';
 import Leaderboard from "./Leaderboard"
 import ScrollableTabsButtonAuto from "./QuestionTab"
+import SimpleAppBar from "./Timer"
 import Login from "./Login"
 export default class App extends Component {
     render() {
@@ -10,7 +11,7 @@ export default class App extends Component {
             <BrowserRouter>
               <div>
                 <Switch>
-                  <Route exact path="/leaderboard" component = {ScrollableTabsButtonAuto} />
+                  <Route exact path="/leaderboard" component = {SimpleAppBar} />
                 </Switch>
               </div>
             </BrowserRouter>
