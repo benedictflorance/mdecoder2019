@@ -15,7 +15,7 @@ export default class App extends Component {
             <BrowserRouter>
               <div>
                 <Switch>
-                  <Route exact path="/leaderboard" component = {Navbar} />
+                  <Route exact path="/leaderboard" component = {Leaderboard} />
                 </Switch>
               </div>
             </BrowserRouter>
@@ -23,6 +23,3 @@ export default class App extends Component {
     }
 }
 
-if (document.getElementById('App')) {
-    ReactDOM.render(<App />, document.getElementById('App'));
-}
