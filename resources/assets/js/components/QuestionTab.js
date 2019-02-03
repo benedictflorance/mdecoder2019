@@ -29,6 +29,7 @@ const styles = theme => ({
 class ScrollableTabsButtonAuto extends React.Component {
   state = {
     value: 0,
+    totalQuestion : 0
   };
 
   handleChange = (event, value) => {
