@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 import store from "./store";
-
+import "./css/index.css"
 
 import MainApp from "./components/App";
 

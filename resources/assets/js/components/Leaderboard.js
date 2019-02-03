@@ -16,8 +16,20 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import Grid from '@material-ui/core/Grid';
 
 import { getLeaderboard } from '../actions/Leaderboard';
+
+const overallStyle ={
+  table: {
+    marginLeft: '2%',
+    marginRight: '2%',
+    marginTop: '20px',
+    fontSize: '1.5em',
+    textAlign: 'left',
+    fontFamily:"Audiowide",
+}
+}
 
 const actionsStyles = theme => ({
 	root:{
@@ -104,50 +116,40 @@ const styles = theme => ({
 		overflowX:'scroll',
 	},
 	table:{
-		minWidth:700,
+		minWidth:"100%",
 	},
 });	
 
  const headerStyle = {
  	textAlign: 'center',
- 	fontWeight:'bold',
- 	fontSize:'1.5em'
+ 	fontSize:'1.5em',
+  fontFamily:"Audiowide",
+  color:"white"
  };
 
  class PaginationTable extends Component {
  
    constructor()
     {
-    	super();
-    	this.state = {
- 		rows : [
-            { id : 1, username:'cr7suna98', email : 'psudarshan98@gmail.com' , score : '80' },
-            { id : 2, username:'ajish45', email : 'abc@gmail.com' , score : '60' },
-            { id : 3, username:'hari67', email : 'xyzdcfd@gmail.com' , score : '50' },
-            { id : 4, username:'akash23', email : 'akash1998@gmail.com' , score : '20' },
-            { id : 5, username:'nripesh', email : 'neruppu@gmail.com' , score : '10' },
-            { id : 6, username:'gautam', email : 'uiui@gmail.com' , score : '9' },
-            { id : 7, username:'vikas', email : 'nsxsx@gmail.com' , score : '8' },
-            { id : 8, username:'ashwin', email : 'ded@gmail.com' , score : '7' },
-            { id : 9, username:'nandha', email : 'kmmo@gmail.com' , score : '6' },
-            { id : 10, username:'rishav', email : 'loeo@gmail.com' , score : '5' },
-            { id : 11, username:'somesh', email : 'ybn@gmail.com' , score : '4' },
-            { id : 12, username:'hari', email : 'sxsxs@gmail.com' , score : '3' },
-            { id : 13, username:'iide', email : 'oo0@gmail.com' , score : '2' },
-            { id : 14, username:'oow', email : 'nassw@gmail.com' , score : '1' },
-            { id : 15, username:'dcdc', email : 'jnc@gmail.com' , score : '0' },
-            { id : 16, username:'neel', email : 'zx@gmail.com' , score : '-1' },
-
- 		],
- 		page:0,
- 		rowsPerPage:5
- 	}
+      super();
+      this.state = {
+    rows : [],
+    page:0,
+    rowsPerPage:10
+  }
 
     }  
 
+      componentDidMount()
+      {
+        this.props.getLeaderboard();
+      }
+
+
   handleChangePage(event, page){
        this.setState({ page });
-    };
+       this.props.getLeaderboard(page+1);
+      };
 
     handleChangeRowsPerPage(event) {
        this.setState({ rowsPerPage: parseInt(event.target.value) });
@@ -155,46 +157,50 @@ const styles = theme => ({
    
     render()
     {
-      const { classes } = this.props;
+      const { classes , leaderboard , isAuthenticated } = this.props;
+      console.log(leaderboard);
+      console.log(isAuthenticated);
+       if(!leaderboard) return null;
+
+       const {current_page, last_page, from } = leaderboard.data;
+       let count = from;
+       const mappedLeaderboardRow = leaderboard.data.data.map((item,i,arr) => (
+         <TableRow key={item.user_id}>
+           <TableCell style={{ fontSize:"1.2em"}}>{count++}</TableCell>
+           <TableCell style={{ fontSize:"1.2em"}}>{item.username}</TableCell>
+           <TableCell style={{ fontSize:"1.2em"}}>{item.email}</TableCell>
+           <TableCell style={{ fontSize:"1.2em"}}>{item.score ? item.score : 0}</TableCell>
+         </TableRow>
+        ));
+
+
       const { rows, rowsPerPage, page } = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
         return (
+            <React.Fragment>
+            <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
+            <h2 style={headerStyle}>Leaderboard</h2>
+            <Grid item xs={12}>
             <Paper className={classes.root}>
-             <Table className={classes.table}>
+             <Table className={classes.table} style= {overallStyle.table}>
               <TableHead>
                <TableRow>
-                 <TableCell>Rank</TableCell>
-                 <TableCell>Username</TableCell>
-                 <TableCell>Email</TableCell>
-                 <TableCell>Score</TableCell>
+                 <TableCell style={{ fontSize:"1.2em"}}>Rank</TableCell>
+                 <TableCell style={{ fontSize:"1.2em"}}>Username</TableCell>
+                 <TableCell style={{ fontSize:"1.2em"}}>Email</TableCell>
+                 <TableCell style={{ fontSize:"1.2em"}}>Score</TableCell>
                </TableRow>
               </TableHead>
               <TableBody>
-                {
-                rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-                    return (
-                         <TableRow key={row.id}>
-                           <TableCell>{row.id}</TableCell>
-                           <TableCell>{row.username}</TableCell>
-                           <TableCell>{row.email}</TableCell>
-                           <TableCell>{row.score}</TableCell>
-                         </TableRow>
-                  );
-                 })
-                }
-                {emptyRows > 0 && (
-                <TableRow style={{ height: 48 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
+                {mappedLeaderboardRow}
               </TableBody>
               <TableFooter>
                <TableRow>
                 <TablePagination
-                  rowsPerPageOptions={[5, 10, 25]}
-                  colSpan={3}
-                  count={rows.length}
+                  rowsPerPageOptions={[10]}
+                  colSpan={1}
+                  count={leaderboard.data.total}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   SelectProps={{
@@ -208,6 +214,8 @@ const styles = theme => ({
             </TableFooter>
              </Table>
             </Paper>
+             </Grid>
+            </React.Fragment>
           );
     }
  }
@@ -218,24 +226,6 @@ const styles = theme => ({
 
  const FinalTable = withStyles(styles)(PaginationTable);
 
-class Leaderboard extends Component {
-
-  componentDidMount()
-  {
-    this.props.getLeaderboard();
-  }
-  render() {
-      const { leaderboard , isAuthenticated } = this.props;
-      console.log(leaderboard);
-    return (
-      <React.Fragment>
-            <h2 style={headerStyle}><u>Leaderboard</u></h2>
-            <br />
-            <FinalTable />
-            </React.Fragment>
-      );
-  }
-}
 
 const mapStateToProps = state => {
   const { isAuthenticated } = state.user;
@@ -243,4 +233,4 @@ const mapStateToProps = state => {
   return { leaderboard, isAuthenticated };
 };
 
-export default connect(mapStateToProps, { getLeaderboard })(Leaderboard);
+export default connect(mapStateToProps, { getLeaderboard })(FinalTable);
