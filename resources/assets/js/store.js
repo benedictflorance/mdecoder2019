@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk' ;
 import promise from 'redux-promise-middleware';
 
@@ -12,4 +12,4 @@ const middlewares = [
 const middleware = applyMiddleware(...middlewares);
 const store = createStore(reducer, middleware);
 
-export default store;
+export default compose(middleware)(createStore)(reducer);
