@@ -17,6 +17,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import Grid from '@material-ui/core/Grid';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 import { getLeaderboard } from '../actions/Leaderboard';
 
@@ -172,13 +173,32 @@ const styles = theme => ({
            <TableCell style={{ fontSize:"1.2em"}}>{item.score ? item.score : 0}</TableCell>
          </TableRow>
         ));
+      const emptyRow=isAuthenticated ? (
+         <TableRow>
+           <TableCell>.</TableCell>
+           <TableCell>.</TableCell>
+           <TableCell>.</TableCell>
+           <TableCell>.</TableCell>
+         </TableRow>
+       ) : null;
 
+       const userRow = isAuthenticated & leaderboard.loggedInUserScore ? (
+         <TableRow key={leaderboard.loggedInUserScore.user_id}>
+          <TableCell>{leaderboard.loggedInUserScore.user_rank}</TableCell>
+          <TableCell>{leaderboard.loggedInUserScore.username}</TableCell>
+          <TableCell>{leaderboard.loggedInUserScore.email}</TableCell>
+          <TableCell>{leaderboard.loggedInUserScore.score ? leaderboard.loggedInUserScore.score : 0 }</TableCell>
+         </TableRow>
+       ) : null;
 
       const { rows, rowsPerPage, page } = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
         return (
             <React.Fragment>
+            <IconButton style={{color:"white"}}>
+             {<ArrowBack />}
+            </IconButton>
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
             <h2 style={headerStyle}>Leaderboard</h2>
             <Grid item xs={12}>
@@ -194,6 +214,8 @@ const styles = theme => ({
               </TableHead>
               <TableBody>
                 {mappedLeaderboardRow}
+                {emptyRow}
+                {userRow}
               </TableBody>
               <TableFooter>
                <TableRow>
