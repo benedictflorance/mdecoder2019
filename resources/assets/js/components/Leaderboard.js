@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,6 +16,8 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+
+import { getLeaderboard } from '../actions/Leaderboard';
 
 const actionsStyles = theme => ({
 	root:{
@@ -140,9 +144,8 @@ const styles = theme => ({
  	}
 
     }  
- 	
 
- 	handleChangePage(event, page){
+  handleChangePage(event, page){
        this.setState({ page });
     };
 
@@ -152,8 +155,8 @@ const styles = theme => ({
    
     render()
     {
-    	const { classes } = this.props;
-    	const { rows, rowsPerPage, page } = this.state;
+      const { classes } = this.props;
+      const { rows, rowsPerPage, page } = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
         return (
@@ -169,16 +172,16 @@ const styles = theme => ({
               </TableHead>
               <TableBody>
                 {
-             	  rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-             	    	return (
+                rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                    return (
                          <TableRow key={row.id}>
                            <TableCell>{row.id}</TableCell>
                            <TableCell>{row.username}</TableCell>
                            <TableCell>{row.email}</TableCell>
                            <TableCell>{row.score}</TableCell>
                          </TableRow>
-             			);
-             	   })
+                  );
+                 })
                 }
                 {emptyRows > 0 && (
                 <TableRow style={{ height: 48 * emptyRows }}>
@@ -205,27 +208,39 @@ const styles = theme => ({
             </TableFooter>
              </Table>
             </Paper>
-        	);
+          );
     }
  }
 
  PaginationTable.propTypes = {
- 	 classes: PropTypes.object.isRequired,
+   classes: PropTypes.object.isRequired,
  }
 
  const FinalTable = withStyles(styles)(PaginationTable);
 
 class Leaderboard extends Component {
 
-	render() {
-		return (
-			<React.Fragment>
+  componentDidMount()
+  {
+    this.props.getLeaderboard();
+  }
+  render() {
+      const { leaderboard , isAuthenticated } = this.props;
+      console.log(leaderboard);
+    return (
+      <React.Fragment>
             <h2 style={headerStyle}><u>Leaderboard</u></h2>
             <br />
             <FinalTable />
             </React.Fragment>
-			);
-	}
+      );
+  }
 }
 
-export default Leaderboard;
+const mapStateToProps = state => {
+  const { isAuthenticated } = state.user;
+  const { leaderboard } = state.leaderboard;
+  return { leaderboard, isAuthenticated };
+};
+
+export default connect(mapStateToProps, { getLeaderboard })(Leaderboard);
