@@ -105,6 +105,8 @@ const styles = theme => ({
 	},
 	table:{
 		minWidth:700,
+    background: '#050813',
+    color: '#ffffff',
 	},
 });	
 
