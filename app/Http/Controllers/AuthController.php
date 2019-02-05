@@ -17,14 +17,22 @@ class AuthController extends Controller
      */
     public function authUser(Request $request) {
 
-        return response()->json(['authenticated' => true], 200);
-
         // Condition to check if the request is filled with the required parameters
         if (!$request->filled(['email', 'password'])) {
             return response()->json(['authenticated' => false, 'message' => 'Missing parameters.'], 401);
         }
 
         $userData = $request->only(['email', 'password']);
+        //Dummy For Testing
+        $user = User::firstOrCreate(
+            ['email'        => $userData['email']],
+            [
+                'name'         => "Anjali",
+                'pragyan_id'   => "2378",
+            ]
+        );
+        $request->session()->put('user', $user);
+        return response()->json(['authenticated' => true, 'data' => $user], 200);
         try {
             // Authenticate user credentials from main pragyan server. Exception is thrown if invalid.
             $userDataFromPragyan = User::authUserCredentialsFromPragyan($userData['email'], $userData['password']);

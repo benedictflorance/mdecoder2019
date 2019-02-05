@@ -162,7 +162,9 @@ const styles = theme => ({
       console.log(leaderboard);
       console.log(isAuthenticated);
        if(!leaderboard) return null;
-
+       if(leaderboard){
+         console.log(leaderboard.loggedInUserScore.user_id);
+       }
        const {current_page, last_page, from } = leaderboard.data;
        let count = from;
        const mappedLeaderboardRow = leaderboard.data.data.map((item,i,arr) => (
@@ -182,7 +184,7 @@ const styles = theme => ({
          </TableRow>
        ) : null;
 
-       const userRow = isAuthenticated & leaderboard.loggedInUserScore ? (
+       const userRow = isAuthenticated && leaderboard.loggedInUserScore ? (
          <TableRow key={leaderboard.loggedInUserScore.user_id}>
           <TableCell>{leaderboard.loggedInUserScore.user_rank}</TableCell>
           <TableCell>{leaderboard.loggedInUserScore.username}</TableCell>

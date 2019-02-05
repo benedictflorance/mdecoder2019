@@ -8,6 +8,7 @@ export default class AuthRoute extends React.Component {
   render() {
     const { isAuthenticated, component: Component, ...rest } = this.props;
     console.log(isAuthenticated);
+    console.log(this.props)
     const renderingElement = props =>
       isAuthenticated ? (
         <Component {...props} />

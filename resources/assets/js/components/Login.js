@@ -11,10 +11,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import LockIcon from '@material-ui/icons/LockOutlined';
+import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import green from '@material-ui/core/colors/green';
 
 
 import { showErrorMessage, loginUser } from '../actions/User';
@@ -41,15 +42,19 @@ const styles = theme => ({
     },
     avatar: {
       margin: theme.spacing.unit,
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: green[500],
     },
     form: {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing.unit,
+      fontFamily:"Audiowide",
     },
     submit: {
       marginTop: theme.spacing.unit * 3,
     },
+    inputLabel: {
+      fontFamily:"Audiowide",
+    }
   });
   
   class Login extends React.Component {
@@ -99,18 +104,18 @@ const styles = theme => ({
           <CssBaseline />
           <Paper className={classes.paper}>
             <Avatar className={classes.avatar}>
-              <LockIcon />
+              +
             </Avatar>
             <Typography component="h1" variant="h5">
               Log in
             </Typography>
             <form onSubmit={this.handleSubmit} className={classes.form}>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Webmail</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail</InputLabel>
                 <Input onChange={this.handleEmailIdChange} value={this.state.emailid} id="email" name="email" autoComplete="email" autoFocus />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Webmail Password</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="password">Webmail Password</InputLabel>
                 <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.handlePasswordChange} value={this.state.password} />
               </FormControl>
               <Button
