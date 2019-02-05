@@ -23,10 +23,10 @@ import { getLeaderboard } from '../actions/Leaderboard';
 
 const overallStyle ={
   table: {
-    marginLeft: '2%',
-    marginRight: '2%',
+    marginLeft: '0%',
+    marginRight: '0%',
     marginTop: '20px',
-    fontSize: '1.5em',
+    fontSize: '1.3em',
     textAlign: 'left',
     fontFamily:"Audiowide",
 }
@@ -169,10 +169,10 @@ const styles = theme => ({
        let count = from;
        const mappedLeaderboardRow = leaderboard.data.data.map((item,i,arr) => (
          <TableRow key={item.user_id}>
-           <TableCell style={{ fontSize:"1.2em"}}>{count++}</TableCell>
-           <TableCell style={{ fontSize:"1.2em"}}>{item.username}</TableCell>
-           <TableCell style={{ fontSize:"1.2em"}}>{item.email}</TableCell>
-           <TableCell style={{ fontSize:"1.2em"}}>{item.score ? item.score : 0}</TableCell>
+           <TableCell style={{ fontSize:"1.0em"}}>{count++}</TableCell>
+           <TableCell style={{ fontSize:"1.0em"}}>{item.username}</TableCell>
+           <TableCell style={{ fontSize:"1.0em"}}>{item.email}</TableCell>
+           <TableCell style={{ fontSize:"1.0em"}}>{item.score ? item.score : 0}</TableCell>
          </TableRow>
         ));
       const emptyRow=isAuthenticated ? (
@@ -186,10 +186,10 @@ const styles = theme => ({
 
        const userRow = isAuthenticated && leaderboard.loggedInUserScore ? (
          <TableRow key={leaderboard.loggedInUserScore.user_id}>
-          <TableCell>{leaderboard.loggedInUserScore.user_rank}</TableCell>
-          <TableCell>{leaderboard.loggedInUserScore.username}</TableCell>
-          <TableCell>{leaderboard.loggedInUserScore.email}</TableCell>
-          <TableCell>{leaderboard.loggedInUserScore.score ? leaderboard.loggedInUserScore.score : 0 }</TableCell>
+          <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.user_rank}</TableCell>
+          <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.username}</TableCell>
+          <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.email}</TableCell>
+          <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.score ? leaderboard.loggedInUserScore.score : 0 }</TableCell>
          </TableRow>
        ) : null;
 
@@ -208,10 +208,10 @@ const styles = theme => ({
              <Table className={classes.table} style= {overallStyle.table}>
               <TableHead>
                <TableRow>
-                 <TableCell style={{ fontSize:"1.2em"}}>Rank</TableCell>
-                 <TableCell style={{ fontSize:"1.2em"}}>Username</TableCell>
-                 <TableCell style={{ fontSize:"1.2em"}}>Email</TableCell>
-                 <TableCell style={{ fontSize:"1.2em"}}>Score</TableCell>
+                 <TableCell style={{ fontSize:"1.0em"}}>Rank</TableCell>
+                 <TableCell style={{ fontSize:"1.0em"}}>Username</TableCell>
+                 <TableCell style={{ fontSize:"1.0em"}}>Email</TableCell>
+                 <TableCell style={{ fontSize:"1.0em"}}>Score</TableCell>
                </TableRow>
               </TableHead>
               <TableBody>
