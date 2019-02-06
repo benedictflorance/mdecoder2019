@@ -163,7 +163,9 @@ const styles = theme => ({
       console.log(isAuthenticated);
        if(!leaderboard) return null;
        if(leaderboard){
-         console.log(leaderboard.loggedInUserScore.user_id);
+         //console.log(leaderboard.loggedInUserScore.user_id);
+         //console.log("wowwww"); 
+         //
        }
        const {current_page, last_page, from } = leaderboard.data;
        let count = from;
@@ -185,7 +187,7 @@ const styles = theme => ({
        ) : null;
 
        const userRow = isAuthenticated && leaderboard.loggedInUserScore ? (
-         <TableRow key={leaderboard.loggedInUserScore.user_id}>
+         <TableRow >
           <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.user_rank}</TableCell>
           <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.username}</TableCell>
           <TableCell style={{ fontSize:"1.0em"}}>{leaderboard.loggedInUserScore.email}</TableCell>
