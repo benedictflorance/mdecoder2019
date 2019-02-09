@@ -23,7 +23,8 @@ const styles = {
   },
   heading: {
   	textAlign:"center",
-  	padding:10
+  	padding:10,
+    fontFamily:"Audiowide"
   },
   content:
   {
@@ -32,7 +33,7 @@ const styles = {
   textfield:
   {
   	backgroundColor:"white",
-  	borderRadius:5
+  	borderRadius:5,
   }
 };
 
@@ -51,20 +52,25 @@ class AnswerBox extends React.Component{
      {
      	console.log(e.target.value);
      	this.setState({answer:e.target.value});
+      this.props.updateAnswer(this.props.question.id,e.target.value);
      }
 
 	render()
 	{
 		const {classes} = this.props;
+    //const question = this.props.question;
 		return (
              <Card>
               <CardContent className={classes.content}>
                <Typography variant="h5" className={classes.heading}>
                 Your Answer
                </Typography>
-               <form>
+               <form onSubmit={ e => {
+                e.prevenyDefault();
+                return false;
+               }}>
                 <FormGroup>
-                  <TextField type="text" label="Enter Answer"  onChange={this.handlechange} className={classes.textfield}/>
+                  <TextField type="text" label="Enter Answer"  onChange={this.handlechange} className={classes.textfield} />
                 </FormGroup>
                </form>
                </CardContent>

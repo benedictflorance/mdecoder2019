@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    minWidth: 275,
+    Width: "100vw",
     minHeight:400
   },
   title: {
@@ -19,7 +19,8 @@ const styles = {
     marginBottom: 12,
   },
   heading: {
-  	textAlign:"center"
+  	textAlign:"center",
+    fontFamily:"Audiowide"
   },
   content:
   {
@@ -36,16 +37,16 @@ class QuestionBox extends React.Component {
 	render()
 	{
 	const { classes } = this.props;
-      
+ // const question = this.props.data;
+
      return(
       <Card className={classes.card}>
         <CardContent className={classes.content}>
           <Typography variant="h5" className={classes.heading}>
             <u>Question</u>
           </Typography>
-          <p> 
-          dccececec
-          </p>
+          <div> 
+          </div>
         </CardContent>
       </Card>
       );
