@@ -16,7 +16,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import green from '@material-ui/core/colors/green';
-
+import Navbar from './navbar';
+import Grid from '@material-ui/core/Grid';
 
 import { showErrorMessage, loginUser } from '../actions/User';
 import { getContestRemainingTime } from '../actions/Dashboard';
@@ -100,6 +101,11 @@ const styles = theme => ({
       }
       const { remainingTime, startTime, isContestLive } = this.props;
       return (
+        <React.Fragment>
+         <Grid container>
+           <Navbar />
+         </Grid>
+         <Grid container>
         <main className={classes.main}>
           <CssBaseline />
           <Paper className={classes.paper}>
@@ -130,6 +136,8 @@ const styles = theme => ({
             </form>
           </Paper>
         </main>
+        </Grid>
+        </React.Fragment>
     );
     }
   

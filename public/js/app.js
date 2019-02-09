@@ -53267,6 +53267,14 @@ var _green = __webpack_require__(442);
 
 var _green2 = _interopRequireDefault(_green);
 
+var _navbar = __webpack_require__(464);
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _Grid = __webpack_require__(381);
+
+var _Grid2 = _interopRequireDefault(_Grid);
+
 var _User = __webpack_require__(443);
 
 var _Dashboard = __webpack_require__(444);
@@ -53377,55 +53385,68 @@ var Login = function (_React$Component) {
           isContestLive = _props.isContestLive;
 
       return _react2.default.createElement(
-        'main',
-        { className: classes.main },
-        _react2.default.createElement(_CssBaseline2.default, null),
+        _react2.default.Fragment,
+        null,
         _react2.default.createElement(
-          _Paper2.default,
-          { className: classes.paper },
+          _Grid2.default,
+          { container: true },
+          _react2.default.createElement(_navbar2.default, null)
+        ),
+        _react2.default.createElement(
+          _Grid2.default,
+          { container: true },
           _react2.default.createElement(
-            _Avatar2.default,
-            { className: classes.avatar },
-            '+'
-          ),
-          _react2.default.createElement(
-            _Typography2.default,
-            { component: 'h1', variant: 'h5' },
-            'Log in'
-          ),
-          _react2.default.createElement(
-            'form',
-            { onSubmit: this.handleSubmit, className: classes.form },
+            'main',
+            { className: classes.main },
+            _react2.default.createElement(_CssBaseline2.default, null),
             _react2.default.createElement(
-              _FormControl2.default,
-              { margin: 'normal', required: true, fullWidth: true },
+              _Paper2.default,
+              { className: classes.paper },
               _react2.default.createElement(
-                _InputLabel2.default,
-                { className: classes.inputLabel, htmlFor: 'email' },
-                'Webmail'
+                _Avatar2.default,
+                { className: classes.avatar },
+                '+'
               ),
-              _react2.default.createElement(_Input2.default, { onChange: this.handleEmailIdChange, value: this.state.emailid, id: 'email', name: 'email', autoComplete: 'email', autoFocus: true })
-            ),
-            _react2.default.createElement(
-              _FormControl2.default,
-              { margin: 'normal', required: true, fullWidth: true },
               _react2.default.createElement(
-                _InputLabel2.default,
-                { className: classes.inputLabel, htmlFor: 'password' },
-                'Webmail Password'
+                _Typography2.default,
+                { component: 'h1', variant: 'h5' },
+                'Log in'
               ),
-              _react2.default.createElement(_Input2.default, { name: 'password', type: 'password', id: 'password', autoComplete: 'current-password', onChange: this.handlePasswordChange, value: this.state.password })
-            ),
-            _react2.default.createElement(
-              _Button2.default,
-              {
-                type: 'submit',
-                fullWidth: true,
-                variant: 'contained',
-                color: 'primary',
-                className: classes.submit
-              },
-              'Sign in'
+              _react2.default.createElement(
+                'form',
+                { onSubmit: this.handleSubmit, className: classes.form },
+                _react2.default.createElement(
+                  _FormControl2.default,
+                  { margin: 'normal', required: true, fullWidth: true },
+                  _react2.default.createElement(
+                    _InputLabel2.default,
+                    { className: classes.inputLabel, htmlFor: 'email' },
+                    'Webmail'
+                  ),
+                  _react2.default.createElement(_Input2.default, { onChange: this.handleEmailIdChange, value: this.state.emailid, id: 'email', name: 'email', autoComplete: 'email', autoFocus: true })
+                ),
+                _react2.default.createElement(
+                  _FormControl2.default,
+                  { margin: 'normal', required: true, fullWidth: true },
+                  _react2.default.createElement(
+                    _InputLabel2.default,
+                    { className: classes.inputLabel, htmlFor: 'password' },
+                    'Webmail Password'
+                  ),
+                  _react2.default.createElement(_Input2.default, { name: 'password', type: 'password', id: 'password', autoComplete: 'current-password', onChange: this.handlePasswordChange, value: this.state.password })
+                ),
+                _react2.default.createElement(
+                  _Button2.default,
+                  {
+                    type: 'submit',
+                    fullWidth: true,
+                    variant: 'contained',
+                    color: 'primary',
+                    className: classes.submit
+                  },
+                  'Sign in'
+                )
+              )
             )
           )
         )
@@ -58638,6 +58659,12 @@ var _ListItemText = __webpack_require__(474);
 
 var _ListItemText2 = _interopRequireDefault(_ListItemText);
 
+var _reactRedux = __webpack_require__(46);
+
+var _reactRouterDom = __webpack_require__(71);
+
+var _User = __webpack_require__(443);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -58653,7 +58680,8 @@ var styles = {
     flexGrow: 1
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontFamily: "Audiowide"
   }
 };
 
@@ -58683,10 +58711,26 @@ var Navbar = function (_React$Component) {
 
     //we have to hide the 2 typography lines below when displaying the navbar in dashboard,leaderboard and login page but display them in main game
     value: function render() {
+      var _this2 = this;
+
       var classes = this.props.classes;
+      var isAuthenticated = this.props.isAuthenticated;
 
-
-      var sideList = _react2.default.createElement(
+      var nameUser = isAuthenticated ? _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(
+          _Typography2.default,
+          { variant: 'h6', color: 'inherit', className: classes.grow },
+          'User:'
+        ),
+        _react2.default.createElement(
+          _Typography2.default,
+          { variant: 'h6', color: 'inherit', className: classes.grow },
+          'Score:'
+        )
+      ) : null;
+      var sideList = isAuthenticated ? _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement('img', { src: 'https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg', width: '150', height: '150' }),
@@ -58696,18 +58740,47 @@ var Navbar = function (_React$Component) {
           null,
           _react2.default.createElement(
             _ListItem2.default,
-            { button: true, onClick: this.toggleDrawer('left', false) },
+            { button: true, onClick: function onClick() {
+                _this2.props.history.push("/");
+              } },
             _react2.default.createElement(_ListItemText2.default, { primary: 'DASHBOARD' })
           ),
           _react2.default.createElement(
             _ListItem2.default,
-            { button: true, onClick: this.toggleDrawer('left', false) },
+            { button: true, onClick: function onClick() {
+                _this2.props.history.push("/leaderboard");
+              } },
             _react2.default.createElement(_ListItemText2.default, { primary: 'LEADERBOARD' })
           ),
           _react2.default.createElement(
             _ListItem2.default,
-            { button: true, onClick: this.toggleDrawer('left', false) },
+            { button: true, onClick: function onClick() {
+                _this2.props.logoutUser();
+              } },
             _react2.default.createElement(_ListItemText2.default, { primary: 'LOGOUT' })
+          )
+        )
+      ) : _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('img', { src: 'https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg', width: '150', height: '150' }),
+        _react2.default.createElement(_Divider2.default, null),
+        _react2.default.createElement(
+          _List2.default,
+          null,
+          _react2.default.createElement(
+            _ListItem2.default,
+            { button: true, onClick: function onClick() {
+                _this2.props.history.push("/leaderboard");
+              } },
+            _react2.default.createElement(_ListItemText2.default, { primary: 'LEADERBOARD' })
+          ),
+          _react2.default.createElement(
+            _ListItem2.default,
+            { button: true, onClick: function onClick() {
+                _this2.props.history.push("/userlogin");
+              } },
+            _react2.default.createElement(_ListItemText2.default, { primary: 'LOGIN' })
           )
         )
       );
@@ -58731,16 +58804,7 @@ var Navbar = function (_React$Component) {
               { variant: 'h6', color: 'inherit', className: classes.grow },
               'MDECODER2019'
             ),
-            _react2.default.createElement(
-              _Typography2.default,
-              { variant: 'h6', color: 'inherit', className: classes.grow },
-              'User:'
-            ),
-            _react2.default.createElement(
-              _Typography2.default,
-              { variant: 'h6', color: 'inherit', className: classes.grow },
-              'Score:'
-            )
+            nameUser
           )
         ),
         _react2.default.createElement(
@@ -58765,7 +58829,17 @@ Navbar.propTypes = {
   classes: _propTypes2.default.object.isRequired
 };
 
-exports.default = (0, _styles.withStyles)(styles)(Navbar);
+var mapStateToProps = function mapStateToProps(state) {
+  var isAuthenticated = state.user.isAuthenticated;
+
+  return {
+    isAuthenticated: isAuthenticated
+  };
+};
+
+var StyleNavbar = (0, _styles.withStyles)(styles)(Navbar);
+var Statenavbar = (0, _reactRedux.connect)(mapStateToProps, { logoutUser: _User.logoutUser })(StyleNavbar);
+exports.default = (0, _reactRouterDom.withRouter)(Statenavbar);
 
 /***/ }),
 /* 465 */
