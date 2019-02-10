@@ -66,11 +66,10 @@ class Game extends React.Component{
 
    	 return(
    
-     <Grid container style={{ height: '100vh'}}>
+     <Grid container>
         <Grid item xs={12}>
           <Grid container><Grid item xs={12}>{questionBox}</Grid></Grid>
-          // add question to be question and updateAnswer to be updateAnswer as prop
-          <Grid container style={{textAlign:"center"}}><Grid item xs={12}><AnswerBox/></Grid></Grid>
+          <Grid container style={{marginTop:"20px",textAlign:"center"}}><Grid item xs={12}><AnswerBox/></Grid></Grid>
           <Grid container>
             <Grid item xs={6}>
               <br />

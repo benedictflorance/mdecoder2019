@@ -14,7 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { logoutUser } from '../actions/User';
+import { logoutUser } from '../../actions/User';
 const styles = {
   root: {
     flexGrow: 1,

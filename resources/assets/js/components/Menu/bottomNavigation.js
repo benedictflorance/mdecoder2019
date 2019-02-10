@@ -10,6 +10,7 @@ const styles = {
   root: {
     width: "100%",
     backgroundColor : "#EEEEEE",
+    fontFamily:"Audiowide"
   },
  
 };
@@ -18,12 +19,13 @@ const styleBottom = {
 	 left :{
      backgroundColor: "#FF3F33" ,
      marginRight:"5%",
-     fontWeight:"bold"
+     fontWeight:"bold",
+     
   },
   right:{
   	backgroundColor:"#335EFF",
   	marginLeft:"5%",
-  	 fontWeight:"bold"
+  	 fontWeight:"bold",
   }
 }
 
