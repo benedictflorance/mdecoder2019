@@ -66,7 +66,7 @@ class Game extends React.Component{
 
    	 return(
    
-     <Grid container>
+     <Grid container style={{height:"100vh"}}>
         <Grid item xs={12}>
           <Grid container><Grid item xs={12}>{questionBox}</Grid></Grid>
           <Grid container style={{marginTop:"20px",textAlign:"center"}}><Grid item xs={12}><AnswerBox/></Grid></Grid>
