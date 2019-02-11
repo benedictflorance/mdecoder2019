@@ -45,7 +45,7 @@ class Navbar extends React.Component {
   const { classes } = this.props;
   const { isAuthenticated } = this.props;
   const { user } = this.props;
-  const nameUser = isAuthenticated ? (
+  const nameUser = isAuthenticated && user ? (
        <React.Fragment>
        <Typography variant="h6" color="inherit" className={classes.grow}>
           User: {user.username}

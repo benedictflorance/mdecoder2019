@@ -51,8 +51,8 @@ class bottomNavigation extends React.Component {
           showLabels
           className = {classes.root}
          >
-           <BottomNavigationAction label = "Yesterday's Questions" style = {styleBottom.left} icon= {<QuestionIcon/>} onClick={()=>{this.prop.getQuestions(1)}}/>
-           <BottomNavigationAction label = "Today's Questions"  style = {styleBottom.right} icon={<QuestionIcon/> onClick={() =>{this.props.getQuestions(0)}} />
+           <BottomNavigationAction label = "Yesterday's Questions" style = {styleBottom.left} icon= {<QuestionIcon/>} onClick={()=>{this.props.getQuestions(1)}}/>
+           <BottomNavigationAction label = "Today's Questions"  style = {styleBottom.right} icon={<QuestionIcon/>} onClick={() =>{this.props.getQuestions(0)}} />
          </BottomNavigation>
      	);
 	}

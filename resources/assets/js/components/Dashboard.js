@@ -8,7 +8,7 @@ import Instructions from './Instructions';
 class Dashboard extends React.Component {
 	render()
 	{
-		const { isAuthenticated, currDayFlag } = this.props;
+		const { isAuthenticated, currDayFlag , getQuestions } = this.props;
 		if(isAuthenticated && currDayFlag < 2)
 		{
 			return <GameComponent />
