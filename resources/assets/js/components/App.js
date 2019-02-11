@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter , Route , Switch } from 'react-router-dom';
 import Leaderboard from "./Leaderboard";
-import ScrollableTabsButtonAuto from "./QuestionTab"
-import SimpleAppBar from "./Timer"
-import Login from "./Login"
-import bottomNavigation from './bottomNavigation';
-import QuestionBox from "./QuestionBox";
-import AnswerBox from "./AnswerBox";
-import Navbar from './navbar';
+import Login from "./Login";
+import Game from "./GameComponent";
+
 import AuthRoute from './utils/AuthRoute';
 import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
@@ -30,6 +26,7 @@ class App extends Component {
                     component={Leaderboard}
                   />
                   <Route exact={true} path="/userlogin" component= {Login} />
+                  <Route exact={true} path="/game" component={Game} />
                 </Switch>
               </div>
             </BrowserRouter>

@@ -14,7 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { logoutUser } from '../actions/User';
+import { logoutUser } from '../../actions/User';
 const styles = {
   root: {
     flexGrow: 1,
@@ -44,13 +44,14 @@ class Navbar extends React.Component {
    render(){
   const { classes } = this.props;
   const { isAuthenticated } = this.props;
+  const { user } = this.props;
   const nameUser = isAuthenticated ? (
        <React.Fragment>
        <Typography variant="h6" color="inherit" className={classes.grow}>
-          User:
+          User: {user.username}
           </Typography>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-          Score:
+          Score: {user.score}
           </Typography>
           </React.Fragment>
     ) : null;
@@ -117,8 +118,10 @@ Navbar.propTypes = {
 
 const mapStateToProps = state => {
   const { isAuthenticated } = state.user;
+  const { user } = state.dashboard;
   return {
-    isAuthenticated
+    isAuthenticated,
+    user
   };
 };
 

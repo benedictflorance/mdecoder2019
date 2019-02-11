@@ -9,7 +9,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const styles = {
   root: {
-    width: 500,
+    width: "100%",
   },
 };
 
@@ -30,7 +30,6 @@ class SimpleBottomNavigation extends React.Component {
       <BottomNavigation
         value={value}
         onChange={this.handleChange}
-        showLabels
         className={classes.root}
       >
         <div> 24 - 01 - 00</div>
