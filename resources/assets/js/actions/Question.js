@@ -157,7 +157,7 @@ export function getQuestions(currDayFlag) {
 export function submitAnswer(questionId, answer) {
   return dispatch => {
     dispatch({ type: 'DISABLE_SUBMIT' });
-    /*dispatch({
+    dispatch({
       type: 'MESSAGE',
       messageType: 'SUBMIT_ANSWER_SUCCESS',
       message: 'Wrong Answer'
@@ -167,67 +167,67 @@ export function submitAnswer(questionId, answer) {
       questionId: questionId,
       wasCorrect: false
     });
-    dispatch({ type: 'ENABLE_SUBMIT' });*/
-    api
-      .post('/answer', {
-        question_id: questionId,
-        answer: answer
-      })
-      .then(response => {
-        if (response.status === 200) {
-          if (response.data.correctAnswer) {
-            dispatch(getUserScore());
-            dispatch({
-              type: 'MESSAGE',
-              messageType: 'SUBMIT_ANSWER_SUCCESS',
-              message: response.data.message
-            });
-            dispatch({
-              type: 'REMOVE_ANSWER',
-              questionId: questionId,
-              wasCorrect: response.data.correctAnswer
-            });
-          } else {
-            dispatch({
-              type: 'ERROR',
-              messageType: 'SUBMIT_ANSWER_SUCCESS',
-              message: response.data.message
-            });
-            dispatch({
-              type: 'REMOVE_ANSWER',
-              questionId: questionId,
-              wasCorrect: response.data.correctAnswer
-            });
-          }
+    dispatch({ type: 'ENABLE_SUBMIT' });
+    // api
+    //   .post('/answer', {
+    //     question_id: questionId,
+    //     answer: answer
+    //   })
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       if (response.data.correctAnswer) {
+    //         dispatch(getUserScore());
+    //         dispatch({
+    //           type: 'MESSAGE',
+    //           messageType: 'SUBMIT_ANSWER_SUCCESS',
+    //           message: response.data.message
+    //         });
+    //         dispatch({
+    //           type: 'REMOVE_ANSWER',
+    //           questionId: questionId,
+    //           wasCorrect: response.data.correctAnswer
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: 'ERROR',
+    //           messageType: 'SUBMIT_ANSWER_SUCCESS',
+    //           message: response.data.message
+    //         });
+    //         dispatch({
+    //           type: 'REMOVE_ANSWER',
+    //           questionId: questionId,
+    //           wasCorrect: response.data.correctAnswer
+    //         });
+    //       }
 
-          dispatch({ type: 'ENABLE_SUBMIT' });
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'SUBMIT_ANSWER_FAILURE',
-            message: response
-              ? response.data.message
-              : 'Error occurred when submitting the form'
-          });
-          dispatch({ type: 'ENABLE_SUBMIT' });
-        }
-      })
-      .catch(err => {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'SUBMIT_ANSWER_FAILURE',
-          message: err.response
-            ? err.response.data.message
-            : 'Error occurred when submitting the form',
-          err: err
-        });
-        dispatch({ type: 'ENABLE_SUBMIT' });
-      });
+    //       dispatch({ type: 'ENABLE_SUBMIT' });
+    //     } else {
+    //       dispatch({
+    //         type: 'ERROR',
+    //         messageType: 'SUBMIT_ANSWER_FAILURE',
+    //         message: response
+    //           ? response.data.message
+    //           : 'Error occurred when submitting the form'
+    //       });
+    //       dispatch({ type: 'ENABLE_SUBMIT' });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     dispatch({
+    //       type: 'ERROR',
+    //       messageType: 'SUBMIT_ANSWER_FAILURE',
+    //       message: err.response
+    //         ? err.response.data.message
+    //         : 'Error occurred when submitting the form',
+    //       err: err
+    //     });
+    //     dispatch({ type: 'ENABLE_SUBMIT' });
+    //   });
   };
 }
 export function updateLevel(currDayFlag) {
   return dispatch => {
-    /*dispatch({
+    dispatch({
       type: 'UPDATE_LEVEL_SUCCESS',
       payload: { updated: true, message: 'Level updated.' }
     });
@@ -237,51 +237,51 @@ export function updateLevel(currDayFlag) {
       messageType: 'UPDATE_LEVEL_SUCCESS',
       message: 'Level Updated Successfully'
     });
-    dispatch(getQuestions(currDayFlag));*/
-    api
-      .put('/level', {
-        prev_day_questions_flag: currDayFlag
-      })
-      .then(response => {
-        if (response.status === 200) {
-          if (response.data.updated) {
-            dispatch({
-              type: 'UPDATE_LEVEL_SUCCESS',
-              payload: response.data
-            });
-            dispatch(getQuestions(currDayFlag));
-            dispatch({
-              type: 'MESSAGE',
-              messageType: 'UPDATE_LEVEL_SUCCESS',
-              message: 'Level Updated'
-            });
-          } else {
-            dispatch({
-              type: 'ERROR',
-              messageType: 'UPDATE_LEVEL_FAILURE',
-              message: 'Error occurred when updating level'
-            });
-          }
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'UPDATE_LEVEL_FAILURE',
-            message: response
-              ? response.data.message
-              : 'Error occurred when updating level'
-          });
-        }
-      })
-      .catch(err => {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'UPDATE_LEVEL_FAILURE',
-          message: err.response
-            ? err.response.data.message
-            : 'Error occurred when updating level',
-          err: err
-        });
-      });
+    dispatch(getQuestions(currDayFlag));
+    // api
+    //   .put('/level', {
+    //     prev_day_questions_flag: currDayFlag
+    //   })
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       if (response.data.updated) {
+    //         dispatch({
+    //           type: 'UPDATE_LEVEL_SUCCESS',
+    //           payload: response.data
+    //         });
+    //         dispatch(getQuestions(currDayFlag));
+    //         dispatch({
+    //           type: 'MESSAGE',
+    //           messageType: 'UPDATE_LEVEL_SUCCESS',
+    //           message: 'Level Updated'
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: 'ERROR',
+    //           messageType: 'UPDATE_LEVEL_FAILURE',
+    //           message: 'Error occurred when updating level'
+    //         });
+    //       }
+    //     } else {
+    //       dispatch({
+    //         type: 'ERROR',
+    //         messageType: 'UPDATE_LEVEL_FAILURE',
+    //         message: response
+    //           ? response.data.message
+    //           : 'Error occurred when updating level'
+    //       });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     dispatch({
+    //       type: 'ERROR',
+    //       messageType: 'UPDATE_LEVEL_FAILURE',
+    //       message: err.response
+    //         ? err.response.data.message
+    //         : 'Error occurred when updating level',
+    //       err: err
+    //     });
+    //   });
   };
 }
 

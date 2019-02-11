@@ -58,7 +58,8 @@ class AnswerBox extends React.Component{
 	render()
 	{
 		const {classes} = this.props;
-    //const question = this.props.question;
+    const question = this.props.question;
+    console.log(question);
 		return (
              <Card>
               <CardContent className={classes.content}>
@@ -70,7 +71,14 @@ class AnswerBox extends React.Component{
                 return false;
                }}>
                 <FormGroup>
-                  <TextField type="text" label="Enter Answer"  onChange={this.handlechange} className={classes.textfield} />
+                  <FormControl className={classes.formControl}
+                  >
+                    <TextField type="text" label="Enter Answer" value={question.answer} 
+                     disabled = {
+                      question.user_solved || question.remaining_attempts < 1
+                    }
+                    onChange={this.handlechange} className={classes.textfield}/>
+                  </FormControl>
                 </FormGroup>
                </form>
                </CardContent>

@@ -54,26 +54,29 @@ class Game extends React.Component{
    	const { questions, selectedQuestion, updateAnswer, disableSubmit } = this.props;
    	let question;
     //uncomment the next set of lines during final integration
-   	 // if(!question)
-   	 // 	return null;
+   	 if(!questions)
+   	 	return null;
 
-   	 // if(!selectedQuestion)
-   	 // 	return null;
+   	 if(!selectedQuestion)
+   	 	return null;
 
    	 question = this.getQuestion(questions,selectedQuestion);
      //add data to be question as prop for next line
-   	 const questionBox = <QuestionBox  />;
+   	 const questionBox = <QuestionBox  data={question}/>;
 
    	 return(
    
      <Grid container style={{height:"100vh"}}>
         <Grid item xs={12}>
-          <Grid container><Grid item xs={12}>{questionBox}</Grid></Grid>
-          <Grid container style={{marginTop:"20px",textAlign:"center"}}><Grid item xs={12}><AnswerBox/></Grid></Grid>
+          <Grid container><Grid item xs={12}>{questionBox }</Grid></Grid>
+          <Grid container style={{marginTop:"20px",textAlign:"center"}}><Grid item xs={12}><AnswerBox  question={question} updateAnswer={updateAnswer}/></Grid></Grid>
           <Grid container>
             <Grid item xs={6}>
               <br />
-              <Button size="large" style={{width:"100%",fontFamily:"Audiowide"}} variant="contained" color="primary" disabled={disableSubmit} onClick={() => {this.handleSubmit();}}>Submit</Button>
+              <Button size="large" style={{width:"100%",fontFamily:"Audiowide"}} variant="contained" color="primary" disabled={
+                  disableSubmit ||
+                  (question.user_solved || question.remaining_attempts < 1)
+                } onClick={() => {this.handleSubmit();}}>Submit</Button>
             </Grid>
             <Grid item xs={6}>
              <br />

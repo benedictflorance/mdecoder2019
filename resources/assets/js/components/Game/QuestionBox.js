@@ -37,7 +37,8 @@ class QuestionBox extends React.Component {
 	render()
 	{
 	const { classes } = this.props;
- // const question = this.props.data;
+  const question = this.props.data;
+  console.log(question);
 
      return(
       <Card className={classes.card}>
@@ -46,6 +47,7 @@ class QuestionBox extends React.Component {
             <u>Question</u>
           </Typography>
           <div> 
+            {question.description}
           </div>
         </CardContent>
       </Card>

@@ -5098,39 +5098,44 @@ function updateScore(score) {
 
 function getUserRemainingTime() {
   return function (dispatch) {
-    /*dispatch({
+    dispatch({
       type: 'UPDATE_REMAINING_TIME',
       remainingTime: 7200
-    });*/
-    _api2.default.get('/user/time').then(function (response) {
-      if (response.status === 200) {
-        if (response.data.gotRemainingTime) {
-          dispatch({
-            type: 'UPDATE_REMAINING_TIME',
-            remainingTime: response.data.remainingTime
-          });
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'GET_REMAINING_TIME_FAILURE',
-            message: 'No remaining time'
-          });
-        }
-      } else {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'GET_REMAINING_TIME_FAILURE',
-          message: response.data.message
-        });
-      }
-    }).catch(function (err) {
-      dispatch({
-        type: 'ERROR',
-        messageType: 'GET_REMAINING_TIME_FAILURE',
-        message: err.response ? err.response.data.message : 'Error occured when trying to get remaining time',
-        err: err
-      });
     });
+    // api
+    //   .get('/user/time')
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       if (response.data.gotRemainingTime) {
+    //         dispatch({
+    //           type: 'UPDATE_REMAINING_TIME',
+    //           remainingTime: response.data.remainingTime
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: 'ERROR',
+    //           messageType: 'GET_REMAINING_TIME_FAILURE',
+    //           message: 'No remaining time'
+    //         });
+    //       }
+    //     } else {
+    //       dispatch({
+    //         type: 'ERROR',
+    //         messageType: 'GET_REMAINING_TIME_FAILURE',
+    //         message: response.data.message
+    //       });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     dispatch({
+    //       type: 'ERROR',
+    //       messageType: 'GET_REMAINING_TIME_FAILURE',
+    //       message: err.response
+    //         ? err.response.data.message
+    //         : 'Error occured when trying to get remaining time',
+    //       err: err
+    //     });
+    //   });
   };
 }
 
@@ -6835,7 +6840,7 @@ function getQuestions(currDayFlag) {
 function submitAnswer(questionId, answer) {
   return function (dispatch) {
     dispatch({ type: 'DISABLE_SUBMIT' });
-    /*dispatch({
+    dispatch({
       type: 'MESSAGE',
       messageType: 'SUBMIT_ANSWER_SUCCESS',
       message: 'Wrong Answer'
@@ -6845,60 +6850,67 @@ function submitAnswer(questionId, answer) {
       questionId: questionId,
       wasCorrect: false
     });
-    dispatch({ type: 'ENABLE_SUBMIT' });*/
-    _api2.default.post('/answer', {
-      question_id: questionId,
-      answer: answer
-    }).then(function (response) {
-      if (response.status === 200) {
-        if (response.data.correctAnswer) {
-          dispatch((0, _Dashboard.getUserScore)());
-          dispatch({
-            type: 'MESSAGE',
-            messageType: 'SUBMIT_ANSWER_SUCCESS',
-            message: response.data.message
-          });
-          dispatch({
-            type: 'REMOVE_ANSWER',
-            questionId: questionId,
-            wasCorrect: response.data.correctAnswer
-          });
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'SUBMIT_ANSWER_SUCCESS',
-            message: response.data.message
-          });
-          dispatch({
-            type: 'REMOVE_ANSWER',
-            questionId: questionId,
-            wasCorrect: response.data.correctAnswer
-          });
-        }
+    dispatch({ type: 'ENABLE_SUBMIT' });
+    // api
+    //   .post('/answer', {
+    //     question_id: questionId,
+    //     answer: answer
+    //   })
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       if (response.data.correctAnswer) {
+    //         dispatch(getUserScore());
+    //         dispatch({
+    //           type: 'MESSAGE',
+    //           messageType: 'SUBMIT_ANSWER_SUCCESS',
+    //           message: response.data.message
+    //         });
+    //         dispatch({
+    //           type: 'REMOVE_ANSWER',
+    //           questionId: questionId,
+    //           wasCorrect: response.data.correctAnswer
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: 'ERROR',
+    //           messageType: 'SUBMIT_ANSWER_SUCCESS',
+    //           message: response.data.message
+    //         });
+    //         dispatch({
+    //           type: 'REMOVE_ANSWER',
+    //           questionId: questionId,
+    //           wasCorrect: response.data.correctAnswer
+    //         });
+    //       }
 
-        dispatch({ type: 'ENABLE_SUBMIT' });
-      } else {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'SUBMIT_ANSWER_FAILURE',
-          message: response ? response.data.message : 'Error occurred when submitting the form'
-        });
-        dispatch({ type: 'ENABLE_SUBMIT' });
-      }
-    }).catch(function (err) {
-      dispatch({
-        type: 'ERROR',
-        messageType: 'SUBMIT_ANSWER_FAILURE',
-        message: err.response ? err.response.data.message : 'Error occurred when submitting the form',
-        err: err
-      });
-      dispatch({ type: 'ENABLE_SUBMIT' });
-    });
+    //       dispatch({ type: 'ENABLE_SUBMIT' });
+    //     } else {
+    //       dispatch({
+    //         type: 'ERROR',
+    //         messageType: 'SUBMIT_ANSWER_FAILURE',
+    //         message: response
+    //           ? response.data.message
+    //           : 'Error occurred when submitting the form'
+    //       });
+    //       dispatch({ type: 'ENABLE_SUBMIT' });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     dispatch({
+    //       type: 'ERROR',
+    //       messageType: 'SUBMIT_ANSWER_FAILURE',
+    //       message: err.response
+    //         ? err.response.data.message
+    //         : 'Error occurred when submitting the form',
+    //       err: err
+    //     });
+    //     dispatch({ type: 'ENABLE_SUBMIT' });
+    //   });
   };
 }
 function updateLevel(currDayFlag) {
   return function (dispatch) {
-    /*dispatch({
+    dispatch({
       type: 'UPDATE_LEVEL_SUCCESS',
       payload: { updated: true, message: 'Level updated.' }
     });
@@ -6908,44 +6920,51 @@ function updateLevel(currDayFlag) {
       messageType: 'UPDATE_LEVEL_SUCCESS',
       message: 'Level Updated Successfully'
     });
-    dispatch(getQuestions(currDayFlag));*/
-    _api2.default.put('/level', {
-      prev_day_questions_flag: currDayFlag
-    }).then(function (response) {
-      if (response.status === 200) {
-        if (response.data.updated) {
-          dispatch({
-            type: 'UPDATE_LEVEL_SUCCESS',
-            payload: response.data
-          });
-          dispatch(getQuestions(currDayFlag));
-          dispatch({
-            type: 'MESSAGE',
-            messageType: 'UPDATE_LEVEL_SUCCESS',
-            message: 'Level Updated'
-          });
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'UPDATE_LEVEL_FAILURE',
-            message: 'Error occurred when updating level'
-          });
-        }
-      } else {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'UPDATE_LEVEL_FAILURE',
-          message: response ? response.data.message : 'Error occurred when updating level'
-        });
-      }
-    }).catch(function (err) {
-      dispatch({
-        type: 'ERROR',
-        messageType: 'UPDATE_LEVEL_FAILURE',
-        message: err.response ? err.response.data.message : 'Error occurred when updating level',
-        err: err
-      });
-    });
+    dispatch(getQuestions(currDayFlag));
+    // api
+    //   .put('/level', {
+    //     prev_day_questions_flag: currDayFlag
+    //   })
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       if (response.data.updated) {
+    //         dispatch({
+    //           type: 'UPDATE_LEVEL_SUCCESS',
+    //           payload: response.data
+    //         });
+    //         dispatch(getQuestions(currDayFlag));
+    //         dispatch({
+    //           type: 'MESSAGE',
+    //           messageType: 'UPDATE_LEVEL_SUCCESS',
+    //           message: 'Level Updated'
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: 'ERROR',
+    //           messageType: 'UPDATE_LEVEL_FAILURE',
+    //           message: 'Error occurred when updating level'
+    //         });
+    //       }
+    //     } else {
+    //       dispatch({
+    //         type: 'ERROR',
+    //         messageType: 'UPDATE_LEVEL_FAILURE',
+    //         message: response
+    //           ? response.data.message
+    //           : 'Error occurred when updating level'
+    //       });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     dispatch({
+    //       type: 'ERROR',
+    //       messageType: 'UPDATE_LEVEL_FAILURE',
+    //       message: err.response
+    //         ? err.response.data.message
+    //         : 'Error occurred when updating level',
+    //       err: err
+    //     });
+    //   });
   };
 }
 
@@ -60952,15 +60971,13 @@ var Game = function (_React$Component) {
 
       var question = void 0;
       //uncomment the next set of lines during final integration
-      // if(!question)
-      // 	return null;
+      if (!questions) return null;
 
-      // if(!selectedQuestion)
-      // 	return null;
+      if (!selectedQuestion) return null;
 
       question = this.getQuestion(questions, selectedQuestion);
       //add data to be question as prop for next line
-      var questionBox = _react2.default.createElement(_QuestionBox2.default, null);
+      var questionBox = _react2.default.createElement(_QuestionBox2.default, { data: question });
 
       return _react2.default.createElement(
         _Grid2.default,
@@ -60983,7 +61000,7 @@ var Game = function (_React$Component) {
             _react2.default.createElement(
               _Grid2.default,
               { item: true, xs: 12 },
-              _react2.default.createElement(_AnswerBox2.default, null)
+              _react2.default.createElement(_AnswerBox2.default, { question: question, updateAnswer: updateAnswer })
             )
           ),
           _react2.default.createElement(
@@ -60995,7 +61012,7 @@ var Game = function (_React$Component) {
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 _Button2.default,
-                { size: 'large', style: { width: "100%", fontFamily: "Audiowide" }, variant: 'contained', color: 'primary', disabled: disableSubmit, onClick: function onClick() {
+                { size: 'large', style: { width: "100%", fontFamily: "Audiowide" }, variant: 'contained', color: 'primary', disabled: disableSubmit || question.user_solved || question.remaining_attempts < 1, onClick: function onClick() {
                     _this2.handleSubmit();
                   } },
                 'Submit'
@@ -61126,7 +61143,9 @@ var QuestionBox = function (_React$Component) {
     key: 'render',
     value: function render() {
       var classes = this.props.classes;
-      // const question = this.props.data;
+
+      var question = this.props.data;
+      console.log(question);
 
       return _react2.default.createElement(
         _Card2.default,
@@ -61143,7 +61162,11 @@ var QuestionBox = function (_React$Component) {
               'Question'
             )
           ),
-          _react2.default.createElement('div', null)
+          _react2.default.createElement(
+            'div',
+            null,
+            question.description
+          )
         )
       );
     }
@@ -61521,8 +61544,9 @@ var AnswerBox = function (_React$Component) {
     key: 'render',
     value: function render() {
       var classes = this.props.classes;
-      //const question = this.props.question;
 
+      var question = this.props.question;
+      console.log(question);
       return _react2.default.createElement(
         _Card2.default,
         null,
@@ -61543,7 +61567,14 @@ var AnswerBox = function (_React$Component) {
             _react2.default.createElement(
               _FormGroup2.default,
               null,
-              _react2.default.createElement(_TextField2.default, { type: 'text', label: 'Enter Answer', onChange: this.handlechange, className: classes.textfield })
+              _react2.default.createElement(
+                _FormControl2.default,
+                { className: classes.formControl
+                },
+                _react2.default.createElement(_TextField2.default, { type: 'text', label: 'Enter Answer', value: question.answer,
+                  disabled: question.user_solved || question.remaining_attempts < 1,
+                  onChange: this.handlechange, className: classes.textfield })
+              )
             )
           )
         )
