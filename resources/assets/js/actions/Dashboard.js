@@ -14,44 +14,44 @@ export function updateScore(score) {
 
 export function getUserRemainingTime() {
   return dispatch => {
-    /*dispatch({
+    dispatch({
       type: 'UPDATE_REMAINING_TIME',
       remainingTime: 7200
-    });*/
-    api
-      .get('/user/time')
-      .then(response => {
-        if (response.status === 200) {
-          if (response.data.gotRemainingTime) {
-            dispatch({
-              type: 'UPDATE_REMAINING_TIME',
-              remainingTime: response.data.remainingTime
-            });
-          } else {
-            dispatch({
-              type: 'ERROR',
-              messageType: 'GET_REMAINING_TIME_FAILURE',
-              message: 'No remaining time'
-            });
-          }
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'GET_REMAINING_TIME_FAILURE',
-            message: response.data.message
-          });
-        }
-      })
-      .catch(err => {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'GET_REMAINING_TIME_FAILURE',
-          message: err.response
-            ? err.response.data.message
-            : 'Error occured when trying to get remaining time',
-          err: err
-        });
-      });
+    })
+    // api
+    //   .get('/user/time')
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       if (response.data.gotRemainingTime) {
+    //         dispatch({
+    //           type: 'UPDATE_REMAINING_TIME',
+    //           remainingTime: response.data.remainingTime
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: 'ERROR',
+    //           messageType: 'GET_REMAINING_TIME_FAILURE',
+    //           message: 'No remaining time'
+    //         });
+    //       }
+    //     } else {
+    //       dispatch({
+    //         type: 'ERROR',
+    //         messageType: 'GET_REMAINING_TIME_FAILURE',
+    //         message: response.data.message
+    //       });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     dispatch({
+    //       type: 'ERROR',
+    //       messageType: 'GET_REMAINING_TIME_FAILURE',
+    //       message: err.response
+    //         ? err.response.data.message
+    //         : 'Error occured when trying to get remaining time',
+    //       err: err
+    //     });
+    //   });
   };
 }
 
