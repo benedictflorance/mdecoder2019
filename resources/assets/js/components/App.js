@@ -8,6 +8,7 @@ import Game from "./GameComponent";
 import AuthRoute from './utils/AuthRoute';
 import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
+import Dashboard from './Dashboard';
 class App extends Component {
     constructor(props) {
       super(props);
@@ -23,10 +24,11 @@ class App extends Component {
                     isAuthenticated={isAuthenticated}
                     exact={true}
                     path="/"
-                    component={Leaderboard}
+                    component={Dashboard}
                   />
                   <Route exact={true} path="/userlogin" component= {Login} />
                   <Route exact={true} path="/game" component={Game} />
+                  <Route exact={true} path="/dashboard" component={Dashboard} />
                 </Switch>
               </div>
             </BrowserRouter>

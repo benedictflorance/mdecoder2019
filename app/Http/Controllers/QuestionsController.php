@@ -28,7 +28,6 @@ class QuestionsController extends Controller
 
             // Gets the current day of the user.
             $currentDay = $this->getCurrentDay();
-
             if(!$currentDay) {
                 throw new CustomException("Question inaccessible.", 404);
             }

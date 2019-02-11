@@ -10,7 +10,7 @@ import {
 export function getQuestions(currDayFlag) {
   return dispatch => {
     dispatch({ type: 'FLUSH_DASHBOARD_STATE' });
-    /*dispatch({
+    dispatch({
       type: 'GET_QUESTIONS_SUCCESS',
       payload: [
         {
@@ -92,64 +92,66 @@ export function getQuestions(currDayFlag) {
     dispatch({
       type: 'SET_CURR_DAY_FLAG',
       payload: currDayFlag
-    });*/
+    });
 
-    api
-      .get('/questions', {
-        params: {
-          prev_day_questions_flag: currDayFlag
-        }
-      })
-      .then(response => {
-        if (response.status === 200) {
-          if (response.data.gotQuestions) {
-            dispatch({
-              type: 'GET_QUESTIONS_SUCCESS',
-              payload: response.data.data
-            });
-            dispatch(getUserScore());
-            dispatch(
-              currDayFlag === 1
-                ? getContestRemainingTime()
-                : getUserRemainingTime()
-            );
-            dispatch({
-              type: 'UPDATE_DIFFICULTY',
-              payload: response.data.data[0].question_difficulty
-            });
-            dispatch(updateSelectedQuestion(response.data.data[0].id));
-            dispatch({
-              type: 'SET_CURR_DAY_FLAG',
-              payload: currDayFlag
-            });
-          } else {
-            dispatch({
-              type: 'ERROR',
-              messageType: 'GET_QUESTIONS_FAILURE',
-              message: 'Cannot get Questions'
-            });
-          }
-        } else {
-          dispatch({
-            type: 'ERROR',
-            messageType: 'GET_QUESTIONS_FAILURE',
-            message: response ? response.data.message : 'Cannot get Questions'
-          });
-        }
-      })
-      .catch(err => {
-        dispatch({
-          type: 'ERROR',
-          messageType: 'GET_QUESTIONS_FAILURE',
-          message: err.response
-            ? err.response.data.message
-            : 'Cannot get Questions',
-          err: err
-        });
-        if (err.status === 401) {
-          dispatch({ type: 'UNAUTHORIZE_USER' });
-        }
-      });
+  //   api
+  //     .get('/questions', {
+  //       params: {
+  //         prev_day_questions_flag: currDayFlag
+  //       }
+  //     })
+  //     .then(response => {
+  //       console.log(response);
+  //       if (response.status === 200) {
+  //         if (response.data.gotQuestions) {
+  //           dispatch({
+  //             type: 'GET_QUESTIONS_SUCCESS',
+  //             payload: response.data.data
+  //           });
+  //           dispatch(getUserScore());
+  //           dispatch(
+  //             currDayFlag === 1
+  //               ? getContestRemainingTime()
+  //               : getUserRemainingTime()
+  //           );
+  //           dispatch({
+  //             type: 'UPDATE_DIFFICULTY',
+  //             payload: response.data.data[0].question_difficulty
+  //           });
+  //           dispatch(updateSelectedQuestion(response.data.data[0].id));
+  //           dispatch({
+  //             type: 'SET_CURR_DAY_FLAG',
+  //             payload: currDayFlag
+  //           });
+  //         } else {
+  //           dispatch({
+  //             type: 'ERROR',
+  //             messageType: 'GET_QUESTIONS_FAILURE',
+  //             message: 'Cannot get Questions'
+  //           });
+  //         }
+  //       } else {
+  //         dispatch({
+  //           type: 'ERROR',
+  //           messageType: 'GET_QUESTIONS_FAILURE',
+  //           message: response ? response.data.message : 'Cannot get Questions'
+  //         });
+  //       }
+  //     })
+  //     .catch(err => {
+  //       dispatch({
+  //         type: 'ERROR',
+  //         messageType: 'GET_QUESTIONS_FAILURE',
+  //         message: err.response
+  //           ? err.response.data.message
+  //           : 'Cannot get Questions',
+  //         err: err
+  //       });
+  //       if (err.status === 401) {
+  //         dispatch({ type: 'UNAUTHORIZE_USER' });
+  //       }
+  //     });
+  // 
   };
 }
 export function submitAnswer(questionId, answer) {

@@ -15,7 +15,6 @@
  */
 
 Route::get('login', 'BaseController@renderUserLogin');
-Route::view('/{path?}', 'Main');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::put('level', 'UserDayStatusesController@updateLevel');

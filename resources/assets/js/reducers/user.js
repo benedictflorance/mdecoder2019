@@ -19,6 +19,7 @@ export default function reducer(
       };
     }
     case 'SET_CURR_DAY_FLAG': {
+      console.log(action.payload);
       return {
         ...state,
         currDayFlag: action.payload
