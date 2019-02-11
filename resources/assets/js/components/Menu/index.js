@@ -17,12 +17,13 @@ class Menu extends React.Component{
     render()
     {
     	const { difficulty ,questions,selectedQuestion,updateSelectedQuestion,currDayFlag } = this.props;
+
     	return( 
          <Grid container>
            <Grid item xs={12}>
               <Navbar />
               <Timer />
-              <QuestionTab />
+              <QuestionTab data = {{questions,selectedQuestion,updateSelectedQuestion}}/>
            </Grid>
          </Grid>
     		);

@@ -63188,6 +63188,7 @@ var Menu = function (_React$Component) {
              updateSelectedQuestion = _props.updateSelectedQuestion,
              currDayFlag = _props.currDayFlag;
 
+
          return _react2.default.createElement(
             _Grid2.default,
             { container: true },
@@ -63196,7 +63197,7 @@ var Menu = function (_React$Component) {
                { item: true, xs: 12 },
                _react2.default.createElement(_navbar2.default, null),
                _react2.default.createElement(_Timer2.default, null),
-               _react2.default.createElement(_QuestionTab2.default, null)
+               _react2.default.createElement(_QuestionTab2.default, { data: { questions: questions, selectedQuestion: selectedQuestion, updateSelectedQuestion: updateSelectedQuestion } })
             )
          );
       }
@@ -63320,8 +63321,16 @@ var ScrollableTabsButtonAuto = function (_React$Component) {
     value: function render() {
       var classes = this.props.classes;
       var value = this.state.value;
+      var _props$data = this.props.data,
+          questions = _props$data.questions,
+          selectedQuestion = _props$data.selectedQuestion,
+          updateSelectedQuestion = _props$data.updateSelectedQuestion;
 
-
+      var mappedQuestions = questions.map(function (question, i, arr) {
+        return _react2.default.createElement(_Tab2.default, { label: "Question:" + parseInt(i + 1), key: question.id, onClick: function onClick(event) {
+            updateSelectedQuestion(question.id);
+          } });
+      });
       return _react2.default.createElement(
         'div',
         { className: classes.root },
@@ -63338,15 +63347,7 @@ var ScrollableTabsButtonAuto = function (_React$Component) {
               variant: 'scrollable',
               scrollButtons: 'on'
             },
-            _react2.default.createElement(_Tab2.default, { label: 'Item One' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item Two' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item Three' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item Four' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item Five' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item Six' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item Seven' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item eight' }),
-            _react2.default.createElement(_Tab2.default, { label: 'Item nine' })
+            mappedQuestions
           )
         )
       );
