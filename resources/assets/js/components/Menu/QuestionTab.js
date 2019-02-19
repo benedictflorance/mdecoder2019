@@ -43,11 +43,12 @@ class ScrollableTabsButtonAuto extends React.Component {
     const mappedQuestions = questions.map((question,i,arr) =>(
         <Tab label={"Question:"+parseInt(i+1)} key={question.id} onClick={event => { updateSelectedQuestion(question.id) }} />
     ));
+     const index = questions.findIndex(x => x.id==selectedQuestion);
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
-            value={value}
+            value={index}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
