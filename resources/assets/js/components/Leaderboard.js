@@ -18,7 +18,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import Grid from '@material-ui/core/Grid';
 import ArrowBack from '@material-ui/icons/ArrowBack';
-
+import { withRouter } from 'react-router-dom';
 import { getLeaderboard } from '../actions/Leaderboard';
 
 const overallStyle ={
@@ -200,7 +200,7 @@ const styles = theme => ({
 
         return (
             <React.Fragment>
-            <IconButton style={{color:"white"}}>
+            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/')}}>
              {<ArrowBack />}
             </IconButton>
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
@@ -259,4 +259,5 @@ const mapStateToProps = state => {
   return { leaderboard, isAuthenticated };
 };
 
-export default connect(mapStateToProps, { getLeaderboard })(FinalTable);
+const TableRouter = connect(mapStateToProps, { getLeaderboard })(FinalTable);
+export default withRouter(TableRouter);

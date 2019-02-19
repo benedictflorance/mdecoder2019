@@ -35631,6 +35631,8 @@ var PaginationTable = function (_Component2) {
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       var _props2 = this.props,
           classes = _props2.classes,
           leaderboard = _props2.leaderboard,
@@ -35738,7 +35740,9 @@ var PaginationTable = function (_Component2) {
         null,
         _react2.default.createElement(
           _IconButton2.default,
-          { style: { color: "white" } },
+          { style: { color: "white" }, onClick: function onClick() {
+              _this3.props.history.push('/');
+            } },
           _react2.default.createElement(_ArrowBack2.default, null)
         ),
         _react2.default.createElement(
@@ -35839,7 +35843,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return { leaderboard: leaderboard, isAuthenticated: isAuthenticated };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { getLeaderboard: _Leaderboard.getLeaderboard })(FinalTable);
+var TableRouter = (0, _reactRedux.connect)(mapStateToProps, { getLeaderboard: _Leaderboard.getLeaderboard })(FinalTable);
+exports.default = (0, _reactRouterDom.withRouter)(TableRouter);
 
 /***/ }),
 /* 247 */
