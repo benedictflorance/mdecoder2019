@@ -3619,44 +3619,39 @@ function updateScore(score) {
 
 function getUserRemainingTime() {
   return function (dispatch) {
-    dispatch({
-      type: 'UPDATE_REMAINING_TIME',
-      remainingTime: 7200
+    // dispatch({
+    //   type: 'UPDATE_REMAINING_TIME',
+    //   remainingTime: 7200
+    // });
+    _api2.default.get('/user/time').then(function (response) {
+      if (response.status === 200) {
+        if (response.data.gotRemainingTime) {
+          dispatch({
+            type: 'UPDATE_REMAINING_TIME',
+            remainingTime: response.data.remainingTime
+          });
+        } else {
+          dispatch({
+            type: 'ERROR',
+            messageType: 'GET_REMAINING_TIME_FAILURE',
+            message: 'No remaining time'
+          });
+        }
+      } else {
+        dispatch({
+          type: 'ERROR',
+          messageType: 'GET_REMAINING_TIME_FAILURE',
+          message: response.data.message
+        });
+      }
+    }).catch(function (err) {
+      dispatch({
+        type: 'ERROR',
+        messageType: 'GET_REMAINING_TIME_FAILURE',
+        message: err.response ? err.response.data.message : 'Error occured when trying to get remaining time',
+        err: err
+      });
     });
-    // api
-    //   .get('/user/time')
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       if (response.data.gotRemainingTime) {
-    //         dispatch({
-    //           type: 'UPDATE_REMAINING_TIME',
-    //           remainingTime: response.data.remainingTime
-    //         });
-    //       } else {
-    //         dispatch({
-    //           type: 'ERROR',
-    //           messageType: 'GET_REMAINING_TIME_FAILURE',
-    //           message: 'No remaining time'
-    //         });
-    //       }
-    //     } else {
-    //       dispatch({
-    //         type: 'ERROR',
-    //         messageType: 'GET_REMAINING_TIME_FAILURE',
-    //         message: response.data.message
-    //       });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     dispatch({
-    //       type: 'ERROR',
-    //       messageType: 'GET_REMAINING_TIME_FAILURE',
-    //       message: err.response
-    //         ? err.response.data.message
-    //         : 'Error occured when trying to get remaining time',
-    //       err: err
-    //     });
-    //   });
   };
 }
 
@@ -6850,264 +6845,254 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getQuestions(currDayFlag) {
   return function (dispatch) {
     dispatch({ type: 'FLUSH_DASHBOARD_STATE' });
-    dispatch({
-      type: 'GET_QUESTIONS_SUCCESS',
-      payload: [{
-        id: 1,
-        description: 'Aut quibusdam autem quia dolorem corrupti voluptatum. answer : At sunt.',
-        day: 2,
-        max_number_of_tries: 7,
-        question_difficulty: 'est',
-        remaining_attempts: 7,
-        user_solved: false,
-        number_solved: 2
-      }, {
-        id: 11,
-        description: 'Delectus qui praesentium occaecati vel. answer : Placeat tenetur.',
-        day: 2,
-        max_number_of_tries: 3,
-        question_difficulty: 'est',
-        remaining_attempts: 3,
-        user_solved: false,
-        number_solved: 2
-      }, {
-        id: 25,
-        description: 'Quia eos corporis itaque autem doloribus quidem eius. answer : Magnam labore.',
-        day: 2,
-        max_number_of_tries: 4,
-        question_difficulty: 'est',
-        remaining_attempts: 4,
-        user_solved: false,
-        number_solved: 3
-      }, {
-        id: 26,
-        description: 'Asperiores eum ratione fugit asperiores exercitationem. answer : Sunt.',
-        day: 2,
-        max_number_of_tries: 4,
-        question_difficulty: 'est',
-        remaining_attempts: 4,
-        user_solved: false,
-        number_solved: 1
-      }, {
-        id: 34,
-        description: 'Voluptas placeat sunt earum totam. answer : Nulla.',
-        day: 2,
-        max_number_of_tries: 2,
-        question_difficulty: 'est',
-        remaining_attempts: 2,
-        user_solved: false,
-        number_solved: 2
-      }, {
-        id: 46,
-        description: 'Impedit delectus odit aut accusamus tempore nostrum qui. answer : Eveniet.',
-        day: 2,
-        max_number_of_tries: 5,
-        question_difficulty: 'est',
-        remaining_attempts: 5,
-        user_solved: false,
-        number_solved: 1
-      }]
-    });
-    dispatch((0, _Dashboard.getUserScore)());
-    dispatch(currDayFlag === 1 ? (0, _Dashboard.getContestRemainingTime)() : (0, _Dashboard.getUserRemainingTime)());
-    dispatch({
-      type: 'UPDATE_DIFFICULTY',
-      payload: 'hard'
-    });
-    dispatch((0, _Dashboard.updateSelectedQuestion)(1));
-    dispatch({
-      type: 'SET_CURR_DAY_FLAG',
-      payload: currDayFlag
-    });
+    // dispatch({
+    //   type: 'GET_QUESTIONS_SUCCESS',
+    //   payload: [
+    //     {
+    //       id: 1,
+    //       description:
+    //         'Aut quibusdam autem quia dolorem corrupti voluptatum. answer : At sunt.',
+    //       day: 2,
+    //       max_number_of_tries: 7,
+    //       question_difficulty: 'est',
+    //       remaining_attempts: 7,
+    //       user_solved: false,
+    //       number_solved: 2
+    //     },
+    //     {
+    //       id: 11,
+    //       description:
+    //         'Delectus qui praesentium occaecati vel. answer : Placeat tenetur.',
+    //       day: 2,
+    //       max_number_of_tries: 3,
+    //       question_difficulty: 'est',
+    //       remaining_attempts: 3,
+    //       user_solved: false,
+    //       number_solved: 2
+    //     },
+    //     {
+    //       id: 25,
+    //       description:
+    //         'Quia eos corporis itaque autem doloribus quidem eius. answer : Magnam labore.',
+    //       day: 2,
+    //       max_number_of_tries: 4,
+    //       question_difficulty: 'est',
+    //       remaining_attempts: 4,
+    //       user_solved: false,
+    //       number_solved: 3
+    //     },
+    //     {
+    //       id: 26,
+    //       description:
+    //         'Asperiores eum ratione fugit asperiores exercitationem. answer : Sunt.',
+    //       day: 2,
+    //       max_number_of_tries: 4,
+    //       question_difficulty: 'est',
+    //       remaining_attempts: 4,
+    //       user_solved: false,
+    //       number_solved: 1
+    //     },
+    //     {
+    //       id: 34,
+    //       description: 'Voluptas placeat sunt earum totam. answer : Nulla.',
+    //       day: 2,
+    //       max_number_of_tries: 2,
+    //       question_difficulty: 'est',
+    //       remaining_attempts: 2,
+    //       user_solved: false,
+    //       number_solved: 2
+    //     },
+    //     {
+    //       id: 46,
+    //       description:
+    //         'Impedit delectus odit aut accusamus tempore nostrum qui. answer : Eveniet.',
+    //       day: 2,
+    //       max_number_of_tries: 5,
+    //       question_difficulty: 'est',
+    //       remaining_attempts: 5,
+    //       user_solved: false,
+    //       number_solved: 1
+    //     }
+    //   ]
+    // });
+    // dispatch(getUserScore());
+    // dispatch(
+    //   currDayFlag === 1 ? getContestRemainingTime() : getUserRemainingTime()
+    // );
+    // dispatch({
+    //   type: 'UPDATE_DIFFICULTY',
+    //   payload: 'hard'
+    // });
+    // dispatch(updateSelectedQuestion(1));
+    // dispatch({
+    //   type: 'SET_CURR_DAY_FLAG',
+    //   payload: currDayFlag
+    // });
 
-    //   api
-    //     .get('/questions', {
-    //       params: {
-    //         prev_day_questions_flag: currDayFlag
-    //       }
-    //     })
-    //     .then(response => {
-    //       console.log(response);
-    //       if (response.status === 200) {
-    //         if (response.data.gotQuestions) {
-    //           dispatch({
-    //             type: 'GET_QUESTIONS_SUCCESS',
-    //             payload: response.data.data
-    //           });
-    //           dispatch(getUserScore());
-    //           dispatch(
-    //             currDayFlag === 1
-    //               ? getContestRemainingTime()
-    //               : getUserRemainingTime()
-    //           );
-    //           dispatch({
-    //             type: 'UPDATE_DIFFICULTY',
-    //             payload: response.data.data[0].question_difficulty
-    //           });
-    //           dispatch(updateSelectedQuestion(response.data.data[0].id));
-    //           dispatch({
-    //             type: 'SET_CURR_DAY_FLAG',
-    //             payload: currDayFlag
-    //           });
-    //         } else {
-    //           dispatch({
-    //             type: 'ERROR',
-    //             messageType: 'GET_QUESTIONS_FAILURE',
-    //             message: 'Cannot get Questions'
-    //           });
-    //         }
-    //       } else {
-    //         dispatch({
-    //           type: 'ERROR',
-    //           messageType: 'GET_QUESTIONS_FAILURE',
-    //           message: response ? response.data.message : 'Cannot get Questions'
-    //         });
-    //       }
-    //     })
-    //     .catch(err => {
-    //       dispatch({
-    //         type: 'ERROR',
-    //         messageType: 'GET_QUESTIONS_FAILURE',
-    //         message: err.response
-    //           ? err.response.data.message
-    //           : 'Cannot get Questions',
-    //         err: err
-    //       });
-    //       if (err.status === 401) {
-    //         dispatch({ type: 'UNAUTHORIZE_USER' });
-    //       }
-    //     });
-    // 
+    _api2.default.get('/questions', {
+      params: {
+        prev_day_questions_flag: currDayFlag
+      }
+    }).then(function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        if (response.data.gotQuestions) {
+          dispatch({
+            type: 'GET_QUESTIONS_SUCCESS',
+            payload: response.data.data
+          });
+          dispatch((0, _Dashboard.getUserScore)());
+          dispatch(currDayFlag === 1 ? (0, _Dashboard.getContestRemainingTime)() : (0, _Dashboard.getUserRemainingTime)());
+          dispatch({
+            type: 'UPDATE_DIFFICULTY',
+            payload: response.data.data[0].question_difficulty
+          });
+          dispatch((0, _Dashboard.updateSelectedQuestion)(response.data.data[0].id));
+          dispatch({
+            type: 'SET_CURR_DAY_FLAG',
+            payload: currDayFlag
+          });
+        } else {
+          dispatch({
+            type: 'ERROR',
+            messageType: 'GET_QUESTIONS_FAILURE',
+            message: 'Cannot get Questions'
+          });
+        }
+      } else {
+        dispatch({
+          type: 'ERROR',
+          messageType: 'GET_QUESTIONS_FAILURE',
+          message: response ? response.data.message : 'Cannot get Questions'
+        });
+      }
+    }).catch(function (err) {
+      dispatch({
+        type: 'ERROR',
+        messageType: 'GET_QUESTIONS_FAILURE',
+        message: err.response ? err.response.data.message : 'Cannot get Questions',
+        err: err
+      });
+      if (err.status === 401) {
+        dispatch({ type: 'UNAUTHORIZE_USER' });
+      }
+    });
   };
 }
 function submitAnswer(questionId, answer) {
   return function (dispatch) {
     dispatch({ type: 'DISABLE_SUBMIT' });
-    dispatch({
-      type: 'MESSAGE',
-      messageType: 'SUBMIT_ANSWER_SUCCESS',
-      message: 'Wrong Answer'
-    });
-    dispatch({
-      type: 'REMOVE_ANSWER',
-      questionId: questionId,
-      wasCorrect: false
-    });
-    dispatch({ type: 'ENABLE_SUBMIT' });
-    // api
-    //   .post('/answer', {
-    //     question_id: questionId,
-    //     answer: answer
-    //   })
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       if (response.data.correctAnswer) {
-    //         dispatch(getUserScore());
-    //         dispatch({
-    //           type: 'MESSAGE',
-    //           messageType: 'SUBMIT_ANSWER_SUCCESS',
-    //           message: response.data.message
-    //         });
-    //         dispatch({
-    //           type: 'REMOVE_ANSWER',
-    //           questionId: questionId,
-    //           wasCorrect: response.data.correctAnswer
-    //         });
-    //       } else {
-    //         dispatch({
-    //           type: 'ERROR',
-    //           messageType: 'SUBMIT_ANSWER_SUCCESS',
-    //           message: response.data.message
-    //         });
-    //         dispatch({
-    //           type: 'REMOVE_ANSWER',
-    //           questionId: questionId,
-    //           wasCorrect: response.data.correctAnswer
-    //         });
-    //       }
+    // dispatch({
+    //   type: 'MESSAGE',
+    //   messageType: 'SUBMIT_ANSWER_SUCCESS',
+    //   message: 'Wrong Answer'
+    // });
+    // dispatch({
+    //   type: 'REMOVE_ANSWER',
+    //   questionId: questionId,
+    //   wasCorrect: false
+    // });
+    // dispatch({ type: 'ENABLE_SUBMIT' });
+    _api2.default.post('/answer', {
+      question_id: questionId,
+      answer: answer
+    }).then(function (response) {
+      if (response.status === 200) {
+        if (response.data.correctAnswer) {
+          dispatch((0, _Dashboard.getUserScore)());
+          dispatch({
+            type: 'MESSAGE',
+            messageType: 'SUBMIT_ANSWER_SUCCESS',
+            message: response.data.message
+          });
+          dispatch({
+            type: 'REMOVE_ANSWER',
+            questionId: questionId,
+            wasCorrect: response.data.correctAnswer
+          });
+        } else {
+          dispatch({
+            type: 'ERROR',
+            messageType: 'SUBMIT_ANSWER_SUCCESS',
+            message: response.data.message
+          });
+          dispatch({
+            type: 'REMOVE_ANSWER',
+            questionId: questionId,
+            wasCorrect: response.data.correctAnswer
+          });
+        }
 
-    //       dispatch({ type: 'ENABLE_SUBMIT' });
-    //     } else {
-    //       dispatch({
-    //         type: 'ERROR',
-    //         messageType: 'SUBMIT_ANSWER_FAILURE',
-    //         message: response
-    //           ? response.data.message
-    //           : 'Error occurred when submitting the form'
-    //       });
-    //       dispatch({ type: 'ENABLE_SUBMIT' });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     dispatch({
-    //       type: 'ERROR',
-    //       messageType: 'SUBMIT_ANSWER_FAILURE',
-    //       message: err.response
-    //         ? err.response.data.message
-    //         : 'Error occurred when submitting the form',
-    //       err: err
-    //     });
-    //     dispatch({ type: 'ENABLE_SUBMIT' });
-    //   });
+        dispatch({ type: 'ENABLE_SUBMIT' });
+      } else {
+        dispatch({
+          type: 'ERROR',
+          messageType: 'SUBMIT_ANSWER_FAILURE',
+          message: response ? response.data.message : 'Error occurred when submitting the form'
+        });
+        dispatch({ type: 'ENABLE_SUBMIT' });
+      }
+    }).catch(function (err) {
+      dispatch({
+        type: 'ERROR',
+        messageType: 'SUBMIT_ANSWER_FAILURE',
+        message: err.response ? err.response.data.message : 'Error occurred when submitting the form',
+        err: err
+      });
+      dispatch({ type: 'ENABLE_SUBMIT' });
+    });
   };
 }
 function updateLevel(currDayFlag) {
   return function (dispatch) {
-    dispatch({
-      type: 'UPDATE_LEVEL_SUCCESS',
-      payload: { updated: true, message: 'Level updated.' }
+    // dispatch({
+    //   type: 'UPDATE_LEVEL_SUCCESS',
+    //   payload: { updated: true, message: 'Level updated.' }
+    // });
+    // dispatch(getQuestions(currDayFlag));
+    // dispatch({
+    //   type: 'MESSAGE',
+    //   messageType: 'UPDATE_LEVEL_SUCCESS',
+    //   message: 'Level Updated Successfully'
+    // });
+    // dispatch(getQuestions(currDayFlag));
+    _api2.default.put('/level', {
+      prev_day_questions_flag: currDayFlag
+    }).then(function (response) {
+      if (response.status === 200) {
+        if (response.data.updated) {
+          dispatch({
+            type: 'UPDATE_LEVEL_SUCCESS',
+            payload: response.data
+          });
+          dispatch(getQuestions(currDayFlag));
+          dispatch({
+            type: 'MESSAGE',
+            messageType: 'UPDATE_LEVEL_SUCCESS',
+            message: 'Level Updated'
+          });
+        } else {
+          dispatch({
+            type: 'ERROR',
+            messageType: 'UPDATE_LEVEL_FAILURE',
+            message: 'Error occurred when updating level'
+          });
+        }
+      } else {
+        dispatch({
+          type: 'ERROR',
+          messageType: 'UPDATE_LEVEL_FAILURE',
+          message: response ? response.data.message : 'Error occurred when updating level'
+        });
+      }
+    }).catch(function (err) {
+      dispatch({
+        type: 'ERROR',
+        messageType: 'UPDATE_LEVEL_FAILURE',
+        message: err.response ? err.response.data.message : 'Error occurred when updating level',
+        err: err
+      });
     });
-    dispatch(getQuestions(currDayFlag));
-    dispatch({
-      type: 'MESSAGE',
-      messageType: 'UPDATE_LEVEL_SUCCESS',
-      message: 'Level Updated Successfully'
-    });
-    dispatch(getQuestions(currDayFlag));
-    // api
-    //   .put('/level', {
-    //     prev_day_questions_flag: currDayFlag
-    //   })
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       if (response.data.updated) {
-    //         dispatch({
-    //           type: 'UPDATE_LEVEL_SUCCESS',
-    //           payload: response.data
-    //         });
-    //         dispatch(getQuestions(currDayFlag));
-    //         dispatch({
-    //           type: 'MESSAGE',
-    //           messageType: 'UPDATE_LEVEL_SUCCESS',
-    //           message: 'Level Updated'
-    //         });
-    //       } else {
-    //         dispatch({
-    //           type: 'ERROR',
-    //           messageType: 'UPDATE_LEVEL_FAILURE',
-    //           message: 'Error occurred when updating level'
-    //         });
-    //       }
-    //     } else {
-    //       dispatch({
-    //         type: 'ERROR',
-    //         messageType: 'UPDATE_LEVEL_FAILURE',
-    //         message: response
-    //           ? response.data.message
-    //           : 'Error occurred when updating level'
-    //       });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     dispatch({
-    //       type: 'ERROR',
-    //       messageType: 'UPDATE_LEVEL_FAILURE',
-    //       message: err.response
-    //         ? err.response.data.message
-    //         : 'Error occurred when updating level',
-    //       err: err
-    //     });
-    //   });
   };
 }
 
