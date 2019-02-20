@@ -1,7 +1,7 @@
-import React from 'react';
+  import React from 'react';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
-
+ import 'react-toastify/dist/ReactToastify.css';
 import App from '../App';
 
 class MessageContainer extends React.Component {
