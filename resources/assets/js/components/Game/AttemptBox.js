@@ -19,7 +19,7 @@ const styles = {
     fontSize: 14,
   },
   pos: {
-    marginBottom: 2,
+    marginBottom: 12,
   },
   heading: {
   	textAlign:"center",
@@ -30,11 +30,11 @@ const styles = {
   {
   	backgroundColor:"#EEEEEE"
   },
-  textfield:
-  {
-  	backgroundColor:"white",
-  	borderRadius:5,
-    padding: 10,
+  attempt: {
+    color : "blue",
+    fontSize: 17,
+    fontFamily:"Audiowide",
+    textAlign: "center"
   }
 };
 
@@ -59,29 +59,24 @@ class AnswerBox extends React.Component{
 	render()
 	{
 		const {classes} = this.props;
-    const question = this.props.question;
+    console.log("hola");
+    const level = this.props.difficulty;
+    const data = this.props.data;
+    const currentDay = data.day;
+    // console.log(question);
+    const attempt = data.remaining_attempts;
+    console.log(attempt);
+    // const maxAttempt = question.max_number_of_tries;
+
 		return (
              <Card>
               <CardContent className={classes.content}>
-               <Typography variant="h5" className={classes.heading}>
-                Your Answer
-               </Typography>
-               <form onSubmit={ e => {
-                e.prevenyDefault();
-                return false;
-               }}>
-                <FormGroup>
-                  <FormControl className={classes.formControl}
-                  >
-                    <TextField type="text" placeholder="Enter Answer" multiline margin="normal" rows="4" rowsMax="7" value={question.answer} 
-                     disabled = {
-                      question.user_solved || question.remaining_attempts < 1
-                    }
-                    onChange={this.handlechange} className={classes.textfield}/>
-                  </FormControl>
-                </FormGroup>
-               </form>
-               </CardContent>
+                <div className={classes.attempt}>
+                  Attempts Remaining: {attempt}
+                  Level : {level}
+                  Day : {currentDay}
+                </div>
+              </CardContent>
              </Card>
 			);
 	}

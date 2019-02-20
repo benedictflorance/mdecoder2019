@@ -6,12 +6,18 @@ import Login from "./Login";
 import Game from "./GameComponent";
 
 import AuthRoute from './utils/AuthRoute';
+import { logoutUser, authorizeUser, unAuthorizeUser } from '../actions/User';
 import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
 class App extends Component {
-    constructor(props) {
-      super(props);
+    componentWillMount() {
+      const { cookies, authorizeUser, unAuthorizeUser } = this.props;
+      if (cookies.get('login') === '1') {
+        authorizeUser();
+      } else {
+        unAuthorizeUser();
+      }
     }
     render() {
       const { isAuthenticated, logoutUser } = this.props;
@@ -43,6 +49,6 @@ const mapStateToProps = state => {
 };
 
 export default withCookies(
-  connect(mapStateToProps)(App)
+  connect(mapStateToProps, { logoutUser, authorizeUser, unAuthorizeUser })(App)
 );
 

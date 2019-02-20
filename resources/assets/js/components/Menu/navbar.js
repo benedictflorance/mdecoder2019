@@ -15,13 +15,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logoutUser } from '../../actions/User';
+import Grid from '@material-ui/core/Grid';
 const styles = {
   root: {
     flexGrow: 1,
   },
   grow: {
     flexGrow: 1,
-    fontFamily:"Audiowide"
+    fontFamily:"Audiowide",
+    padding: 7,
   },
 };
 
@@ -29,7 +31,6 @@ class Navbar extends React.Component {
   constructor()
   {
     super();
-
   }
   state={
     left:false
@@ -45,14 +46,18 @@ class Navbar extends React.Component {
   const { classes } = this.props;
   const { isAuthenticated } = this.props;
   const { user } = this.props;
-  const nameUser = isAuthenticated && user? (
+  const userName = isAuthenticated && user? (
        <React.Fragment>
-       <Typography variant="h6" color="inherit" className={classes.grow}>
-          User: {user.username}
-          </Typography>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-          Score: {user.score}
-          </Typography>
+         <Typography variant="h6" color="inherit" className={classes.grow}>
+            User: {user.username}
+         </Typography>
+       </React.Fragment>
+    ) : null;
+    const userScore = isAuthenticated && user? (
+       <React.Fragment>
+           <Typography variant="h6" color="inherit" className={classes.grow}>
+              Score: {user.score}
+              </Typography>
           </React.Fragment>
     ) : null;
   const sideList= isAuthenticated ? (
@@ -90,13 +95,24 @@ class Navbar extends React.Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-         <IconButton className={classes.menuButton} color="inherit" onClick={this.toggleDrawer('left',true)}>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-          MDECODER2019
-          </Typography>
-         {nameUser}
+        <Grid container style={{padding: 10}}>
+          <Grid item xs={1}>
+            <IconButton className={classes.menuButton} color="inherit" onClick={this.toggleDrawer('left',true)}>
+              <MenuIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
+              MDECODER
+            </Typography>
+          </Grid>
+         <Grid item xs={4}> 
+          {userName}
+         </Grid>
+         <Grid item xs={3}> 
+          {userScore}
+         </Grid>
+         </Grid>
         </Toolbar>
       </AppBar>
       <Drawer open={this.state.left} onClose={this.toggleDrawer('left',false)}>

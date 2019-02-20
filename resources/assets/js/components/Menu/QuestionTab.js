@@ -47,7 +47,7 @@ class ScrollableTabsButtonAuto extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
-            value={value}
+            value= {value}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"

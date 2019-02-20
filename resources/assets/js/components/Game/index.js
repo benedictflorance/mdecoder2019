@@ -5,6 +5,7 @@ import { updateSelectedQuestion } from '../../actions/Dashboard';
 import { submitAnswer, updateAnswer } from '../../actions/Question';
 import QuestionBox from './QuestionBox';
 import AnswerBox from './AnswerBox';
+import AttemptBox from './AttemptBox';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
@@ -50,9 +51,9 @@ class Game extends React.Component{
 
    render()
    {
-   	console.log("dcdcdcdcdc");
-   	const { questions, selectedQuestion, updateAnswer, disableSubmit } = this.props;
-   	let question;
+   	const { questions,difficulty, selectedQuestion, updateAnswer, disableSubmit } = this.props;
+   	const classes = this.props;
+    let question;
     //uncomment the next set of lines during final integration
    	 if(!questions)
    	 	return null;
@@ -63,20 +64,28 @@ class Game extends React.Component{
    	 question = this.getQuestion(questions,selectedQuestion);
      //add data to be question as prop for next line
    	 const questionBox = <QuestionBox  data={question}/>;
+     const attemptBox = <AttemptBox data={question} difficulty={difficulty}/>
 
    	 return(
    
-     <Grid container style={{height:"100vh"}}>
+     <Grid container style={{height:"100vh"}} style={{
+                marginBottom: '70px'
+            }}>
         <Grid item xs={12}>
-          <Grid container><Grid item xs={12}>{questionBox }</Grid></Grid>
-          <Grid container style={{marginTop:"20px",textAlign:"center"}}><Grid item xs={12}><AnswerBox  question={question} updateAnswer={updateAnswer}/></Grid></Grid>
+          <Grid container>
+            <Grid item xs={12} style={{marginTop: 1}}>{attemptBox }</Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12}>{questionBox }</Grid>
+          </Grid>
+          <Grid container style={{marginTop:"2px",textAlign:"center"}}><Grid item xs={12}><AnswerBox  question={question} updateAnswer={updateAnswer}/></Grid></Grid>
           <Grid container>
             <Grid item xs={6}>
               <br />
-              <Button size="large" style={{width:"100%",fontFamily:"Audiowide"}} variant="contained" color="primary" disabled={
-                  disableSubmit ||
-                  (question.user_solved || question.remaining_attempts < 1)
-                } onClick={() => {this.handleSubmit();}}>Submit</Button>
+              <Button size="large" style={{width:"100%",fontFamily:"Audiowide"}} variant="contained" color="primary" 
+              disabled={
+                  disableSubmit
+                } onClick={() => {this.handleSubmit();}}>Submit Answer</Button>
             </Grid>
             <Grid item xs={6}>
              <br />
@@ -95,10 +104,12 @@ const mapStateToProps = state => {
   const {
     selectedQuestion,
     disableSubmit,
+    difficulty
   } = state.dashboard;
   const { questions } = state.questions;
   const { currDayFlag } = state.user;
   return {
+    difficulty,
     selectedQuestion,
     questions,
     disableSubmit,

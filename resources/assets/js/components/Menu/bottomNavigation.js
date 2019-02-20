@@ -48,7 +48,6 @@ class bottomNavigation extends React.Component {
          <BottomNavigation
           value = {value}
           onChange = {this.handleChange}
-          showLabels
           className = {classes.root}
          >
            <BottomNavigationAction label = "Yesterday's Questions" style = {styleBottom.left} icon= {<QuestionIcon/>} onClick={() => {this.props.showConfirmModal('Do you want to toggle Day? Anyway you can come back to the day you are solving now :)','toggleDay');}}/>
