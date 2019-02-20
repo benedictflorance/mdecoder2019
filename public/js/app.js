@@ -12097,15 +12097,15 @@ var GameComponent = function (_React$Component) {
   }, {
     key: 'handleModalAction',
     value: function handleModalAction() {
+      if (this.state.modalAction === 'toggleDay') {
+        this.props.toggleDay();console.log("toggling day");
+      } else if (this.state.modalAction === 'updateLevel') this.props.updateLevel(this.props.currDayFlag);
       // console.log(" modal message"+this.state.modalAction);
       this.setState({
         showModal: false,
         modalMsg: '',
         modalAction: ''
       });
-      if (this.state.modalAction === 'toggleDay') {
-        this.props.toggleDay();console.log("toggling day");
-      } else if (this.state.modalAction === 'updateLevel') this.props.updateLevel(this.props.currDayFlag);
     }
   }, {
     key: 'render',
@@ -12145,7 +12145,7 @@ var GameComponent = function (_React$Component) {
             ),
             _react2.default.createElement(
               _Button2.default,
-              { onClick: this.handleModalAction, color: 'primary', size: 'large' },
+              { onClick: this.handleCloseModal, color: 'primary', size: 'large' },
               'No'
             )
           )
