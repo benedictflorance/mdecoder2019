@@ -63565,6 +63565,9 @@ var ScrollableTabsButtonAuto = function (_React$Component) {
             updateSelectedQuestion(question.id);
           } });
       });
+      var index = questions.findIndex(function (x) {
+        return x.id == selectedQuestion;
+      });
       return _react2.default.createElement(
         'div',
         { className: classes.root },
@@ -63574,7 +63577,7 @@ var ScrollableTabsButtonAuto = function (_React$Component) {
           _react2.default.createElement(
             _Tabs2.default,
             {
-              value: value,
+              value: index,
               onChange: this.handleChange,
               indicatorColor: 'primary',
               textColor: 'primary',
