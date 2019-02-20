@@ -95,21 +95,21 @@ class Navbar extends React.Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <Grid container style={{padding: 10}}>
-          <Grid item xs={1}>
+        <Grid container style={{padding: "10px"}}>
+          <Grid item xs={1} >
             <IconButton className={classes.menuButton} color="inherit" onClick={this.toggleDrawer('left',true)}>
               <MenuIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={0} sm={4}>
             <Typography variant="h6" color="inherit" className={classes.grow}>
               MDECODER
             </Typography>
           </Grid>
-         <Grid item xs={4}> 
+         <Grid item xs={6} sm={4}> 
           {userName}
          </Grid>
-         <Grid item xs={3}> 
+         <Grid item xs={5} sm={3}> 
           {userScore}
          </Grid>
          </Grid>

@@ -6751,7 +6751,7 @@ var Navbar = function (_React$Component) {
             null,
             _react2.default.createElement(
               _Grid2.default,
-              { container: true, style: { padding: 10 } },
+              { container: true, style: { padding: "10px" } },
               _react2.default.createElement(
                 _Grid2.default,
                 { item: true, xs: 1 },
@@ -6763,7 +6763,7 @@ var Navbar = function (_React$Component) {
               ),
               _react2.default.createElement(
                 _Grid2.default,
-                { item: true, xs: 4 },
+                { item: true, xs: 0, sm: 4 },
                 _react2.default.createElement(
                   _Typography2.default,
                   { variant: 'h6', color: 'inherit', className: classes.grow },
@@ -6772,12 +6772,12 @@ var Navbar = function (_React$Component) {
               ),
               _react2.default.createElement(
                 _Grid2.default,
-                { item: true, xs: 4 },
+                { item: true, xs: 6, sm: 4 },
                 userName
               ),
               _react2.default.createElement(
                 _Grid2.default,
-                { item: true, xs: 3 },
+                { item: true, xs: 5, sm: 3 },
                 userScore
               )
             )
