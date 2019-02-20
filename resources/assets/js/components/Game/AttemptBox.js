@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
   card: {
@@ -71,11 +72,17 @@ class AnswerBox extends React.Component{
 		return (
              <Card>
               <CardContent className={classes.content}>
-                <div className={classes.attempt}>
-                  Attempts Remaining: {attempt}
-                  Level : {level}
-                  Day : {currentDay}
-                </div>
+                <Grid container className={classes.attempt}>
+                  <Grid item xs={4}>
+                    Level : {level}
+                  </Grid>
+                  <Grid item xs={4}>
+                    Attempts Remaining: {attempt}
+                  </Grid>
+                  <Grid item xs={4}> 
+                    Day : {currentDay}
+                  </Grid>
+                </Grid>
               </CardContent>
              </Card>
 			);

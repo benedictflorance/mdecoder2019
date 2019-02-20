@@ -12384,6 +12384,7 @@ var bottomNavigation = function (_React$Component) {
         {
           value: value,
           onChange: this.handleChange,
+          showLabels: true,
           className: classes.root
         },
         _react2.default.createElement(_BottomNavigationAction2.default, { label: 'Yesterday\'s Questions', style: styleBottom.left, icon: _react2.default.createElement(_QuestionAnswer2.default, null), onClick: function onClick() {
@@ -63249,6 +63250,10 @@ var _TextField = __webpack_require__(173);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
+var _Grid = __webpack_require__(37);
+
+var _Grid2 = _interopRequireDefault(_Grid);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63327,14 +63332,26 @@ var AnswerBox = function (_React$Component) {
           _CardContent2.default,
           { className: classes.content },
           _react2.default.createElement(
-            'div',
-            { className: classes.attempt },
-            'Attempts Remaining: ',
-            attempt,
-            'Level : ',
-            level,
-            'Day : ',
-            currentDay
+            _Grid2.default,
+            { container: true, className: classes.attempt },
+            _react2.default.createElement(
+              _Grid2.default,
+              { item: true, xs: 4 },
+              'Level : ',
+              level
+            ),
+            _react2.default.createElement(
+              _Grid2.default,
+              { item: true, xs: 4 },
+              'Attempts Remaining: ',
+              attempt
+            ),
+            _react2.default.createElement(
+              _Grid2.default,
+              { item: true, xs: 4 },
+              'Day : ',
+              currentDay
+            )
           )
         )
       );
