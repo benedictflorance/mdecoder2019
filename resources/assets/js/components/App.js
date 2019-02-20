@@ -4,7 +4,7 @@ import { BrowserRouter , Route , Switch } from 'react-router-dom';
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
 import Game from "./GameComponent";
-
+import Instructions from './InstructionsComponent';
 import AuthRoute from './utils/AuthRoute';
 import { logoutUser, authorizeUser, unAuthorizeUser } from '../actions/User';
 import { withCookies } from 'react-cookie';
@@ -35,6 +35,7 @@ class App extends Component {
                   <Route exact={true} path="/userlogin" component= {Login} />
                   <Route exact={true} path="/game" component={Game} />
                   <Route exact={true} path="/dashboard" component={Dashboard} />
+                  <Route exact={true} path='/instructions' component={Instructions} />
                 </Switch>
               </div>
             </BrowserRouter>
