@@ -43,15 +43,15 @@ class GameComponent extends React.Component{
       });
     }
     handleModalAction() {
+    if (this.state.modalAction === 'toggleDay') {this.props.toggleDay(); console.log("toggling day"); }
+    else if (this.state.modalAction === 'updateLevel')
+      this.props.updateLevel(this.props.currDayFlag); 
      // console.log(" modal message"+this.state.modalAction);
       this.setState({
        showModal: false,
        modalMsg: '',
        modalAction: ''
      });
-    if (this.state.modalAction === 'toggleDay') {this.props.toggleDay(); console.log("toggling day"); }
-    else if (this.state.modalAction === 'updateLevel')
-      this.props.updateLevel(this.props.currDayFlag); 
    }
 
 	render()
@@ -70,7 +70,7 @@ class GameComponent extends React.Component{
                 </DialogContentText>
                 <DialogActions>
                   <Button onClick={this.handleModalAction} color="primary" size="large" autoFocus>Yes</Button>
-                  <Button onClick={this.handleModalAction} color="primary" size="large">No</Button>
+                  <Button onClick={this.handleCloseModal} color="primary" size="large">No</Button>
                 </DialogActions>
               </Dialog>  
 			  <Menu />
