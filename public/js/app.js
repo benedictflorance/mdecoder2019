@@ -2270,7 +2270,41 @@ if (false) {
 
 
 /***/ }),
-/* 41 */,
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.ACTION = exports.TYPE = exports.POSITION = void 0;
+var POSITION = {
+  TOP_LEFT: 'top-left',
+  TOP_RIGHT: 'top-right',
+  TOP_CENTER: 'top-center',
+  BOTTOM_LEFT: 'bottom-left',
+  BOTTOM_RIGHT: 'bottom-right',
+  BOTTOM_CENTER: 'bottom-center'
+};
+exports.POSITION = POSITION;
+var TYPE = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  DEFAULT: 'default'
+};
+exports.TYPE = TYPE;
+var ACTION = {
+  SHOW: 0,
+  CLEAR: 1,
+  DID_MOUNT: 2,
+  WILL_UNMOUNT: 3,
+  ON_CHANGE: 4
+};
+exports.ACTION = ACTION;
+
+/***/ }),
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5461,7 +5495,65 @@ exports.compose = _utilsCompose2['default'];
 
 
 /***/ }),
-/* 76 */,
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.isValidDelay = isValidDelay;
+exports.objectValues = objectValues;
+exports.falseOrElement = exports.falseOrDelay = void 0;
+
+var _react = __webpack_require__(1);
+
+function isValidDelay(val) {
+  return typeof val === 'number' && !isNaN(val) && val > 0;
+}
+
+function objectValues(obj) {
+  return Object.keys(obj).map(function (key) {
+    return obj[key];
+  });
+}
+
+function withRequired(fn) {
+  fn.isRequired = function (props, propName, componentName) {
+    var prop = props[propName];
+
+    if (typeof prop === 'undefined') {
+      return new Error("The prop " + propName + " is marked as required in \n      " + componentName + ", but its value is undefined.");
+    }
+
+    fn(props, propName, componentName);
+  };
+
+  return fn;
+}
+
+var falseOrDelay = withRequired(function (props, propName, componentName) {
+  var prop = props[propName];
+
+  if (prop !== false && !isValidDelay(prop)) {
+    return new Error(componentName + " expect " + propName + " \n      to be a valid Number > 0 or equal to false. " + prop + " given.");
+  }
+
+  return null;
+});
+exports.falseOrDelay = falseOrDelay;
+var falseOrElement = withRequired(function (props, propName, componentName) {
+  var prop = props[propName];
+
+  if (prop !== false && !(0, _react.isValidElement)(prop)) {
+    return new Error(componentName + " expect " + propName + " \n      to be a valid react element or equal to false. " + prop + " given.");
+  }
+
+  return null;
+});
+exports.falseOrElement = falseOrElement;
+
+/***/ }),
 /* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8776,9 +8868,159 @@ function polyfill(Component) {
 
 
 /***/ }),
-/* 117 */,
-/* 118 */,
-/* 119 */,
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.Flip = exports.Zoom = exports.Slide = exports.Bounce = void 0;
+
+var _cssTransition = _interopRequireDefault(__webpack_require__(118));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Bounce = (0, _cssTransition.default)({
+  enter: 'Toastify__bounce-enter',
+  exit: 'Toastify__bounce-exit',
+  appendPosition: true
+});
+exports.Bounce = Bounce;
+var Slide = (0, _cssTransition.default)({
+  enter: 'Toastify__slide-enter',
+  exit: 'Toastify__slide-exit',
+  duration: [450, 750],
+  appendPosition: true
+});
+exports.Slide = Slide;
+var Zoom = (0, _cssTransition.default)({
+  enter: 'Toastify__zoom-enter',
+  exit: 'Toastify__zoom-exit'
+});
+exports.Zoom = Zoom;
+var Flip = (0, _cssTransition.default)({
+  enter: 'Toastify__flip-enter',
+  exit: 'Toastify__flip-exit'
+});
+exports.Flip = Flip;
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = _default;
+
+var _react = _interopRequireDefault(__webpack_require__(1));
+
+var _Transition = _interopRequireDefault(__webpack_require__(42));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+var noop = function noop() {};
+
+function _default(_ref) {
+  var enter = _ref.enter,
+      exit = _ref.exit,
+      _ref$duration = _ref.duration,
+      duration = _ref$duration === void 0 ? 750 : _ref$duration,
+      _ref$appendPosition = _ref.appendPosition,
+      appendPosition = _ref$appendPosition === void 0 ? false : _ref$appendPosition;
+  return function Animation(_ref2) {
+    var children = _ref2.children,
+        position = _ref2.position,
+        preventExitTransition = _ref2.preventExitTransition,
+        props = _objectWithoutPropertiesLoose(_ref2, ["children", "position", "preventExitTransition"]);
+
+    var enterClassName = appendPosition ? enter + "--" + position : enter;
+    var exitClassName = appendPosition ? exit + "--" + position : exit;
+    var enterDuration, exitDuration;
+
+    if (Array.isArray(duration) && duration.length === 2) {
+      enterDuration = duration[0];
+      exitDuration = duration[1];
+    } else {
+      enterDuration = exitDuration = duration;
+    }
+
+    var onEnter = function onEnter(node) {
+      node.classList.add(enterClassName);
+      node.style.animationFillMode = 'forwards';
+      node.style.animationDuration = enterDuration * 0.001 + "s";
+    };
+
+    var onEntered = function onEntered(node) {
+      node.classList.remove(enterClassName);
+      node.style.cssText = '';
+    };
+
+    var onExit = function onExit(node) {
+      node.classList.add(exitClassName);
+      node.style.animationFillMode = 'forwards';
+      node.style.animationDuration = exitDuration * 0.001 + "s";
+    };
+
+    return _react.default.createElement(_Transition.default, _extends({}, props, {
+      timeout: preventExitTransition ? 0 : {
+        enter: enterDuration,
+        exit: exitDuration
+      },
+      onEnter: onEnter,
+      onEntered: onEntered,
+      onExit: preventExitTransition ? noop : onExit
+    }), children);
+  };
+}
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+var eventManager = {
+  list: new Map(),
+  on: function on(event, callback) {
+    this.list.has(event) || this.list.set(event, []);
+    this.list.get(event).push(callback);
+    return this;
+  },
+  off: function off(event) {
+    this.list.delete(event);
+    return this;
+  },
+  emit: function emit(event) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    if (!this.list.has(event)) {
+      return false;
+    }
+
+    this.list.get(event).forEach(function (callback) {
+      return setTimeout(function () {
+        return callback.call.apply(callback, [null].concat(args));
+      }, 0);
+    });
+    return true;
+  }
+};
+var _default = eventManager;
+exports.default = _default;
+
+/***/ }),
 /* 120 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12514,6 +12756,12 @@ var _reactRedux = __webpack_require__(22);
 
 var _reactCookie = __webpack_require__(110);
 
+var _reactToastify = __webpack_require__(224);
+
+var _MessageContainer = __webpack_require__(514);
+
+var _MessageContainer2 = _interopRequireDefault(_MessageContainer);
+
 var _store = __webpack_require__(210);
 
 var _store2 = _interopRequireDefault(_store);
@@ -12532,7 +12780,8 @@ _reactDom2.default.render(_react2.default.createElement(
   _react2.default.createElement(
     _reactCookie.CookiesProvider,
     null,
-    _react2.default.createElement(_App2.default, null)
+    _react2.default.createElement(_reactToastify.ToastContainer, { autoClose: 8000 }),
+    _react2.default.createElement(_MessageContainer2.default, null)
   )
 ), document.getElementById("App"));
 
@@ -38626,8 +38875,416 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 224 */,
-/* 225 */,
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _ToastContainer = _interopRequireDefault(__webpack_require__(225));
+
+exports.ToastContainer = _ToastContainer.default;
+
+var _Transitions = __webpack_require__(117);
+
+exports.Bounce = _Transitions.Bounce;
+exports.Slide = _Transitions.Slide;
+exports.Zoom = _Transitions.Zoom;
+exports.Flip = _Transitions.Flip;
+
+var _constant = __webpack_require__(41);
+
+exports.ToastPosition = _constant.POSITION;
+exports.ToastType = _constant.TYPE;
+
+var _toast = _interopRequireDefault(__webpack_require__(231));
+
+exports.toast = _toast.default;
+
+var _cssTransition = _interopRequireDefault(__webpack_require__(118));
+
+exports.cssTransition = _cssTransition.default;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(1));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(2));
+
+var _classnames = _interopRequireDefault(__webpack_require__(5));
+
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(115));
+
+var _Toast = _interopRequireDefault(__webpack_require__(227));
+
+var _CloseButton = _interopRequireDefault(__webpack_require__(229));
+
+var _Transitions = __webpack_require__(117);
+
+var _constant = __webpack_require__(41);
+
+var _eventManager = _interopRequireDefault(__webpack_require__(119));
+
+var _propValidator = __webpack_require__(76);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var ToastContainer =
+/*#__PURE__*/
+function (_Component) {
+  _inheritsLoose(ToastContainer, _Component);
+
+  function ToastContainer() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      toast: []
+    };
+    _this.toastKey = 1;
+    _this.collection = {};
+
+    _this.isToastActive = function (id) {
+      return _this.state.toast.indexOf(id) !== -1;
+    };
+
+    return _this;
+  }
+
+  var _proto = ToastContainer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    var _this2 = this;
+
+    _eventManager.default.on(_constant.ACTION.SHOW, function (content, options) {
+      return _this2.show(content, options);
+    }).on(_constant.ACTION.CLEAR, function (id) {
+      return !id ? _this2.clear() : _this2.removeToast(id);
+    }).emit(_constant.ACTION.DID_MOUNT, this);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    _eventManager.default.off(_constant.ACTION.SHOW).off(_constant.ACTION.CLEAR).emit(_constant.ACTION.WILL_UNMOUNT);
+  };
+
+  _proto.removeToast = function removeToast(id) {
+    this.setState({
+      toast: this.state.toast.filter(function (v) {
+        return v !== id;
+      })
+    }, this.dispatchChange);
+  };
+
+  _proto.dispatchChange = function dispatchChange() {
+    _eventManager.default.emit(_constant.ACTION.ON_CHANGE, this.state.toast.length);
+  };
+
+  _proto.makeCloseButton = function makeCloseButton(toastClose, toastId, type) {
+    var _this3 = this;
+
+    var closeButton = this.props.closeButton;
+
+    if ((0, _react.isValidElement)(toastClose) || toastClose === false) {
+      closeButton = toastClose;
+    }
+
+    return closeButton === false ? false : (0, _react.cloneElement)(closeButton, {
+      closeToast: function closeToast() {
+        return _this3.removeToast(toastId);
+      },
+      type: type
+    });
+  };
+
+  _proto.getAutoCloseDelay = function getAutoCloseDelay(toastAutoClose) {
+    return toastAutoClose === false || (0, _propValidator.isValidDelay)(toastAutoClose) ? toastAutoClose : this.props.autoClose;
+  };
+
+  _proto.canBeRendered = function canBeRendered(content) {
+    return (0, _react.isValidElement)(content) || typeof content === 'string' || typeof content === 'number' || typeof content === 'function';
+  };
+
+  _proto.parseClassName = function parseClassName(prop) {
+    if (typeof prop === 'string') {
+      return prop;
+    } else if (prop !== null && typeof prop === 'object' && 'toString' in prop) {
+      return prop.toString();
+    }
+
+    return null;
+  };
+
+  _proto.show = function show(content, options) {
+    var _this4 = this,
+        _extends2;
+
+    if (!this.canBeRendered(content)) {
+      throw new Error("The element you provided cannot be rendered. You provided an element of type " + typeof content);
+    }
+
+    var toastId = options.toastId;
+
+    var closeToast = function closeToast() {
+      return _this4.removeToast(toastId);
+    };
+
+    var toastOptions = {
+      id: toastId,
+      // ⚠️ if no options.key, this.toastKey - 1 is assigned
+      key: options.key || this.toastKey++,
+      type: options.type,
+      closeToast: closeToast,
+      updateId: options.updateId,
+      rtl: this.props.rtl,
+      position: options.position || this.props.position,
+      transition: options.transition || this.props.transition,
+      className: this.parseClassName(options.className || this.props.toastClassName),
+      bodyClassName: this.parseClassName(options.bodyClassName || this.props.bodyClassName),
+      closeButton: this.makeCloseButton(options.closeButton, toastId, options.type),
+      pauseOnHover: typeof options.pauseOnHover === 'boolean' ? options.pauseOnHover : this.props.pauseOnHover,
+      pauseOnFocusLoss: typeof options.pauseOnFocusLoss === 'boolean' ? options.pauseOnFocusLoss : this.props.pauseOnFocusLoss,
+      draggable: typeof options.draggable === 'boolean' ? options.draggable : this.props.draggable,
+      draggablePercent: typeof options.draggablePercent === 'number' && !isNaN(options.draggablePercent) ? options.draggablePercent : this.props.draggablePercent,
+      closeOnClick: typeof options.closeOnClick === 'boolean' ? options.closeOnClick : this.props.closeOnClick,
+      progressClassName: this.parseClassName(options.progressClassName || this.props.progressClassName),
+      progressStyle: this.props.progressStyle,
+      autoClose: this.getAutoCloseDelay(options.autoClose),
+      hideProgressBar: typeof options.hideProgressBar === 'boolean' ? options.hideProgressBar : this.props.hideProgressBar,
+      progress: parseFloat(options.progress),
+      isProgressDone: options.isProgressDone
+    };
+    typeof options.onOpen === 'function' && (toastOptions.onOpen = options.onOpen);
+    typeof options.onClose === 'function' && (toastOptions.onClose = options.onClose); // add closeToast function to react component only
+
+    if ((0, _react.isValidElement)(content) && typeof content.type !== 'string' && typeof content.type !== 'number') {
+      content = (0, _react.cloneElement)(content, {
+        closeToast: closeToast
+      });
+    } else if (typeof content === 'function') {
+      content = content({
+        closeToast: closeToast
+      });
+    }
+
+    this.collection = _extends({}, this.collection, (_extends2 = {}, _extends2[toastId] = {
+      position: toastOptions.position,
+      options: toastOptions,
+      content: content
+    }, _extends2));
+    this.setState({
+      toast: (toastOptions.updateId ? _toConsumableArray(this.state.toast) : _toConsumableArray(this.state.toast).concat([toastId])).filter(function (id) {
+        return id !== options.staleToastId;
+      })
+    }, this.dispatchChange);
+  };
+
+  _proto.makeToast = function makeToast(content, options) {
+    return _react.default.createElement(_Toast.default, _extends({}, options, {
+      isDocumentHidden: this.state.isDocumentHidden,
+      key: "toast-" + options.key
+    }), content);
+  };
+
+  _proto.clear = function clear() {
+    this.setState({
+      toast: []
+    });
+  };
+
+  _proto.renderToast = function renderToast() {
+    var _this5 = this;
+
+    var toastToRender = {};
+    var _this$props = this.props,
+        className = _this$props.className,
+        style = _this$props.style,
+        newestOnTop = _this$props.newestOnTop;
+    var collection = newestOnTop ? Object.keys(this.collection).reverse() : Object.keys(this.collection); // group toast by position
+
+    collection.forEach(function (toastId) {
+      var _this5$collection$toa = _this5.collection[toastId],
+          position = _this5$collection$toa.position,
+          options = _this5$collection$toa.options,
+          content = _this5$collection$toa.content;
+      toastToRender[position] || (toastToRender[position] = []);
+
+      if (_this5.state.toast.indexOf(options.id) !== -1) {
+        toastToRender[position].push(_this5.makeToast(content, options));
+      } else {
+        toastToRender[position].push(null);
+        delete _this5.collection[toastId];
+      }
+    });
+    return Object.keys(toastToRender).map(function (position) {
+      var disablePointer = toastToRender[position].length === 1 && toastToRender[position][0] === null;
+      var props = {
+        className: (0, _classnames.default)('Toastify__toast-container', "Toastify__toast-container--" + position, {
+          'Toastify__toast-container--rtl': _this5.props.rtl
+        }, _this5.parseClassName(className)),
+        style: disablePointer ? _extends({}, style, {
+          pointerEvents: 'none'
+        }) : _extends({}, style)
+      };
+      return _react.default.createElement(_TransitionGroup.default, _extends({}, props, {
+        key: "container-" + position
+      }), toastToRender[position]);
+    });
+  };
+
+  _proto.render = function render() {
+    return _react.default.createElement("div", {
+      className: "Toastify"
+    }, this.renderToast());
+  };
+
+  return ToastContainer;
+}(_react.Component);
+
+ToastContainer.propTypes = {
+  /**
+   * Set toast position
+   */
+  position: _propTypes.default.oneOf((0, _propValidator.objectValues)(_constant.POSITION)),
+
+  /**
+   * Disable or set autoClose delay
+   */
+  autoClose: _propValidator.falseOrDelay,
+
+  /**
+   * Disable or set a custom react element for the close button
+   */
+  closeButton: _propValidator.falseOrElement,
+
+  /**
+   * Hide or not progress bar when autoClose is enabled
+   */
+  hideProgressBar: _propTypes.default.bool,
+
+  /**
+   * Pause toast duration on hover
+   */
+  pauseOnHover: _propTypes.default.bool,
+
+  /**
+   * Dismiss toast on click
+   */
+  closeOnClick: _propTypes.default.bool,
+
+  /**
+   * Newest on top
+   */
+  newestOnTop: _propTypes.default.bool,
+
+  /**
+   * An optional className
+   */
+  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+
+  /**
+   * An optional style
+   */
+  style: _propTypes.default.object,
+
+  /**
+   * An optional className for the toast
+   */
+  toastClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+
+  /**
+   * An optional className for the toast body
+   */
+  bodyClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+
+  /**
+   * An optional className for the toast progress bar
+   */
+  progressClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+
+  /**
+   * An optional style for the toast progress bar
+   */
+  progressStyle: _propTypes.default.object,
+
+  /**
+   * Define enter and exit transition using react-transition-group
+   */
+  transition: _propTypes.default.func,
+
+  /**
+   * Support rtl display
+   */
+  rtl: _propTypes.default.bool,
+
+  /**
+   * Allow toast to be draggable
+   */
+  draggable: _propTypes.default.bool,
+
+  /**
+   * The percentage of the toast's width it takes for a drag to dismiss a toast
+   */
+  draggablePercent: _propTypes.default.number,
+
+  /**
+   * Pause the toast on focus loss
+   */
+  pauseOnFocusLoss: _propTypes.default.bool
+};
+ToastContainer.defaultProps = {
+  position: _constant.POSITION.TOP_RIGHT,
+  transition: _Transitions.Bounce,
+  rtl: false,
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeButton: _react.default.createElement(_CloseButton.default, null),
+  pauseOnHover: true,
+  pauseOnFocusLoss: true,
+  closeOnClick: true,
+  newestOnTop: false,
+  draggable: true,
+  draggablePercent: 80,
+  className: null,
+  style: null,
+  toastClassName: null,
+  bodyClassName: null,
+  progressClassName: null,
+  progressStyle: null
+};
+var _default = ToastContainer;
+exports.default = _default;
+
+/***/ }),
 /* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38784,9 +39441,495 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 227 */,
-/* 228 */,
-/* 229 */,
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(__webpack_require__(1));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(2));
+
+var _classnames = _interopRequireDefault(__webpack_require__(5));
+
+var _ProgressBar = _interopRequireDefault(__webpack_require__(228));
+
+var _constant = __webpack_require__(41);
+
+var _propValidator = __webpack_require__(76);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+function getX(e) {
+  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientX : e.clientX;
+}
+
+function getY(e) {
+  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientY : e.clientY;
+}
+
+var noop = function noop() {};
+
+var Toast =
+/*#__PURE__*/
+function (_Component) {
+  _inheritsLoose(Toast, _Component);
+
+  function Toast() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      isRunning: true,
+      preventExitTransition: false
+    };
+    _this.flag = {
+      canCloseOnClick: true,
+      canDrag: false
+    };
+    _this.drag = {
+      start: 0,
+      x: 0,
+      y: 0,
+      deltaX: 0,
+      removalDistance: 0
+    };
+    _this.ref = null;
+
+    _this.pauseToast = function () {
+      if (_this.props.autoClose) {
+        _this.setState({
+          isRunning: false
+        });
+      }
+    };
+
+    _this.playToast = function () {
+      if (_this.props.autoClose) {
+        _this.setState({
+          isRunning: true
+        });
+      }
+    };
+
+    _this.onDragStart = function (e) {
+      _this.flag.canCloseOnClick = true;
+      _this.flag.canDrag = true;
+      _this.ref.style.transition = '';
+      _this.drag.start = _this.drag.x = getX(e.nativeEvent);
+      _this.drag.removalDistance = _this.ref.offsetWidth * (_this.props.draggablePercent / 100);
+    };
+
+    _this.onDragMove = function (e) {
+      if (_this.flag.canDrag) {
+        if (_this.state.isRunning) {
+          _this.pauseToast();
+        }
+
+        _this.drag.x = getX(e);
+        _this.drag.deltaX = _this.drag.x - _this.drag.start; // prevent false positif during a toast click
+
+        _this.drag.start !== _this.drag.x && (_this.flag.canCloseOnClick = false);
+        _this.ref.style.transform = "translateX(" + _this.drag.deltaX + "px)";
+        _this.ref.style.opacity = 1 - Math.abs(_this.drag.deltaX / _this.drag.removalDistance);
+      }
+    };
+
+    _this.onDragEnd = function (e) {
+      if (_this.flag.canDrag) {
+        _this.flag.canDrag = false;
+
+        if (Math.abs(_this.drag.deltaX) > _this.drag.removalDistance) {
+          _this.setState({
+            preventExitTransition: true
+          }, _this.props.closeToast);
+
+          return;
+        }
+
+        _this.drag.y = getY(e);
+        _this.ref.style.transition = 'transform 0.2s, opacity 0.2s';
+        _this.ref.style.transform = 'translateX(0)';
+        _this.ref.style.opacity = 1;
+      }
+    };
+
+    _this.onDragTransitionEnd = function () {
+      var _this$ref$getBounding = _this.ref.getBoundingClientRect(),
+          top = _this$ref$getBounding.top,
+          bottom = _this$ref$getBounding.bottom,
+          left = _this$ref$getBounding.left,
+          right = _this$ref$getBounding.right;
+
+      if (_this.props.pauseOnHover && _this.drag.x >= left && _this.drag.x <= right && _this.drag.y >= top && _this.drag.y <= bottom) {
+        _this.pauseToast();
+      } else {
+        _this.playToast();
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Toast.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.props.onOpen(this.props.children.props);
+
+    if (this.props.draggable) {
+      this.bindDragEvents();
+    } // Maybe I could bind the event in the ToastContainer and rely on delegation
+
+
+    if (this.props.pauseOnFocusLoss) {
+      this.bindFocusEvents();
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (prevProps.draggable !== this.props.draggable) {
+      if (this.props.draggable) {
+        this.bindDragEvents();
+      } else {
+        this.unbindDragEvents();
+      }
+    }
+
+    if (prevProps.pauseOnFocusLoss !== this.props.pauseOnFocusLoss) {
+      if (this.props.pauseOnFocusLoss) {
+        this.bindFocusEvents();
+      } else {
+        this.unbindFocusEvents();
+      }
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.props.onClose(this.props.children.props);
+
+    if (this.props.draggable) {
+      this.unbindDragEvents();
+    }
+
+    if (this.props.pauseOnFocusLoss) {
+      this.unbindFocusEvents();
+    }
+  };
+
+  _proto.bindFocusEvents = function bindFocusEvents() {
+    window.addEventListener('focus', this.playToast);
+    window.addEventListener('blur', this.pauseToast);
+  };
+
+  _proto.unbindFocusEvents = function unbindFocusEvents() {
+    window.removeEventListener('focus', this.playToast);
+    window.removeEventListener('blur', this.pauseToast);
+  };
+
+  _proto.bindDragEvents = function bindDragEvents() {
+    document.addEventListener('mousemove', this.onDragMove);
+    document.addEventListener('mouseup', this.onDragEnd);
+    document.addEventListener('touchmove', this.onDragMove);
+    document.addEventListener('touchend', this.onDragEnd);
+  };
+
+  _proto.unbindDragEvents = function unbindDragEvents() {
+    document.removeEventListener('mousemove', this.onDragMove);
+    document.removeEventListener('mouseup', this.onDragEnd);
+    document.removeEventListener('touchmove', this.onDragMove);
+    document.removeEventListener('touchend', this.onDragEnd);
+  };
+
+  _proto.render = function render() {
+    var _this2 = this;
+
+    var _this$props = this.props,
+        closeButton = _this$props.closeButton,
+        children = _this$props.children,
+        autoClose = _this$props.autoClose,
+        pauseOnHover = _this$props.pauseOnHover,
+        closeOnClick = _this$props.closeOnClick,
+        type = _this$props.type,
+        hideProgressBar = _this$props.hideProgressBar,
+        closeToast = _this$props.closeToast,
+        Transition = _this$props.transition,
+        position = _this$props.position,
+        onExited = _this$props.onExited,
+        className = _this$props.className,
+        bodyClassName = _this$props.bodyClassName,
+        progressClassName = _this$props.progressClassName,
+        progressStyle = _this$props.progressStyle,
+        updateId = _this$props.updateId,
+        role = _this$props.role,
+        progress = _this$props.progress,
+        isProgressDone = _this$props.isProgressDone,
+        rtl = _this$props.rtl;
+    var toastProps = {
+      className: (0, _classnames.default)('Toastify__toast', "Toastify__toast--" + type, {
+        'Toastify__toast--rtl': rtl
+      }, className)
+    };
+
+    if (autoClose && pauseOnHover) {
+      toastProps.onMouseEnter = this.pauseToast;
+      toastProps.onMouseLeave = this.playToast;
+    } // prevent toast from closing when user drags the toast
+
+
+    if (closeOnClick) {
+      toastProps.onClick = function () {
+        return _this2.flag.canCloseOnClick && closeToast();
+      };
+    }
+
+    var controlledProgress = parseFloat(progress) === progress;
+    return _react.default.createElement(Transition, {
+      in: this.props.in,
+      appear: true,
+      unmountOnExit: true,
+      onExited: onExited,
+      position: position,
+      preventExitTransition: this.state.preventExitTransition
+    }, _react.default.createElement("div", _extends({}, toastProps, {
+      ref: function ref(_ref) {
+        return _this2.ref = _ref;
+      },
+      onMouseDown: this.onDragStart,
+      onTouchStart: this.onDragStart,
+      onTransitionEnd: this.onDragTransitionEnd
+    }), _react.default.createElement("div", _extends({}, this.props.in && {
+      role: role
+    }, {
+      className: (0, _classnames.default)('Toastify__toast-body', bodyClassName)
+    }), children), closeButton && closeButton, (autoClose || controlledProgress) && _react.default.createElement(_ProgressBar.default, _extends({}, updateId && !controlledProgress ? {
+      key: "pb-" + updateId
+    } : {}, {
+      rtl: rtl,
+      delay: autoClose,
+      isRunning: this.state.isRunning,
+      closeToast: closeToast,
+      hide: hideProgressBar,
+      type: type,
+      style: progressStyle,
+      className: progressClassName,
+      controlledProgress: controlledProgress,
+      isProgressDone: isProgressDone,
+      progress: progress
+    }))));
+  };
+
+  return Toast;
+}(_react.Component);
+
+Toast.propTypes = {
+  closeButton: _propValidator.falseOrElement.isRequired,
+  autoClose: _propValidator.falseOrDelay.isRequired,
+  children: _propTypes.default.node.isRequired,
+  closeToast: _propTypes.default.func.isRequired,
+  position: _propTypes.default.oneOf((0, _propValidator.objectValues)(_constant.POSITION)).isRequired,
+  pauseOnHover: _propTypes.default.bool.isRequired,
+  pauseOnFocusLoss: _propTypes.default.bool.isRequired,
+  closeOnClick: _propTypes.default.bool.isRequired,
+  transition: _propTypes.default.func.isRequired,
+  rtl: _propTypes.default.bool.isRequired,
+  hideProgressBar: _propTypes.default.bool.isRequired,
+  draggable: _propTypes.default.bool.isRequired,
+  draggablePercent: _propTypes.default.number.isRequired,
+  in: _propTypes.default.bool,
+  onExited: _propTypes.default.func,
+  onOpen: _propTypes.default.func,
+  onClose: _propTypes.default.func,
+  type: _propTypes.default.oneOf((0, _propValidator.objectValues)(_constant.TYPE)),
+  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+  bodyClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+  progressClassName: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+  progressStyle: _propTypes.default.object,
+  progress: _propTypes.default.number,
+  isProgressDone: _propTypes.default.bool,
+  updateId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  ariaLabel: _propTypes.default.string
+};
+Toast.defaultProps = {
+  type: _constant.TYPE.DEFAULT,
+  in: true,
+  onOpen: noop,
+  onClose: noop,
+  className: null,
+  bodyClassName: null,
+  progressClassName: null,
+  updateId: null,
+  role: 'alert'
+};
+var _default = Toast;
+exports.default = _default;
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(1));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(2));
+
+var _classnames = _interopRequireDefault(__webpack_require__(5));
+
+var _constant = __webpack_require__(41);
+
+var _propValidator = __webpack_require__(76);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ProgressBar(_ref) {
+  var _animationEvent;
+
+  var delay = _ref.delay,
+      isRunning = _ref.isRunning,
+      closeToast = _ref.closeToast,
+      type = _ref.type,
+      hide = _ref.hide,
+      className = _ref.className,
+      userStyle = _ref.style,
+      controlledProgress = _ref.controlledProgress,
+      progress = _ref.progress,
+      isProgressDone = _ref.isProgressDone,
+      rtl = _ref.rtl;
+
+  var style = _extends({}, userStyle, {
+    animationDuration: delay + "ms",
+    animationPlayState: isRunning ? 'running' : 'paused',
+    opacity: hide ? 0 : 1,
+    transform: controlledProgress ? "scaleX(" + progress + ")" : null
+  });
+
+  var classNames = (0, _classnames.default)('Toastify__progress-bar', controlledProgress ? 'Toastify__progress-bar--controlled' : 'Toastify__progress-bar--animated', "Toastify__progress-bar--" + type, {
+    'Toastify__progress-bar--rtl': rtl
+  }, className);
+  var animationEvent = (_animationEvent = {}, _animationEvent[controlledProgress && isProgressDone ? 'onTransitionEnd' : 'onAnimationEnd'] = controlledProgress && !isProgressDone ? null : closeToast, _animationEvent);
+  return _react.default.createElement("div", _extends({
+    className: classNames,
+    style: style
+  }, animationEvent));
+}
+
+ProgressBar.propTypes = {
+  /**
+   * The animation delay which determine when to close the toast
+   */
+  delay: _propValidator.falseOrDelay.isRequired,
+
+  /**
+   * Whether or not the animation is running or paused
+   */
+  isRunning: _propTypes.default.bool.isRequired,
+
+  /**
+   * Func to close the current toast
+   */
+  closeToast: _propTypes.default.func.isRequired,
+
+  /**
+   * Support rtl content
+   */
+  rtl: _propTypes.default.bool.isRequired,
+
+  /**
+   * Optional type : info, success ...
+   */
+  type: _propTypes.default.string,
+
+  /**
+   * Hide or not the progress bar
+   */
+  hide: _propTypes.default.bool,
+
+  /**
+   * Optionnal className
+   */
+  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+
+  /**
+   * Controlled progress value
+   */
+  progress: _propTypes.default.number,
+
+  /**
+   * Tell wether or not controlled progress bar is used
+   */
+  controlledProgress: _propTypes.default.bool,
+
+  /**
+   * Helper to close the toast when using controlled progress value
+   */
+  isProgressDone: _propTypes.default.bool
+};
+ProgressBar.defaultProps = {
+  type: _constant.TYPE.DEFAULT,
+  hide: false
+};
+var _default = ProgressBar;
+exports.default = _default;
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(1));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(2));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function CloseButton(_ref) {
+  var closeToast = _ref.closeToast,
+      type = _ref.type,
+      ariaLabel = _ref.ariaLabel;
+  return _react.default.createElement("button", {
+    className: "Toastify__close-button Toastify__close-button--" + type,
+    type: "button",
+    onClick: closeToast,
+    "aria-label": ariaLabel
+  }, "\u2716");
+}
+
+CloseButton.propTypes = {
+  closeToast: _propTypes.default.func,
+  arialLabel: _propTypes.default.string
+};
+CloseButton.defaultProps = {
+  ariaLabel: 'close'
+};
+var _default = CloseButton;
+exports.default = _default;
+
+/***/ }),
 /* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38842,7 +39985,172 @@ var classNamesShape = _propTypes.default.oneOfType([_propTypes.default.string, _
 exports.classNamesShape = classNamesShape;
 
 /***/ }),
-/* 231 */,
+/* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _eventManager = _interopRequireDefault(__webpack_require__(119));
+
+var _constant = __webpack_require__(41);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var container = null;
+var queue = [];
+
+var noop = function noop() {
+  return false;
+};
+/**
+ * Merge provided options with the defaults settings and generate the toastId
+ */
+
+
+function mergeOptions(options, type) {
+  return _extends({}, options, {
+    type: type,
+    toastId: getToastId(options)
+  });
+}
+/**
+ * Generate a random toastId
+ */
+
+
+function generateToastId() {
+  return (Math.random().toString(36) + Date.now().toString(36)).substr(2, 10);
+}
+/**
+ * Generate the toastId either automatically or by provided toastId
+ */
+
+
+function getToastId(options) {
+  if (options && (typeof options.toastId === 'string' || typeof options.toastId === 'number' && !isNaN(options.toastId))) {
+    return options.toastId;
+  }
+
+  return generateToastId();
+}
+/**
+ * Dispatch toast. If the container is not mounted, the toast is enqueued
+ */
+
+
+function emitEvent(content, options) {
+  if (container !== null) {
+    _eventManager.default.emit(_constant.ACTION.SHOW, content, options);
+  } else {
+    queue.push({
+      action: _constant.ACTION.SHOW,
+      content: content,
+      options: options
+    });
+  }
+
+  return options.toastId;
+}
+
+var toast = _extends(function (content, options) {
+  return emitEvent(content, mergeOptions(options, options && options.type || _constant.TYPE.DEFAULT));
+}, {
+  success: function success(content, options) {
+    return emitEvent(content, mergeOptions(options, _constant.TYPE.SUCCESS));
+  },
+  info: function info(content, options) {
+    return emitEvent(content, mergeOptions(options, _constant.TYPE.INFO));
+  },
+  warn: function warn(content, options) {
+    return emitEvent(content, mergeOptions(options, _constant.TYPE.WARNING));
+  },
+  warning: function warning(content, options) {
+    return emitEvent(content, mergeOptions(options, _constant.TYPE.WARNING));
+  },
+  error: function error(content, options) {
+    return emitEvent(content, mergeOptions(options, _constant.TYPE.ERROR));
+  },
+  dismiss: function dismiss(id) {
+    if (id === void 0) {
+      id = null;
+    }
+
+    return container && _eventManager.default.emit(_constant.ACTION.CLEAR, id);
+  },
+  isActive: noop,
+  update: function update(toastId, options) {
+    setTimeout(function () {
+      if (container && typeof container.collection[toastId] !== 'undefined') {
+        var _container$collection = container.collection[toastId],
+            oldOptions = _container$collection.options,
+            oldContent = _container$collection.content;
+
+        var nextOptions = _extends({}, oldOptions, options, {
+          toastId: options.toastId || toastId
+        });
+
+        if (!options.toastId || options.toastId === toastId) {
+          nextOptions.updateId = generateToastId();
+        } else {
+          nextOptions.staleToastId = toastId;
+        }
+
+        var content = typeof nextOptions.render !== 'undefined' ? nextOptions.render : oldContent;
+        delete nextOptions.render;
+        emitEvent(content, nextOptions);
+      }
+    }, 0);
+  },
+  done: function done(id, progress) {
+    if (progress === void 0) {
+      progress = 1;
+    }
+
+    toast.update(id, {
+      progress: progress,
+      isProgressDone: true
+    });
+  },
+  onChange: function onChange(callback) {
+    if (typeof callback === 'function') {
+      _eventManager.default.on(_constant.ACTION.ON_CHANGE, callback);
+    }
+  },
+  POSITION: _constant.POSITION,
+  TYPE: _constant.TYPE
+});
+/**
+ * Wait until the ToastContainer is mounted to dispatch the toast
+ * and attach isActive method
+ */
+
+
+_eventManager.default.on(_constant.ACTION.DID_MOUNT, function (containerInstance) {
+  container = containerInstance;
+
+  toast.isActive = function (id) {
+    return container.isToastActive(id);
+  };
+
+  queue.forEach(function (item) {
+    _eventManager.default.emit(item.action, item.content, item.options);
+  });
+  queue = [];
+}).on(_constant.ACTION.WILL_UNMOUNT, function () {
+  container = null;
+  toast.isActive = noop;
+});
+
+var _default = toast;
+exports.default = _default;
+
+/***/ }),
 /* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38899,6 +40207,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var styles = {
+  grid: { padding: '0px', margin: '0px', minHeight: '100vh', marginTop: '0px !important' }
+};
+
 var App = function (_Component) {
   _inherits(App, _Component);
 
@@ -38934,7 +40246,7 @@ var App = function (_Component) {
         null,
         _react2.default.createElement(
           'div',
-          null,
+          { style: styles.grid },
           _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
@@ -60976,6 +62288,8 @@ var _Grid = __webpack_require__(37);
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
+var _reactToastify = __webpack_require__(224);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -61080,6 +62394,7 @@ var Game = function (_React$Component) {
       if (!questions) return null;
 
       if (!selectedQuestion) return null;
+      _reactToastify.toast.success("Default Notification !");
 
       question = this.getQuestion(questions, selectedQuestion);
       //add data to be question as prop for next line
@@ -97144,6 +98459,105 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactToastify = __webpack_require__(224);
+
+var _reactRedux = __webpack_require__(22);
+
+var _App = __webpack_require__(232);
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MessageContainer = function (_React$Component) {
+  _inherits(MessageContainer, _React$Component);
+
+  function MessageContainer() {
+    _classCallCheck(this, MessageContainer);
+
+    return _possibleConstructorReturn(this, (MessageContainer.__proto__ || Object.getPrototypeOf(MessageContainer)).apply(this, arguments));
+  }
+
+  _createClass(MessageContainer, [{
+    key: 'render',
+    value: function render() {
+      console.log('message', this.props.message);
+      var _props$message = this.props.message,
+          message = _props$message.message,
+          isErr = _props$message.isErr;
+      //const { isLoading } = this.props;
+
+      if (message) {
+        var toastMessage = _react2.default.createElement(
+          'div',
+          { style: { textAlign: 'center', color: "white" } },
+          ' ',
+          message,
+          ' '
+        );
+        var toastOptions = {
+          position: _reactToastify.toast.POSITION.TOP_CENTER,
+          pauseOnHover: true
+        };
+        if (isErr) {
+          _reactToastify.toast.error(toastMessage, toastOptions);
+        } else {
+          _reactToastify.toast.success(toastMessage, toastOptions);
+        }
+      }
+      // /*const toastLoadingOptions = {
+      //     position: toast.POSITION.TOP_CENTER,
+      //     autoClose: false
+      //   };
+
+      // if(isLoading) { toast.info("Loading ...", toastLoadingOptions) }
+      // else {toast.dismiss();}*/
+      return _react2.default.createElement(_App2.default, null);
+    }
+  }]);
+
+  return MessageContainer;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  var message = state.message;
+  //const { isLoading } = state.loading;
+
+  return { message: message /*, isLoading*/ };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(MessageContainer);
 
 /***/ })
 /******/ ]);

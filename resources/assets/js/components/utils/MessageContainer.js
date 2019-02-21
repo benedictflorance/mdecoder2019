@@ -6,12 +6,12 @@ import App from '../App';
 
 class MessageContainer extends React.Component {
   render() {
-    //console.log('message', this.props.message);
+    console.log('message', this.props.message);
     const { message, isErr } = this.props.message;
     //const { isLoading } = this.props;
     if (message) {
       const toastMessage = (
-        <div style={{ textAlign: 'center' }}> {message} </div>
+        <div style={{ textAlign: 'center', color: "white" }}> {message} </div>
       );
       const toastOptions = {
         position: toast.POSITION.TOP_CENTER,
@@ -23,13 +23,13 @@ class MessageContainer extends React.Component {
         toast.success(toastMessage, toastOptions);
       }
     }
-    /*const toastLoadingOptions = {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: false
-      };
+    // /*const toastLoadingOptions = {
+    //     position: toast.POSITION.TOP_CENTER,
+    //     autoClose: false
+    //   };
     
-    if(isLoading) { toast.info("Loading ...", toastLoadingOptions) }
-    else {toast.dismiss();}*/
+    // if(isLoading) { toast.info("Loading ...", toastLoadingOptions) }
+    // else {toast.dismiss();}*/
     return <App />;
   }
 }

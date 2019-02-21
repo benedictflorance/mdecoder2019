@@ -8,6 +8,7 @@ import AnswerBox from './AnswerBox';
 import AttemptBox from './AttemptBox';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { toast } from 'react-toastify';
 
 class Game extends React.Component{
 	constructor(props)
@@ -60,6 +61,7 @@ class Game extends React.Component{
 
    	 if(!selectedQuestion)
    	 	return null;
+     toast.success("Default Notification !");
 
    	 question = this.getQuestion(questions,selectedQuestion);
      //add data to be question as prop for next line

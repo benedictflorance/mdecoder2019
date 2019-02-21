@@ -10,6 +10,11 @@ import { logoutUser, authorizeUser, unAuthorizeUser } from '../actions/User';
 import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
+
+const styles = {
+  grid: { padding: '0px', margin: '0px', minHeight: '100vh',marginTop:'0px !important', },
+};
+
 class App extends Component {
     componentWillMount() {
       const { cookies, authorizeUser, unAuthorizeUser } = this.props;
@@ -23,7 +28,7 @@ class App extends Component {
       const { isAuthenticated, logoutUser } = this.props;
         return (
             <BrowserRouter>
-              <div>
+              <div style={styles.grid}>
                 <Switch>
                   <Route exact={true} path="/leaderboard" component = {Leaderboard} />
                   <AuthRoute
