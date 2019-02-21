@@ -43,6 +43,7 @@ class GameComponent extends React.Component{
       });
     }
     handleModalAction() {
+     // console.log(" modal message"+this.state.modalAction);
       this.setState({
        showModal: false,
        modalMsg: '',
@@ -74,7 +75,7 @@ class GameComponent extends React.Component{
               </Dialog>  
 			  <Menu />
               <Game />
-              <BottomNavigation showConfirmModal = {this.showConfirmModal} />
+              <BottomNavigation showConfirmModal = {this.showConfirmModal} currDayFlag = {this.props.currDayFlag} />
               </div>
 			);
 	}
