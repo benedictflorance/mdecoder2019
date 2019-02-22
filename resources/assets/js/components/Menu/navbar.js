@@ -84,6 +84,9 @@ class Navbar extends React.Component {
     <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
+    <ListItem button onClick={() => {this.props.history.push("/instructions")}}>
+    <ListItemText primary={'INSTRUCTIONS'} />
+    </ListItem>
     <ListItem button onClick={() => {this.props.history.push("/userlogin")}}>
     <ListItemText primary={'LOGIN'}  />
     </ListItem>
@@ -101,7 +104,7 @@ class Navbar extends React.Component {
               <MenuIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={0} sm={4}>
+          <Grid item sm={4}>
             <Typography variant="h6" color="inherit" className={classes.grow}>
               MDECODER
             </Typography>

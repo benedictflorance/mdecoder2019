@@ -21,6 +21,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { showErrorMessage, loginUser } from '../actions/User';
 import { getContestRemainingTime } from '../actions/Dashboard';
+import Timer from './utils/timerUtil';
 
 const styles = theme => ({
     main: {
@@ -105,6 +106,21 @@ const styles = theme => ({
          <Grid container>
            <Navbar />
          </Grid>
+         <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{marginTop:'10px'}}
+          >
+            <Timer
+              getContestRemainingTime={getContestRemainingTime}
+              displayText={'Contest starts in'}
+              remainingTime={remainingTime}
+              startTime={startTime}
+            />
+          </Grid> 
+        
          <Grid container>
         <main className={classes.main}>
           <CssBaseline />
