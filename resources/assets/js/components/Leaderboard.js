@@ -114,7 +114,7 @@ const styles = theme => ({
 	root : {
 		width:'100%',
 		marginTop:theme.spacing.unit*3,
-		overflowX:'scroll',
+		overflowX:'auto',
 	},
 	table:{
 		minWidth:"100%",

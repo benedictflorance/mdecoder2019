@@ -37522,7 +37522,7 @@ var styles = function styles(theme) {
     root: {
       width: '100%',
       marginTop: theme.spacing.unit * 3,
-      overflowX: 'scroll'
+      overflowX: 'auto'
     },
     table: {
       minWidth: "100%"
@@ -67646,9 +67646,13 @@ var _navbar = __webpack_require__(99);
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
-var _bottomNavigationDashboard = __webpack_require__(519);
+var _Button = __webpack_require__(25);
 
-var _bottomNavigationDashboard2 = _interopRequireDefault(_bottomNavigationDashboard);
+var _Button2 = _interopRequireDefault(_Button);
+
+var _Grid = __webpack_require__(24);
+
+var _Grid2 = _interopRequireDefault(_Grid);
 
 var _GameComponent = __webpack_require__(184);
 
@@ -67693,7 +67697,32 @@ var Dashboard = function (_React$Component) {
 					_react2.default.createElement(_navbar2.default, null),
 					_react2.default.createElement('br', null),
 					_react2.default.createElement(_Instructions2.default, null),
-					_react2.default.createElement(_bottomNavigationDashboard2.default, { getQuestions: getQuestions })
+					_react2.default.createElement(
+						_Grid2.default,
+						{ container: true, style: { textAlign: "center", padding: "20px" } },
+						_react2.default.createElement(
+							_Grid2.default,
+							{ item: true, xs: 6 },
+							_react2.default.createElement(
+								_Button2.default,
+								{ size: 'large', variant: 'contained', color: 'primary', style: { fontFamily: "Audiowide", fontSize: "1.3em", width: "100%", borderRadius: "25px", padding: "15px" }, onClick: function onClick() {
+										getQuestions(1);
+									} },
+								'Yesterday\'s Questions'
+							)
+						),
+						_react2.default.createElement(
+							_Grid2.default,
+							{ item: true, xs: 6 },
+							_react2.default.createElement(
+								_Button2.default,
+								{ size: 'large', variant: 'contained', color: 'primary', style: { fontFamily: "Audiowide", fontSize: "1.3em", width: "100%", borderRadius: "25px", padding: "15px" }, onClick: function onClick() {
+										getQuestions(0);
+									} },
+								'Today\'s Questions'
+							)
+						)
+					)
 				);
 			}
 		}
@@ -67712,135 +67741,7 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, { getQuestions: _Question.getQuestions })(Dashboard);
 
 /***/ }),
-/* 519 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(2);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _styles = __webpack_require__(18);
-
-var _BottomNavigation = __webpack_require__(105);
-
-var _BottomNavigation2 = _interopRequireDefault(_BottomNavigation);
-
-var _BottomNavigationAction = __webpack_require__(106);
-
-var _BottomNavigationAction2 = _interopRequireDefault(_BottomNavigationAction);
-
-var _QuestionAnswer = __webpack_require__(104);
-
-var _QuestionAnswer2 = _interopRequireDefault(_QuestionAnswer);
-
-var _Navigation = __webpack_require__(188);
-
-var _Navigation2 = _interopRequireDefault(_Navigation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var styles = {
-  root: {
-    width: "100%",
-    backgroundColor: "#EEEEEE",
-    fontFamily: "Audiowide",
-    position: "fixed",
-    bottom: "0px"
-  }
-
-};
-
-var styleBottom = {
-  left: {
-    backgroundColor: "#FF3F33",
-    marginRight: "5%",
-    fontWeight: "bold"
-
-  },
-  right: {
-    backgroundColor: "#335EFF",
-    marginLeft: "5%",
-    fontWeight: "bold"
-  }
-};
-
-var bottomNavigation = function (_React$Component) {
-  _inherits(bottomNavigation, _React$Component);
-
-  function bottomNavigation() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, bottomNavigation);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = bottomNavigation.__proto__ || Object.getPrototypeOf(bottomNavigation)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      value: 0
-    }, _this.handleChange = function (event, value) {
-      _this.setState({ value: value });
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(bottomNavigation, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var classes = this.props.classes;
-      var value = this.props.value;
-
-
-      return _react2.default.createElement(
-        _BottomNavigation2.default,
-        {
-          value: value,
-          onChange: this.handleChange,
-          showLabels: true,
-          className: classes.root
-        },
-        _react2.default.createElement(_BottomNavigationAction2.default, { label: 'Yesterday\'s Questions', style: styleBottom.left, icon: _react2.default.createElement(_QuestionAnswer2.default, null), onClick: function onClick() {
-            _this2.props.getQuestions(1);
-          } }),
-        _react2.default.createElement(_BottomNavigationAction2.default, { label: 'Today\'s Questions', style: styleBottom.right, icon: _react2.default.createElement(_QuestionAnswer2.default, null), onClick: function onClick() {
-            _this2.props.getQuestions(0);
-          } })
-      );
-    }
-  }]);
-
-  return bottomNavigation;
-}(_react2.default.Component);
-
-bottomNavigation.propTypes = {
-  classes: _propTypes2.default.object.isRequired
-};
-
-exports.default = (0, _styles.withStyles)(styles)(bottomNavigation);
-
-/***/ }),
+/* 519 */,
 /* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 

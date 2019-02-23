@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getQuestions } from '../actions/Question';
 import Navbar from './Menu/navbar';
-import BottomNavigation from './Menu/bottomNavigationDashboard';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import GameComponent from './GameComponent';
 import Instructions from './Instructions';
 class Dashboard extends React.Component {
@@ -19,7 +20,14 @@ class Dashboard extends React.Component {
                  <Navbar />
                  <br />
                  <Instructions />
-                 <BottomNavigation getQuestions = {getQuestions} />
+                 <Grid container style={{textAlign:"center",padding:"20px"}}>
+                   <Grid item xs={6}>
+                     <Button size="large" variant="contained" color="primary" style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px"}} onClick={() => {getQuestions(1)}} >Yesterday's Questions</Button>
+                   </Grid>
+                   <Grid item xs={6}>
+                     <Button size="large" variant="contained" color="primary" style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px"}} onClick={() => {getQuestions(0)}} >Today's Questions</Button>
+                   </Grid>
+                 </Grid>
               </React.Fragment>
 			);
          }
