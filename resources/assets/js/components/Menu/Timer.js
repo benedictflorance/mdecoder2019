@@ -52,19 +52,15 @@ class SimpleBottomNavigation extends React.Component {
     const { value } = this.state;
     const { remainingTime, startTime, isContestLive } = this.props;
     return (
-      <BottomNavigation
-        value={value}
-        onChange={this.handleChange}
-        className={classes.root}
-      >
-        <div>
+     
+        <div className={classes.root}>
            <TimerUtil mb={3}
               toggleDay={toggleDay}
               remainingTime={remainingTime}
               startTime={startTime}
             />
         </div>
-      </BottomNavigation>
+     
     );
   }
 }

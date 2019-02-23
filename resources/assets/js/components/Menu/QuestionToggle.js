@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import QuestionIcon from '@material-ui/icons/QuestionAnswer';
 import Popover from '@material-ui/core/Popover';
 import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -35,9 +36,17 @@ class QuestionToggle extends React.Component{
           <Tooltip title={this.showPopOver(question.max_number_of_tries,
           question.remaining_attempts,
           question.number_solved)} key={question.id}>
-            <ListItem key={question.id} button onClick={event => {updateSelectedQuestion(question.id)}}>
+            <ListItem key={question.id} button onClick={event => {updateSelectedQuestion(question.id)}} style={
+            question.id === selectedQuestion
+              ? {
+                  backgroundColor: 'dodgerblue',
+                 fontFamily:"Audiowide"
+                }
+              : {
+              	fontFamily:"Audiowide"
+                }}>
              <QuestionIcon />
-             <ListItemText primary={'Q:'+parseInt(i+1)} />
+             <ListItemText disabaleTypography primary={<Typography style={{fontFamily:"Audiowide"}}>Q:{i+1} </Typography>}  />
              <span style={{float: 'right' }}>
             {question.max_number_of_tries - question.remaining_attempts}/{
               question.max_number_of_tries

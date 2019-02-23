@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 const styles ={
   timer : {
-    backgroundColor : "blue",
     color : "white",
     textAlign: 'center',
     borderRadius: 2,
@@ -12,7 +11,8 @@ const styles ={
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 1,
-    fontSize: 10
+    fontSize: 12,
+    fontFamily:"Audiowide"
   },
 }
 
