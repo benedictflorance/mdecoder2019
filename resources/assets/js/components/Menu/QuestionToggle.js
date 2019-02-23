@@ -46,7 +46,7 @@ class QuestionToggle extends React.Component{
               	fontFamily:"Audiowide"
                 }}>
              <QuestionIcon />
-             <ListItemText disabaleTypography primary={<Typography style={{fontFamily:"Audiowide"}}>Q:{i+1} </Typography>}  />
+             <ListItemText disableTypography primary={<Typography style={{fontFamily:"Audiowide"}}>Q:{i+1} </Typography>}  />
              <span style={{float: 'right' }}>
             {question.max_number_of_tries - question.remaining_attempts}/{
               question.max_number_of_tries
