@@ -57980,7 +57980,7 @@ var Game = function (_React$Component) {
           { item: true, xs: 12 },
           _react2.default.createElement(
             _Grid2.default,
-            { container: true },
+            { container: true, style: { padding: "5px" } },
             _react2.default.createElement(
               _Grid2.default,
               { item: true, xs: 12 },
@@ -57989,7 +57989,7 @@ var Game = function (_React$Component) {
           ),
           _react2.default.createElement(
             _Grid2.default,
-            { container: true },
+            { container: true, style: { padding: "5px" } },
             _react2.default.createElement(
               _Grid2.default,
               { item: true, xs: 12 },
@@ -57998,7 +57998,7 @@ var Game = function (_React$Component) {
           ),
           _react2.default.createElement(
             _Grid2.default,
-            { container: true, style: { marginTop: "2px", textAlign: "center" } },
+            { container: true, style: { textAlign: "center", padding: "5px" } },
             _react2.default.createElement(
               _Grid2.default,
               { item: true, xs: 12 },
@@ -58014,7 +58014,7 @@ var Game = function (_React$Component) {
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 _Button2.default,
-                { size: 'large', style: { width: "100%", fontFamily: "Audiowide" }, variant: 'contained', color: 'primary',
+                { size: 'large', style: { width: "100%", fontFamily: "Audiowide", padding: "20px", borderRadius: "25px" }, variant: 'contained', color: 'primary',
                   disabled: disableSubmit, onClick: function onClick() {
                     _this2.handleSubmit();
                   } },
@@ -58027,7 +58027,7 @@ var Game = function (_React$Component) {
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 _Button2.default,
-                { onClick: this.handleClickOnNext, style: { width: "100%", fontFamily: "Audiowide" }, size: 'large', variant: 'contained', color: 'secondary' },
+                { onClick: this.handleClickOnNext, style: { width: "100%", fontFamily: "Audiowide", padding: "20px", borderRadius: "25px" }, size: 'large', variant: 'contained', color: 'primary' },
                 'Next Question'
               )
             )
@@ -58118,7 +58118,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var styles = {
   card: {
     Width: "100vw",
-    minHeight: 400
+    minHeight: 450
   },
   title: {
     fontSize: 14
@@ -58128,7 +58128,8 @@ var styles = {
   },
   heading: {
     textAlign: "center",
-    fontFamily: "Audiowide"
+    fontFamily: "Audiowide",
+    color: "blue"
   },
   content: {
     overflowY: "scroll"
@@ -58512,7 +58513,8 @@ var styles = {
   heading: {
     textAlign: "center",
     padding: 10,
-    fontFamily: "Audiowide"
+    fontFamily: "Audiowide",
+    color: "blue"
   },
   content: {
     backgroundColor: "#EEEEEE"

@@ -24,7 +24,8 @@ const styles = {
   heading: {
   	textAlign:"center",
   	padding:10,
-    fontFamily:"Audiowide"
+    fontFamily:"Audiowide",
+    color:"blue"
   },
   content:
   {
