@@ -5,7 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import { updateSelectedQuestion } from '../../actions/Dashboard';
 import Navbar from './navbar';
 import QuestionTab from './QuestionTab';
-import Timer from './Timer';
+import QuestionToggle from './QuestionToggle';
+
 import BottomNavigation from './bottomNavigation';
 
 class Menu extends React.Component{
@@ -21,9 +22,7 @@ class Menu extends React.Component{
     	return( 
          <Grid container>
            <Grid item xs={12}>
-              <Navbar />
-              <Timer />
-              <QuestionTab data = {{questions,selectedQuestion,updateSelectedQuestion}}/>
+              <QuestionToggle data = {{questions,selectedQuestion,updateSelectedQuestion}}/>
            </Grid>
          </Grid>
     		);

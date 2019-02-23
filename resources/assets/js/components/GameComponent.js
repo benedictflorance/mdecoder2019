@@ -13,6 +13,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { updateLevel } from '../actions/Question';
 import { toggleDay } from '../actions/User';
+import Navbar from './Menu/navbar';
 class GameComponent extends React.Component{
     
     constructor(props)
@@ -72,10 +73,16 @@ class GameComponent extends React.Component{
                   <Button onClick={this.handleModalAction} color="primary" size="large" autoFocus>Yes</Button>
                   <Button onClick={this.handleCloseModal} color="primary" size="large">No</Button>
                 </DialogActions>
-              </Dialog>  
-			  <Menu />
-              <Game />
-              <BottomNavigation showConfirmModal = {this.showConfirmModal} currDayFlag = {this.props.currDayFlag} />
+              </Dialog> 
+              <Navbar /> 
+              <Grid container>
+                 <Grid item sm={3} xs={12} style={{textAlign: 'center',fontSize: '1em'}}> 
+			     <Menu />
+			     </Grid>
+			     <Grid item sm={9} xs={12}>
+                 <Game />
+                 </Grid>
+              </Grid>
               </div>
 			);
 	}
