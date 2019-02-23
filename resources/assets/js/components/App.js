@@ -10,6 +10,7 @@ import { logoutUser, authorizeUser, unAuthorizeUser } from '../actions/User';
 import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
+import PageNotFound from './pageNotFound';
 class App extends Component {
     componentWillMount() {
       const { cookies, authorizeUser, unAuthorizeUser } = this.props;
@@ -36,6 +37,7 @@ class App extends Component {
                   <Route exact={true} path="/game" component={Game} />
                   <Route exact={true} path="/dashboard" component={Dashboard} />
                   <Route exact={true} path='/instructions' component={Instructions} />
+                  <Route component={PageNotFound} />
                 </Switch>
               </div>
             </BrowserRouter>
