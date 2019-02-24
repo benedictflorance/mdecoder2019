@@ -22,6 +22,7 @@ import Grid from '@material-ui/core/Grid';
 import { showErrorMessage, loginUser } from '../actions/User';
 import { getContestRemainingTime } from '../actions/Dashboard';
 import Timer from './utils/timerUtil';
+import Footer from './utils/footer';
 
 const styles = theme => ({
     main: {
@@ -56,7 +57,10 @@ const styles = theme => ({
     },
     inputLabel: {
       fontFamily:"Audiowide",
-    }
+    },
+    footer:{
+      marginBottom : '0px',
+    },
   });
   
   class Login extends React.Component {
@@ -153,6 +157,7 @@ const styles = theme => ({
           </Paper>
         </main>
         </Grid>
+        <Footer/>
         </React.Fragment>
     );
     }

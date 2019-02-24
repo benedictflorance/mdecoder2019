@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   card: {
     Width: "100vw",
-    minHeight:400
+    minHeight:450
   },
   title: {
     fontSize: 14,
@@ -20,7 +20,8 @@ const styles = {
   },
   heading: {
   	textAlign:"center",
-    fontFamily:"Audiowide"
+    fontFamily:"Audiowide",
+    color:"blue"
   },
   content:
   {

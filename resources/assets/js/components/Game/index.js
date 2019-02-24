@@ -74,24 +74,24 @@ class Game extends React.Component{
                 marginBottom: '70px'
             }}>
         <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={12} style={{marginTop: 1}}>{attemptBox }</Grid>
+          <Grid container style={{padding:"5px"}}>
+            <Grid item xs={12}>{attemptBox }</Grid>
           </Grid>
-          <Grid container>
+          <Grid container style={{padding:"5px"}}>
             <Grid item xs={12}>{questionBox }</Grid>
           </Grid>
-          <Grid container style={{marginTop:"2px",textAlign:"center"}}><Grid item xs={12}><AnswerBox  question={question} updateAnswer={updateAnswer}/></Grid></Grid>
+          <Grid container style={{textAlign:"center",padding:"5px"}}><Grid item xs={12}><AnswerBox  question={question} updateAnswer={updateAnswer}/></Grid></Grid>
           <Grid container>
             <Grid item xs={6}>
               <br />
-              <Button size="large" style={{width:"100%",fontFamily:"Audiowide"}} variant="contained" color="primary" 
+              <Button size="large" style={{width:"100%",fontFamily:"Audiowide" ,padding:"20px",borderRadius:"25px"}} variant="contained" color="primary" 
               disabled={
                   disableSubmit
                 } onClick={() => {this.handleSubmit();}}>Submit Answer</Button>
             </Grid>
             <Grid item xs={6}>
              <br />
-             <Button onClick={this.handleClickOnNext} style={{width:"100%",fontFamily:"Audiowide"}} size="large" variant="contained" color="secondary">Next Question</Button>
+             <Button onClick={this.handleClickOnNext} style={{width:"100%",fontFamily:"Audiowide",padding:"20px",borderRadius:"25px"}} size="large" variant="contained" color="primary">Next Question</Button>
             </Grid>
           </Grid>
         </Grid>
