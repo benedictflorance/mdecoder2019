@@ -16,6 +16,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logoutUser } from '../../actions/User';
 import Grid from '@material-ui/core/Grid';
+import HomeIcon from '@material-ui/icons/Home';
+import PeopleIcon from '@material-ui/icons/People';
+import LogoutIcon from '@material-ui/icons/KeyboardArrowRight';
+import InstructionIcon from '@material-ui/icons/Message';
 const styles = {
   root: {
     flexGrow: 1,
@@ -62,32 +66,38 @@ class Navbar extends React.Component {
     ) : null;
   const sideList= isAuthenticated ? (
     <div>
-    <img src="https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg" width="150" height="150" />
+    <img src="https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg" width="300" height="300" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/")}}>
+    <HomeIcon />
     <ListItemText primary={'DASHBOARD'} />
     </ListItem>
     <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
+    <PeopleIcon />
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
     <ListItem button onClick={() => {this.props.logoutUser()}}>
+    <LogoutIcon />
     <ListItemText primary={'LOGOUT'} />
     </ListItem>
     </List>
     </div>
     ) : (
     <div>
-    <img src="https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg" width="150" height="150" />
+    <img src="https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg" width="300" height="300" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
+    <PeopleIcon />
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
     <ListItem button onClick={() => {this.props.history.push("/instructions")}}>
+    <InstructionIcon />
     <ListItemText primary={'INSTRUCTIONS'} />
     </ListItem>
     <ListItem button onClick={() => {this.props.history.push("/userlogin")}}>
+    <LogoutIcon />
     <ListItemText primary={'LOGIN'}  />
     </ListItem>
     </List>

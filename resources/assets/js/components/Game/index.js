@@ -61,7 +61,6 @@ class Game extends React.Component{
 
    	 if(!selectedQuestion)
    	 	return null;
-     toast.success("Default Notification !");
 
    	 question = this.getQuestion(questions,selectedQuestion);
      //add data to be question as prop for next line
