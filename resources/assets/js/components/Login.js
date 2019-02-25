@@ -146,16 +146,16 @@ const styles = theme => ({
             <Avatar className={classes.avatar}>
               +
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" style={{fontFamily:"Audiowide"}}>
               Log in
             </Typography>
             <form onSubmit={this.handleSubmit} className={classes.form}>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail or Pragyan Registered Email</InputLabel>
                 <Input onChange={this.handleEmailIdChange} value={this.state.emailid} id="email" name="email" autoComplete="email" autoFocus />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel className={classes.inputLabel} htmlFor="password">Webmail Password</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
                 <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.handlePasswordChange} value={this.state.password} />
               </FormControl>
               <Button

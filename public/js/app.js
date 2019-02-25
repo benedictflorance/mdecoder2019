@@ -53300,7 +53300,7 @@ var Login = function (_React$Component) {
               ),
               _react2.default.createElement(
                 _Typography2.default,
-                { component: 'h1', variant: 'h5' },
+                { component: 'h1', variant: 'h5', style: { fontFamily: "Audiowide" } },
                 'Log in'
               ),
               _react2.default.createElement(
@@ -53312,7 +53312,7 @@ var Login = function (_React$Component) {
                   _react2.default.createElement(
                     _InputLabel2.default,
                     { className: classes.inputLabel, htmlFor: 'email' },
-                    'Webmail'
+                    'Webmail or Pragyan Registered Email'
                   ),
                   _react2.default.createElement(_Input2.default, { onChange: this.handleEmailIdChange, value: this.state.emailid, id: 'email', name: 'email', autoComplete: 'email', autoFocus: true })
                 ),
@@ -53322,7 +53322,7 @@ var Login = function (_React$Component) {
                   _react2.default.createElement(
                     _InputLabel2.default,
                     { className: classes.inputLabel, htmlFor: 'password' },
-                    'Webmail Password'
+                    'Password'
                   ),
                   _react2.default.createElement(_Input2.default, { name: 'password', type: 'password', id: 'password', autoComplete: 'current-password', onChange: this.handlePasswordChange, value: this.state.password })
                 ),
