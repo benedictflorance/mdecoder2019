@@ -22,10 +22,10 @@ class Dashboard extends React.Component {
                  <Instructions />
                  <Grid container style={{textAlign:"center",padding:"20px"}}>
                    <Grid item xs={6}>
-                     <Button size="large" variant="contained" color="primary" style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px"}} onClick={() => {getQuestions(1)}} >Yesterday's Questions</Button>
+                     <Button size="large" variant="contained"  style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px",backgroundColor:"#28398d",color:"white"}} onClick={() => {getQuestions(1)}} >Yesterday's Questions</Button>
                    </Grid>
                    <Grid item xs={6}>
-                     <Button size="large" variant="contained" color="primary" style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px"}} onClick={() => {getQuestions(0)}} >Today's Questions</Button>
+                     <Button size="large" variant="contained"  style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px",backgroundColor:"#28398d",color:"white"}} onClick={() => {getQuestions(0)}} >Today's Questions</Button>
                    </Grid>
                  </Grid>
               </React.Fragment>
