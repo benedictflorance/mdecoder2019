@@ -42,9 +42,18 @@ class QuestionToggle extends React.Component{
                   backgroundColor: '#1E9EB6',
                  fontFamily:"Audiowide"
                 }
-              : {
-              	fontFamily:"Audiowide"
-                }}>
+               : question.remaining_attempts == 0
+               ? { 
+               	  backgroundColor:"#FA6844",
+                  fontFamily:"Audiowide"
+               }
+                :
+                 {
+                 	fontFamily:"Audiowide"
+                 }
+               }
+               
+                >
              <QuestionIcon />
              <ListItemText disableTypography primary={<Typography style={{fontFamily:"Audiowide"}}>Q:{i+1} </Typography>}  />
              <span style={{float: 'right' }}>

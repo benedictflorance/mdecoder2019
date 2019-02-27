@@ -62,7 +62,9 @@ class AnswerBox extends React.Component{
     const level = this.props.difficulty;
     const data = this.props.data;
     const currentDay = data.day;
-    const attempt = data.remaining_attempt;
+    console.log(data);
+    const attempt = data.remaining_attempts;
+   // console.log("attempt :"+attempt);
 		return (
              <Card>
               <CardContent className={classes.content}>

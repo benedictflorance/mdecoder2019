@@ -21,6 +21,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import LogoutIcon from '@material-ui/icons/KeyboardArrowRight';
 import InstructionIcon from '@material-ui/icons/Message';
 import pragyan_black from '../../images/Pragyan_black.png';
+import { toggleDay } from '../../actions/User';
 const styles = {
   root: {
     flexGrow: 1,
@@ -67,10 +68,10 @@ class Navbar extends React.Component {
     ) : null;
   const sideList= isAuthenticated ? (
     <div>
-    <img src={pragyan_black} alt="Pragyan Logo here" width="300" height="300" />
+    <img src={pragyan_black} alt="Pragyan Logo here" width="350" height="350" />
     <Divider />
     <List>
-    <ListItem button onClick={() => {this.props.history.push("/")}}>
+    <ListItem button onClick={() => {this.props.toggleDay();}}>
     <HomeIcon />
     <ListItemText primary={'DASHBOARD'} />
     </ListItem>
@@ -86,7 +87,7 @@ class Navbar extends React.Component {
     </div>
     ) : (
     <div>
-    <img src={pragyan_black} alt="Pragyan logo here" height="300" width="300" />
+    <img src={pragyan_black} alt="Pragyan logo here" height="350" width="350" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
@@ -120,10 +121,10 @@ class Navbar extends React.Component {
               MDECODER
             </Typography>
           </Grid>
-         <Grid item xs={6} sm={4}> 
+         <Grid item xs={12} md={4}> 
           {userName}
          </Grid>
-         <Grid item xs={5} sm={3}> 
+         <Grid item xs={12} md={3}> 
           {userScore}
          </Grid>
          </Grid>
@@ -156,5 +157,5 @@ const mapStateToProps = state => {
 };
 
 const StyleNavbar = withStyles(styles)(Navbar)
-const Statenavbar = connect(mapStateToProps,{logoutUser})(StyleNavbar)
+const Statenavbar = connect(mapStateToProps,{logoutUser,toggleDay})(StyleNavbar)
 export default withRouter(Statenavbar);
