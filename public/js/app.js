@@ -7207,7 +7207,7 @@ var Navbar = function (_React$Component) {
       var sideList = isAuthenticated ? _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_black2.default, alt: 'Pragyan Logo here', width: '350', height: '350' }),
+        _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_black2.default, alt: 'Pragyan Logo here', width: '300', height: '300' }),
         _react2.default.createElement(_Divider2.default, null),
         _react2.default.createElement(
           _List2.default,
@@ -7240,7 +7240,7 @@ var Navbar = function (_React$Component) {
       ) : _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_black2.default, alt: 'Pragyan logo here', height: '350', width: '350' }),
+        _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_black2.default, alt: 'Pragyan logo here', height: '300', width: '300' }),
         _react2.default.createElement(_Divider2.default, null),
         _react2.default.createElement(
           _List2.default,
