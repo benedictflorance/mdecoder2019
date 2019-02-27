@@ -23,6 +23,7 @@ import { showErrorMessage, loginUser } from '../actions/User';
 import { getContestRemainingTime } from '../actions/Dashboard';
 import Timer from './utils/timerUtil';
 import Footer from './utils/footer';
+import pragyan_white from '../images/Pragyan_white.png';
 
 const styles = theme => ({
     main: {
@@ -136,11 +137,21 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
+         <img src="/mdecoder/"+{pragyan_black} alt="Pragyan Logo here" style={{width: '30%'}}/>
+         </Grid> 
+         <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{marginTop:'10px',textAlign:"center"}}
+          >
          {display}
          </Grid> 
          <Grid container>
         <main className={classes.main}>
           <Paper className={classes.paper}>
+
             <Avatar className={classes.avatar}>
               +
             </Avatar>

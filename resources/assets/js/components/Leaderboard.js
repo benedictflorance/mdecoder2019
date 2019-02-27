@@ -196,6 +196,15 @@ const styles = theme => ({
             <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/')}}>
              {<ArrowBack />}
             </IconButton>
+            <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{marginTop:'10px',textAlign:"center"}}
+          >
+              <img src="/mdecoder/"+{pragyan_black} alt="Pragyan Logo here" style={{width: '30%'}}/>
+           </Grid> 
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
             <h2 style={headerStyle}>Leaderboard</h2>
             <Grid item xs={12}>
