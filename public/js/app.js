@@ -4347,13 +4347,16 @@ function getUserRemainingTime() {
 }
 
 function getContestRemainingTime() {
+  console.log("hey1");
   return function (dispatch) {
     /*dispatch({
       type: 'UPDATE_REMAINING_TIME',
       remainingTime: 18000,
       isContestLive: false
     });*/
+    console.log("hey2");
     _api2.default.get('/contest/time').then(function (response) {
+      console.log(response);
       if (response.status === 200) {
         if (response.data.isContestLive === true) {
           if (response.data.gotRemainingTime) {

@@ -56,15 +56,18 @@ export function getUserRemainingTime() {
 }
 
 export function getContestRemainingTime() {
+  console.log("hey1");
   return dispatch => {
     /*dispatch({
       type: 'UPDATE_REMAINING_TIME',
       remainingTime: 18000,
       isContestLive: false
     });*/
+    console.log("hey2");
     api
       .get('/contest/time')
       .then(response => {
+        console.log(response);
         if (response.status === 200) {
           if (response.data.isContestLive === true) {
             if (response.data.gotRemainingTime) {

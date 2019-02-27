@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Exceptions\CustomException;
 use Exception;
-
 use App\User;
-
 class AuthController extends Controller
 {
     /**
@@ -16,27 +12,14 @@ class AuthController extends Controller
      * @return Response
      */
     public function authUser(Request $request) {
-
         // Condition to check if the request is filled with the required parameters
         if (!$request->filled(['email', 'password'])) {
             return response()->json(['authenticated' => false, 'message' => 'Missing parameters.'], 401);
         }
-
         $userData = $request->only(['email', 'password']);
-        //Dummy For Testing
-        $user = User::firstOrCreate(
-            ['email'        => $userData['email']],
-            [
-                'name'         => "Anjali",
-                'pragyan_id'   => "2378",
-            ]
-        );
-        $request->session()->put('user', $user);
-        return response()->json(['authenticated' => true, 'data' => $user], 200);
         try {
             // Authenticate user credentials from main pragyan server. Exception is thrown if invalid.
             $userDataFromPragyan = User::authUserCredentialsFromPragyan($userData['email'], $userData['password']);
-
             // Create new user if the user doesn't already exist. This is to evade registeration process.
             $user = User::firstOrCreate(
                 ['email'        => $userData['email']],
@@ -45,7 +28,6 @@ class AuthController extends Controller
                     'pragyan_id'   => $userDataFromPragyan['pragyan_id'],
                 ]
             );
-
             // Store user details in session.
             $request->session()->put('user', $user);
             return response()->json(['authenticated' => true], 200);
@@ -57,17 +39,14 @@ class AuthController extends Controller
             return response()->json(['authenticated' => false, 'message' => (env('APP_ENV', 'local') == 'production') ? "Internal server error." : $e->getMessage()], 500);
         }
     }
-
     /**
      * Function to unset session of user for logging out.
      * @param  Request $request
      */
     public function logout(Request $request) {
-
         // If the session has user, forget it.
         if($request->session()->has('user'))
             $request->session()->forget('user');
-
         return response()->json(['loggedOut' => true, 'message' => 'Logout successful.'], 200);
     }
 }

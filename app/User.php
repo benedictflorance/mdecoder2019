@@ -57,7 +57,7 @@ class User extends Model
 
         // Create a Guzzle client
         $client = new Client();
-        $url = "https://api.pragyan.org/event/login";
+        $url = "https://api.pragyan.org/19/event/login";
 
         // Send a POST request to the above url with the following params
         $response = $client->post($url, [
