@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import GameComponent from './GameComponent';
 import Instructions from './Instructions';
+import '../css/navigation.css';
 class Dashboard extends React.Component {
 	render()
 	{
@@ -20,7 +21,7 @@ class Dashboard extends React.Component {
                  <Navbar />
                  <br />
                  <Instructions />
-                 <Grid container style={{textAlign:"center",padding:"20px"}}>
+                 <Grid container style={{textAlign:"center",padding:"20px"}} id="bottomNavigation">
                    <Grid item xs={6}>
                      <Button size="large" variant="contained"  style={{fontFamily:"Audiowide",fontSize:"1.3em" ,width:"100%",borderRadius:"25px",padding:"15px",backgroundColor:"#28398d",color:"white"}} onClick={() => {getQuestions(1)}} >Yesterday's Questions</Button>
                    </Grid>
