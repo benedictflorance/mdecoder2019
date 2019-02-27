@@ -22,6 +22,7 @@ import LogoutIcon from '@material-ui/icons/KeyboardArrowRight';
 import InstructionIcon from '@material-ui/icons/Message';
 import pragyan_black from '../../images/Pragyan_black.png';
 import { toggleDay } from '../../actions/User';
+import BaseUrl from '../../api';
 const styles = {
   root: {
     flexGrow: 1,
@@ -75,7 +76,7 @@ class Navbar extends React.Component {
     <HomeIcon />
     <ListItemText primary={'DASHBOARD'} />
     </ListItem>
-    <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
+    <ListItem button onClick={() => {this.props.history.push(BaseUrl+"/leaderboard")}}>
     <PeopleIcon />
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
@@ -90,15 +91,15 @@ class Navbar extends React.Component {
     <img src={pragyan_black} alt="Pragyan logo here" height="350" width="350" />
     <Divider />
     <List>
-    <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
+    <ListItem button onClick={() => {this.props.history.push(BaseUrl+"/leaderboard")}}>
     <PeopleIcon />
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
-    <ListItem button onClick={() => {this.props.history.push("/instructions")}}>
+    <ListItem button onClick={() => {this.props.history.push(BaseUrl+"/instructions")}}>
     <InstructionIcon />
     <ListItemText primary={'INSTRUCTIONS'} />
     </ListItem>
-    <ListItem button onClick={() => {this.props.history.push("/userlogin")}}>
+    <ListItem button onClick={() => {this.props.history.push(BaseUrl+"/userlogin")}}>
     <LogoutIcon />
     <ListItemText primary={'LOGIN'}  />
     </ListItem>
