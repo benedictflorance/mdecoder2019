@@ -148,7 +148,7 @@ const styles = theme => ({
           >
          {display}
          </Grid> 
-         <Grid container>
+         <Grid container style={{marginBottom:'80px'}}>
         <main className={classes.main}>
           <Paper className={classes.paper}>
 

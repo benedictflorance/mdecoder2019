@@ -57826,7 +57826,7 @@ var Login = function (_React$Component) {
         ),
         _react2.default.createElement(
           _Grid2.default,
-          { container: true },
+          { container: true, style: { marginBottom: '80px' } },
           _react2.default.createElement(
             'main',
             { className: classes.main },
