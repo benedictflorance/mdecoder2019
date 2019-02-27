@@ -159,14 +159,7 @@ const styles = theme => ({
     render()
     {
       const { classes , leaderboard , isAuthenticated } = this.props;
-      console.log(leaderboard);
-      console.log(isAuthenticated);
        if(!leaderboard) return null;
-       if(leaderboard){
-         //console.log(leaderboard.loggedInUserScore.user_id);
-         //console.log("wowwww"); 
-         //
-       }
        const {current_page, last_page, from } = leaderboard.data;
        let count = from;
        const mappedLeaderboardRow = leaderboard.data.data.map((item,i,arr) => (

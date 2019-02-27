@@ -101,7 +101,6 @@ export function getQuestions(currDayFlag) {
         }
       })
       .then(response => {
-        console.log(response);
         if (response.status === 200) {
           if (response.data.gotQuestions) {
             dispatch({

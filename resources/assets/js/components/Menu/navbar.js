@@ -20,6 +20,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import LogoutIcon from '@material-ui/icons/KeyboardArrowRight';
 import InstructionIcon from '@material-ui/icons/Message';
+import pragyan_black from '../../images/Pragyan_black.png';
 const styles = {
   root: {
     flexGrow: 1,
@@ -66,7 +67,7 @@ class Navbar extends React.Component {
     ) : null;
   const sideList= isAuthenticated ? (
     <div>
-    <img src="https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg" width="300" height="300" />
+    <img src={pragyan_black} alt="Pragyan Logo here" width="300" height="300" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/")}}>
@@ -85,7 +86,7 @@ class Navbar extends React.Component {
     </div>
     ) : (
     <div>
-    <img src="https://youthincmag.com/wp-content/uploads/2018/02/Pragyan-logo-.jpg" width="300" height="300" />
+    <img src={pragyan_black} alt="Pragyan logo here" height="300" width="300" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>

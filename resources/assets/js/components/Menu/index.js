@@ -43,10 +43,9 @@ class Menu extends React.Component{
       });
     }
     handleModalAction() {
-    if (this.state.modalAction === 'toggleDay') {this.props.toggleDay(); console.log("toggling day"); }
+    if (this.state.modalAction === 'toggleDay') {this.props.toggleDay(); }
     else if (this.state.modalAction === 'updateLevel')
       this.props.updateLevel(this.props.currDayFlag); 
-     // console.log(" modal message"+this.state.modalAction);
       this.setState({
        showModal: false,
        modalMsg: '',

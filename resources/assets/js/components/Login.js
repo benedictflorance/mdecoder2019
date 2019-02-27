@@ -151,7 +151,7 @@ const styles = theme => ({
             </Typography>
             <form onSubmit={this.handleSubmit} className={classes.form}>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail or Pragyan Registered Email</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail or Registered Email</InputLabel>
                 <Input onChange={this.handleEmailIdChange} value={this.state.emailid} id="email" name="email" autoComplete="email" autoFocus />
               </FormControl>
               <FormControl margin="normal" required fullWidth>

@@ -6,7 +6,6 @@ import App from '../App';
 
 class MessageContainer extends React.Component {
   render() {
-    console.log('message', this.props.message);
     const { message, isErr } = this.props.message;
     //const { isLoading } = this.props;
     if (message) {

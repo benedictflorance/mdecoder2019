@@ -39,8 +39,6 @@ class QuestionBox extends React.Component {
 	{
 	const { classes } = this.props;
   const question = this.props.data;
-  console.log(question);
-
      return(
       <Card className={classes.card}>
         <CardContent className={classes.content}>

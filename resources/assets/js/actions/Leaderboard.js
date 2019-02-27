@@ -98,7 +98,6 @@ export function getLeaderboard(page = 1) {
       })
       .then(response => {
         if (response.status === 200) {
-          console.log(response.data);
           if (response.data.gotScores) {
             dispatch({
               type: 'GET_LEADERBOARD_SUCCESS',

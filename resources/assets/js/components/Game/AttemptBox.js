@@ -52,7 +52,6 @@ class AnswerBox extends React.Component{
 
      handlechange(e)
      {
-     	console.log(e.target.value);
      	this.setState({answer:e.target.value});
       this.props.updateAnswer(this.props.question.id,e.target.value);
      }
@@ -60,15 +59,10 @@ class AnswerBox extends React.Component{
 	render()
 	{
 		const {classes} = this.props;
-    console.log("hola");
     const level = this.props.difficulty;
     const data = this.props.data;
     const currentDay = data.day;
-    // console.log(question);
-    const attempt = data.remaining_attempts;
-    console.log(attempt);
-    // const maxAttempt = question.max_number_of_tries;
-
+    const attempt = data.remaining_attempt;
 		return (
              <Card>
               <CardContent className={classes.content}>

@@ -67,7 +67,6 @@ class Game extends React.Component{
      //add data to be question as prop for next line
    	 const questionBox = <QuestionBox  data={question}/>;
      const attemptBox = <AttemptBox data={question} difficulty={difficulty}/>
-     console.log(difficulty);
    	 return(
    
      <Grid container style={{height:"100vh"}} style={{

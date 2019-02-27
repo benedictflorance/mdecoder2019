@@ -52,7 +52,6 @@ class AnswerBox extends React.Component{
 
      handlechange(e)
      {
-     	console.log(e.target.value);
      	this.setState({answer:e.target.value});
       this.props.updateAnswer(this.props.question.id,e.target.value);
      }
