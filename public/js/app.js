@@ -5263,7 +5263,7 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _axios2.default.create({
-  baseURL: Object({"NODE_ENV":"development"}).REACT_APP_API_URL
+  baseURL: "https://spider.nitt.edu/mdecoder"
 });
 
 /***/ }),
@@ -7336,7 +7336,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push("/leaderboard");
+                _this2.props.history.push("/mdecoder/leaderboard");
               } },
             _react2.default.createElement(_People2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'LEADERBOARD' })
@@ -7361,7 +7361,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push("/leaderboard");
+                _this2.props.history.push("/mdecoder/leaderboard");
               } },
             _react2.default.createElement(_People2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'LEADERBOARD' })
@@ -7369,7 +7369,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push("/instructions");
+                _this2.props.history.push("/mdecoder/instructions");
               } },
             _react2.default.createElement(_Message2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'INSTRUCTIONS' })
@@ -7377,7 +7377,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push("/userlogin");
+                _this2.props.history.push("/mdecoder/userlogin");
               } },
             _react2.default.createElement(_KeyboardArrowRight2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'LOGIN' })
@@ -35442,17 +35442,17 @@ var App = function (_Component) {
           _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/leaderboard', component: _Leaderboard2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/leaderboard', component: _Leaderboard2.default }),
             _react2.default.createElement(_AuthRoute2.default, {
               isAuthenticated: isAuthenticated,
               exact: true,
-              path: '/',
+              path: '/mdecoder/',
               component: _Dashboard2.default
             }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/userlogin', component: _Login2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/game', component: _GameComponent2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _Dashboard2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/instructions', component: _InstructionsComponent2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/userlogin', component: _Login2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/game', component: _GameComponent2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/dashboard', component: _Dashboard2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/instructions', component: _InstructionsComponent2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { component: _pageNotFound2.default })
           )
         )
@@ -67095,7 +67095,7 @@ var AuthRoute = function (_React$Component) {
       var renderingElement = function renderingElement(props) {
         return isAuthenticated ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouter.Redirect, {
           to: {
-            pathname: '/userlogin',
+            pathname: '/mdecoder/userlogin',
             state: { from: props.location }
           }
         });
@@ -67347,7 +67347,7 @@ var pageNotFound = function (_React$Component) {
             'Go back to the',
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { style: { color: "white" }, to: '/' },
+              { style: { color: "white" }, to: '/mdecoder/' },
               '[GAME]'
             )
           )
