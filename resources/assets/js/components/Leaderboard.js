@@ -193,7 +193,7 @@ const styles = theme => ({
 
         return (
             <React.Fragment>
-            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/')}}>
+            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/mdecoder/')}}>
              {<ArrowBack />}
             </IconButton>
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
