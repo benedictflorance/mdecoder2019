@@ -68,7 +68,7 @@ class Navbar extends React.Component {
     ) : null;
   const sideList= isAuthenticated ? (
     <div>
-    <img src="/mdecoder/"+{pragyan_black} alt="Pragyan Logo here" width="350" height="350" />
+    <img src={"/mdecoder/"+pragyan_black} alt="Pragyan Logo here" width="350" height="350" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.toggleDay();}}>
@@ -87,7 +87,7 @@ class Navbar extends React.Component {
     </div>
     ) : (
     <div>
-    <img src="/mdecoder/"+{pragyan_black} alt="Pragyan logo here" height="350" width="350" />
+    <img src={"/mdecoder/"+pragyan_black} alt="Pragyan logo here" height="350" width="350" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/mdecoder/leaderboard")}}>
