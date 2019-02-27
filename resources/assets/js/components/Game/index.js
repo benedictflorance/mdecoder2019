@@ -61,7 +61,7 @@ class Game extends React.Component{
 
    	 if(!selectedQuestion)
    	 	return null;
-     toast.success("Default Notification !");
+    
 
    	 question = this.getQuestion(questions,selectedQuestion);
      //add data to be question as prop for next line
@@ -91,7 +91,7 @@ class Game extends React.Component{
             </Grid>
             <Grid item xs={6}>
              <br />
-             <Button onClick={this.handleClickOnNext} style={{width:"100%",fontFamily:"Audiowide",padding:"20px",borderRadius:"25px"}} size="large" variant="contained" color="primary">Next Question</Button>
+             <Button onClick={this.handleClickOnNext} style={{width:"100%",fontFamily:"Audiowide",padding:"20px",borderRadius:"25px"}} size="large" variant="contained" color="secondary">Next Question</Button>
             </Grid>
           </Grid>
         </Grid>

@@ -97,6 +97,10 @@ const styles = theme => ({
     handlePasswordChange = (event) => {
       this.setState({password : event.target.value});
     }
+    componentWillMount()
+    {
+      this.props.getContestRemainingTime();
+    }
 
     render(){
       const { from } = this.props.location.state || { from: { pathname: '/' } };
@@ -105,6 +109,22 @@ const styles = theme => ({
         return <Redirect to={from} />;
       }
       const { remainingTime, startTime, isContestLive } = this.props;
+       const live = <p style={{fontFamily:"Audiowide",fontSize: '1.5em',color:"White"}}>Contest is LIVE</p>;
+      const timer =  (<React.Fragment>
+            <Timer
+              getContestRemainingTime={getContestRemainingTime}
+              displayText={'Contest starts in'}
+              remainingTime={remainingTime}
+              startTime={startTime}
+            />
+            <p style={{color:"white",fontSize:"1.2em",fontFamily:"Audiowide"}}>You can solve current day's questions if you had started solving it
+          within the time frame and you still have time left.
+            </p>
+            </React.Fragment>
+          );
+
+      const display = isContestLive ? live : remainingTime ? timer : null;
+         
       return (
         <React.Fragment>
          <Grid container>
@@ -115,16 +135,10 @@ const styles = theme => ({
             direction="column"
             alignItems="center"
             justify="center"
-            style={{marginTop:'10px'}}
+            style={{marginTop:'10px',textAlign:"center"}}
           >
-            <Timer
-              getContestRemainingTime={getContestRemainingTime}
-              displayText={'Contest starts in'}
-              remainingTime={remainingTime}
-              startTime={startTime}
-            />
-          </Grid> 
-        
+         {display}
+         </Grid> 
          <Grid container>
         <main className={classes.main}>
           <CssBaseline />
@@ -132,16 +146,16 @@ const styles = theme => ({
             <Avatar className={classes.avatar}>
               +
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" style={{fontFamily:"Audiowide"}}>
               Log in
             </Typography>
             <form onSubmit={this.handleSubmit} className={classes.form}>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="email">Webmail or Pragyan Registered Email</InputLabel>
                 <Input onChange={this.handleEmailIdChange} value={this.state.emailid} id="email" name="email" autoComplete="email" autoFocus />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel className={classes.inputLabel} htmlFor="password">Webmail Password</InputLabel>
+                <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
                 <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.handlePasswordChange} value={this.state.password} />
               </FormControl>
               <Button

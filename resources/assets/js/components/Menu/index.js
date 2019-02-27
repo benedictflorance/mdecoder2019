@@ -78,9 +78,9 @@ class Menu extends React.Component{
          <Grid container>
            <Grid item xs={12} style={{padding:"10px"}}>
                <Timer />
-               <Button size="large" variant="contained" color="primary" style={{fontFamily:"Audiowide",width:"100%",padding:"20px",marginTop:"15px",marginBottom:"15px"}} onClick={() => {this.showConfirmModal('Do you want to toggle Day? Anyway you can come back to the day you are solving now :)','toggleDay');}} >{currDayFlag === 1 ? "Today's Questions" : "Yesterday's Questions"}</Button>
+               <Button size="large" variant="contained"  style={{fontFamily:"Audiowide",width:"100%",padding:"20px",marginTop:"15px",marginBottom:"15px",backgroundColor:"#1E9EB6",color:"white"}} onClick={() => {this.showConfirmModal('Do you want to toggle Day? Anyway you can come back to the day you are solving now :)','toggleDay');}} >{currDayFlag === 1 ? "Today's Questions" : "Yesterday's Questions"}</Button>
                <br />
-               <Button size="large" variant="contained" color="primary" style={{fontFamily:"Audiowide",width:"100%",padding:"20px",marginTop:"15px",marginBottom:"30px"}} onClick={() => {this.showConfirmModal('Are you sure you want to go to next easier level? Note: Once you do that you cannot revert back to this level again!!','updateLevel');}} > Next Section </Button>
+               <Button size="large" variant="contained"  style={{fontFamily:"Audiowide",width:"100%",padding:"20px",marginTop:"15px",marginBottom:"30px",backgroundColor:"#1E9EB6",color:"white"}} onClick={() => {this.showConfirmModal('Are you sure you want to go to next easier level? Note: Once you do that you cannot revert back to this level again!!','updateLevel');}} > Next Section </Button>
                <br />
               <QuestionToggle data = {{questions,selectedQuestion,updateSelectedQuestion}}/>
            </Grid>

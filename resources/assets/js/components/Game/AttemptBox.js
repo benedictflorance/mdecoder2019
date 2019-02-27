@@ -29,10 +29,10 @@ const styles = {
   },
   content:
   {
-  	backgroundColor:"#EEEEEE"
+  	backgroundColor:"#161238"
   },
   attempt: {
-    color : "blue",
+    color : "white",
     fontSize: 17,
     fontFamily:"Audiowide",
     textAlign: "center"

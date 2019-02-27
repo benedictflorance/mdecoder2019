@@ -39,7 +39,7 @@ class QuestionToggle extends React.Component{
             <ListItem key={question.id} button onClick={event => {updateSelectedQuestion(question.id)}} style={
             question.id === selectedQuestion
               ? {
-                  backgroundColor: 'dodgerblue',
+                  backgroundColor: '#1E9EB6',
                  fontFamily:"Audiowide"
                 }
               : {
