@@ -29,7 +29,7 @@ class App extends Component {
             <BrowserRouter>
               <div style={styles.grid}>
                 <Switch>
-                  <Route exact={true} path="mdecoder/leaderboard" component = {Leaderboard} />
+                  <Route exact={true} path="/mdecoder/leaderboard" component = {Leaderboard} />
                   <AuthRoute
                     isAuthenticated={isAuthenticated}
                     exact={true}
