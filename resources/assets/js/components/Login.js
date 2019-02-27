@@ -37,7 +37,6 @@ const styles = theme => ({
       },
     },
     paper: {
-      marginTop: theme.spacing.unit * 8,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -141,7 +140,6 @@ const styles = theme => ({
          </Grid> 
          <Grid container>
         <main className={classes.main}>
-          <CssBaseline />
           <Paper className={classes.paper}>
             <Avatar className={classes.avatar}>
               +

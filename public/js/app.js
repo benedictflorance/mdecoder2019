@@ -53176,7 +53176,6 @@ var styles = function styles(theme) {
       marginRight: 'auto'
     }),
     paper: {
-      marginTop: theme.spacing.unit * 8,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -53314,7 +53313,6 @@ var Login = function (_React$Component) {
           _react2.default.createElement(
             'main',
             { className: classes.main },
-            _react2.default.createElement(_CssBaseline2.default, null),
             _react2.default.createElement(
               _Paper2.default,
               { className: classes.paper },
