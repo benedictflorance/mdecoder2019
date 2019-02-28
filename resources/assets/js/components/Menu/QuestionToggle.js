@@ -40,21 +40,22 @@ class QuestionToggle extends React.Component{
             question.id === selectedQuestion
               ? {
                   backgroundColor: '#1E9EB6',
-                 fontFamily:"Audiowide",
-                 borderLeft:question.user_solved
-                  ? '10px solid #00E676'
-                  : question.remaining_attempts === 0
-                   ? '10px solid #e74c3c'
-                   : '1px solid #1E9EB6'
+                 fontFamily:"Audiowide"
                 }
+               : question.user_solved
+               ?
+               {
+                 backgroundColor:"#00E676"
+                 fontFamily:"Audiowide"
+               }
+                :question.remaining_attempts == 0
+               ? { 
+               	  backgroundColor:"#FA6844",
+                  fontFamily:"Audiowide"
+               }
                 :
                  {
                  	fontFamily:"Audiowide"
-                 	  borderLeft:question.user_solved
-                  ? '10px solid #00E676'
-                  : question.remaining_attempts === 0
-                   ? '10px solid #e74c3c'
-                   : '1px solid #1E9EB6'
                  }
                }
                
