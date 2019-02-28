@@ -45,7 +45,7 @@ class QuestionToggle extends React.Component{
                : question.user_solved
                ?
                {
-                 backgroundColor:"#00E676"
+                 backgroundColor:"#00E676",
                  fontFamily:"Audiowide"
                }
                 :question.remaining_attempts == 0
