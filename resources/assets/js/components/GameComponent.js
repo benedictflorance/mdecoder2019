@@ -15,7 +15,7 @@ class GameComponent extends React.Component{
 			  <div>
               <Navbar /> 
               <Grid container>
-                 <Grid item sm={3} xs={12} style={{textAlign: 'center',fontSize: '1em'}}> 
+                 <Grid item sm={3} xs={12} style={{textAlign: 'center',fontSize: '1em',overflowY:"auto"}}> 
 			     <Menu />
 			     </Grid>
 			     <Grid item sm={9} xs={12}>
