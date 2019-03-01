@@ -29,17 +29,17 @@ class App extends Component {
             <BrowserRouter>
               <div style={styles.grid}>
                 <Switch>
-                  <Route exact={true} path="/mdecoder/leaderboard" component = {Leaderboard} />
+                  <Route exact={true} path="/leaderboard" component = {Leaderboard} />
                   <AuthRoute
                     isAuthenticated={isAuthenticated}
                     exact={true}
-                    path="/mdecoder/"
+                    path="/"
                     component={Dashboard}
                   />
-                  <Route exact={true} path="/mdecoder/userlogin" component= {Login} />
-                  <Route exact={true} path="/mdecoder/game" component={Game} />
-                  <Route exact={true} path="/mdecoder/dashboard" component={Dashboard} />
-                  <Route exact={true} path='/mdecoder/instructions' component={Instructions} />
+                  <Route exact={true} path="/userlogin" component= {Login} />
+                  <Route exact={true} path="/game" component={Game} />
+                  <Route exact={true} path="/dashboard" component={Dashboard} />
+                  <Route exact={true} path='/instructions' component={Instructions} />
                   <Route component={PageNotFound} />
                 </Switch>
               </div>

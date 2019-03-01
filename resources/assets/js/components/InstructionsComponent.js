@@ -8,7 +8,7 @@ class InstructionsComponent extends React.Component{
 	{
 		return (
           <React.Fragment>
-             <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/mdecoder/')}}>
+             <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/')}}>
              {<ArrowBack />}
             </IconButton>
             <br />

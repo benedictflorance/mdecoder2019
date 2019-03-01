@@ -68,14 +68,14 @@ class Navbar extends React.Component {
     ) : null;
   const sideList= isAuthenticated ? (
     <div>
-    <img src={"/mdecoder/"+pragyan_black} alt="Pragyan Logo here" width="300" height="300" />
+    <img src={pragyan_black} alt="Pragyan Logo here" width="300" height="300" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.toggleDay();}}>
     <HomeIcon />
     <ListItemText primary={'DASHBOARD'} />
     </ListItem>
-    <ListItem button onClick={() => {this.props.history.push("/mdecoder/leaderboard")}}>
+    <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
     <PeopleIcon />
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
@@ -87,18 +87,18 @@ class Navbar extends React.Component {
     </div>
     ) : (
     <div>
-    <img src={"/mdecoder/"+pragyan_black} alt="Pragyan logo here" height="300" width="300" />
+    <img src={pragyan_black} alt="Pragyan logo here" height="300" width="300" />
     <Divider />
     <List>
-    <ListItem button onClick={() => {this.props.history.push("/mdecoder/leaderboard")}}>
+    <ListItem button onClick={() => {this.props.history.push("/leaderboard")}}>
     <PeopleIcon />
     <ListItemText primary={'LEADERBOARD'} />
     </ListItem>
-    <ListItem button onClick={() => {this.props.history.push("/mdecoder/instructions")}}>
+    <ListItem button onClick={() => {this.props.history.push("/instructions")}}>
     <InstructionIcon />
     <ListItemText primary={'INSTRUCTIONS'} />
     </ListItem>
-    <ListItem button onClick={() => {this.props.history.push("/mdecoder/userlogin")}}>
+    <ListItem button onClick={() => {this.props.history.push("/userlogin")}}>
     <LogoutIcon />
     <ListItemText primary={'LOGIN'}  />
     </ListItem>
