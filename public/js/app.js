@@ -67137,7 +67137,7 @@ var AuthRoute = function (_React$Component) {
       var renderingElement = function renderingElement(props) {
         return isAuthenticated ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouter.Redirect, {
           to: {
-            pathname: '/mdecoder/userlogin',
+            pathname: '/userlogin',
             state: { from: props.location }
           }
         });
