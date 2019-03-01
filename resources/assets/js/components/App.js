@@ -10,6 +10,7 @@ import { logoutUser, authorizeUser, unAuthorizeUser } from '../actions/User';
 import { withCookies } from 'react-cookie';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
+import Base from '../globalVariables';
 const styles = {
   grid: { padding: '0px', margin: '0px', minHeight: '100vh',marginTop:'0px !important', },
 };
@@ -26,20 +27,20 @@ class App extends Component {
     render() {
       const { isAuthenticated, logoutUser } = this.props;
         return (
-            <BrowserRouter basename={process.env.REACT_APP_BASE_NAME}>
+            <BrowserRouter >
               <div style={styles.grid}>
                 <Switch>
-                  <Route exact={true} path="/leaderboard" component = {Leaderboard} />
+                  <Route exact={true} path={Base.baseUrl+"/leaderboard"} component = {Leaderboard} />
                   <AuthRoute
                     isAuthenticated={isAuthenticated}
                     exact={true}
-                    path="/"
+                    path={Base.baseUrl+"/"}
                     component={Dashboard}
                   />
-                  <Route exact={true} path="/userlogin" component= {Login} />
-                  <Route exact={true} path="/game" component={Game} />
-                  <Route exact={true} path="/dashboard" component={Dashboard} />
-                  <Route exact={true} path='/instructions' component={Instructions} />
+                  <Route exact={true} path={Base.baseUrl+"/userlogin"} component= {Login} />
+                  <Route exact={true} path={Base.baseUrl+"/game"} component={Game} />
+                  <Route exact={true} path={Base.baseUrl+"/dashboard"} component={Dashboard} />
+                  <Route exact={true} path={Base.baseUrl+'/instructions'} component={Instructions} />
                   <Route component={PageNotFound} />
                 </Switch>
               </div>

@@ -3,12 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import IconButton from '@material-ui/core/IconButton';
 import Instructions from './Instructions';
+import Base from '../globalVariables';
 class InstructionsComponent extends React.Component{
 	render()
 	{
 		return (
           <React.Fragment>
-             <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/')}}>
+             <IconButton style={{color:"white"}} onClick={() => {this.props.history.push(Base.baseUrl+'/')}}>
              {<ArrowBack />}
             </IconButton>
             <br />

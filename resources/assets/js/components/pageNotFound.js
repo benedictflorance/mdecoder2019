@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
-
+import Base from '../globalVariables';
 const headerStyle = {
  	textAlign: 'center',
  	fontSize:'1.5em',
@@ -22,7 +22,7 @@ export default class pageNotFound extends React.Component
               <div style={{ fontSize: '1.5em', marginTop: '20px',color:"white",textAlign:"center"}}>
               Page Not found.<br />
               Go back to the 
-              <Link style={{color:"white"}} to="/">
+              <Link style={{color:"white"}} to={Base.baseUrl+"/"}>
                [GAME]
               </Link>
               </div>

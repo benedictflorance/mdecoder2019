@@ -21,7 +21,7 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 import { withRouter } from 'react-router-dom';
 import { getLeaderboard } from '../actions/Leaderboard';
 import pragyan_white from '../images/Pragyan_white.png';
-
+import Base from '../globalVariables';
 const overallStyle ={
   table: {
     marginLeft: '0%',
@@ -194,7 +194,7 @@ const styles = theme => ({
 
         return (
             <React.Fragment>
-            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/')}}>
+            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push(Base.baseUrl+'/')}}>
              {<ArrowBack />}
             </IconButton>
             <Grid
@@ -204,7 +204,7 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
-              <img src={pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
+              <img src={Base.baseUrl+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
            </Grid> 
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
             <h2 style={headerStyle}>Leaderboard</h2>

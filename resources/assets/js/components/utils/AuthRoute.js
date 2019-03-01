@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
-
+import Base from '../../globalVariables';
 export default class AuthRoute extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ export default class AuthRoute extends React.Component {
       ) : (
         <Redirect
           to={{
-            pathname: '/userlogin',
+            pathname: Base.baseUrl+"/userlogin",
             state: { from: props.location }
           }}
         />

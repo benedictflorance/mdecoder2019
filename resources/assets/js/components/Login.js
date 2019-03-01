@@ -24,6 +24,7 @@ import { getContestRemainingTime } from '../actions/Dashboard';
 import Timer from './utils/timerUtil';
 import Footer from './utils/footer';
 import pragyan_white from '../images/Pragyan_white.png';
+import Base from '../globalVariables';
 
 const styles = theme => ({
     main: {
@@ -137,7 +138,7 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
-         <img src={pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
+         <img src={Base.baseUrl+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
          </Grid> 
          <Grid
             container
