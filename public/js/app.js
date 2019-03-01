@@ -5275,7 +5275,7 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _axios2.default.create({
-  baseURL: "https://pragyan.org/mdecoder"
+  baseURL: "https://pragyan.org/mdecoder/"
 });
 
 /***/ }),
@@ -7369,7 +7369,7 @@ var Navbar = function (_React$Component) {
       ) : _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: _Pragyan_black2.default, alt: 'Pragyan logo here', height: '300', width: '300' }),
+        _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_black2.default, alt: 'Pragyan logo here', height: '300', width: '300' }),
         _react2.default.createElement(_Divider2.default, null),
         _react2.default.createElement(
           _List2.default,
