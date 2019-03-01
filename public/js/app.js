@@ -53333,7 +53333,7 @@ var Login = function (_React$Component) {
             justify: 'center',
             style: { marginTop: '10px', textAlign: "center" }
           },
-          _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
+          _react2.default.createElement('img', { src: _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
         ),
         _react2.default.createElement(
           _Grid2.default,
