@@ -26,7 +26,7 @@ class App extends Component {
     render() {
       const { isAuthenticated, logoutUser } = this.props;
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.REACT_APP_BASE_NAME}>
               <div style={styles.grid}>
                 <Switch>
                   <Route exact={true} path="/leaderboard" component = {Leaderboard} />

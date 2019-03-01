@@ -35444,7 +35444,7 @@ var App = function (_Component) {
 
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
-        null,
+        { basename: Object({"NODE_ENV":"development"}).REACT_APP_BASE_NAME },
         _react2.default.createElement(
           'div',
           { style: styles.grid },
