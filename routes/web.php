@@ -14,9 +14,9 @@
  * Base Routes
  */
 
-Route::get('login', 'BaseController@renderUserLogin');
+Route::get('login', 'BaseController@renderUserLogin')->middleware('cors');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['auth', 'cors']], function() {
     Route::put('level', 'UserDayStatusesController@updateLevel');
     Route::get('questions', 'QuestionsController@getQuestions');
     Route::get('dashboard', 'BaseController@renderDashboard');
@@ -28,9 +28,10 @@ Route::group(['middleware' => 'auth'], function() {
 /**
  * Auth Routes
  */
+Route::Group(['middleware' => 'cors'], function(){
 Route::post('auth/login', 'AuthController@authUser');
-
 Route::get('contest/time','DayDetailsController@getContestRemainingTiming');
 Route::get('users/score','ScoreLogsController@getUsersScores');
 Route::get('/{wildcard}', 'BaseController@renderIndex')->where('wildcard', '.*')->middleware('checkIfLoggedIn');
+});
 
