@@ -194,7 +194,7 @@ const styles = theme => ({
 
         return (
             <React.Fragment>
-            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push(Base.baseUrl+'/')}}>
+            <IconButton style={{color:"white"}} onClick={() => {this.props.history.push('/mdecoder/')}}>
              {<ArrowBack />}
             </IconButton>
             <Grid
@@ -204,7 +204,7 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
-              <img src={Base.baseUrl+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
+              <img src={"/mdecoder/"+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
            </Grid> 
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
             <h2 style={headerStyle}>Leaderboard</h2>

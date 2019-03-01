@@ -7336,7 +7336,7 @@ var Navbar = function (_React$Component) {
       var sideList = isAuthenticated ? _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: _globalVariables2.default.baseUrl + _Pragyan_black2.default, alt: 'Pragyan Logo here', width: '300', height: '300' }),
+        _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_black2.default, alt: 'Pragyan Logo here', width: '300', height: '300' }),
         _react2.default.createElement(_Divider2.default, null),
         _react2.default.createElement(
           _List2.default,
@@ -7352,7 +7352,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push(_globalVariables2.default.baseUrl + "/leaderboard");
+                _this2.props.history.push("/mdecoder/leaderboard");
               } },
             _react2.default.createElement(_People2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'LEADERBOARD' })
@@ -7377,7 +7377,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push(_globalVariables2.default.baseUrl + "/leaderboard");
+                _this2.props.history.push("/mdecoder/leaderboard");
               } },
             _react2.default.createElement(_People2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'LEADERBOARD' })
@@ -7385,7 +7385,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push(_globalVariables2.default.baseUrl + "/instructions");
+                _this2.props.history.push("/mdecoder/instructions");
               } },
             _react2.default.createElement(_Message2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'INSTRUCTIONS' })
@@ -7393,7 +7393,7 @@ var Navbar = function (_React$Component) {
           _react2.default.createElement(
             _ListItem2.default,
             { button: true, onClick: function onClick() {
-                _this2.props.history.push(_globalVariables2.default.baseUrl + "/userlogin");
+                _this2.props.history.push("/mdecoder/userlogin");
               } },
             _react2.default.createElement(_KeyboardArrowRight2.default, null),
             _react2.default.createElement(_ListItemText2.default, { primary: 'LOGIN' })
@@ -35471,17 +35471,17 @@ var App = function (_Component) {
           _react2.default.createElement(
             _reactRouterDom.Switch,
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: _globalVariables2.default.baseUrl + "/leaderboard", component: _Leaderboard2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/leaderboard', component: _Leaderboard2.default }),
             _react2.default.createElement(_AuthRoute2.default, {
               isAuthenticated: isAuthenticated,
               exact: true,
-              path: _globalVariables2.default.baseUrl + "/",
+              path: '/mdecoder/',
               component: _Dashboard2.default
             }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: _globalVariables2.default.baseUrl + "/userlogin", component: _Login2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: _globalVariables2.default.baseUrl + "/game", component: _GameComponent2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: _globalVariables2.default.baseUrl + "/dashboard", component: _Dashboard2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: _globalVariables2.default.baseUrl + '/instructions', component: _InstructionsComponent2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/userlogin', component: _Login2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/game', component: _GameComponent2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/dashboard', component: _Dashboard2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/mdecoder/instructions', component: _InstructionsComponent2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { component: _pageNotFound2.default })
           )
         )
@@ -37187,7 +37187,7 @@ var PaginationTable = function (_Component2) {
         _react2.default.createElement(
           _IconButton2.default,
           { style: { color: "white" }, onClick: function onClick() {
-              _this3.props.history.push(_globalVariables2.default.baseUrl + '/');
+              _this3.props.history.push('/mdecoder/');
             } },
           _react2.default.createElement(_ArrowBack2.default, null)
         ),
@@ -37200,7 +37200,7 @@ var PaginationTable = function (_Component2) {
             justify: 'center',
             style: { marginTop: '10px', textAlign: "center" }
           },
-          _react2.default.createElement('img', { src: _globalVariables2.default.baseUrl + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
+          _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
         ),
         _react2.default.createElement(
           'h1',
@@ -53361,7 +53361,7 @@ var Login = function (_React$Component) {
             justify: 'center',
             style: { marginTop: '10px', textAlign: "center" }
           },
-          _react2.default.createElement('img', { src: _globalVariables2.default.baseUrl + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
+          _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
         ),
         _react2.default.createElement(
           _Grid2.default,
@@ -67095,7 +67095,7 @@ var InstructionsComponent = function (_React$Component) {
         _react2.default.createElement(
           _IconButton2.default,
           { style: { color: "white" }, onClick: function onClick() {
-              _this2.props.history.push(_globalVariables2.default.baseUrl + '/');
+              _this2.props.history.push('/mdecoder/');
             } },
           _react2.default.createElement(_ArrowBack2.default, null)
         ),
@@ -67173,7 +67173,7 @@ var AuthRoute = function (_React$Component) {
       var renderingElement = function renderingElement(props) {
         return isAuthenticated ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouter.Redirect, {
           to: {
-            pathname: _globalVariables2.default.baseUrl + "/userlogin",
+            pathname: "/mdecoder/userlogin",
             state: { from: props.location }
           }
         });
@@ -67429,7 +67429,7 @@ var pageNotFound = function (_React$Component) {
             'Go back to the',
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { style: { color: "white" }, to: _globalVariables2.default.baseUrl + "/" },
+              { style: { color: "white" }, to: "/mdecoder/" },
               '[GAME]'
             )
           )

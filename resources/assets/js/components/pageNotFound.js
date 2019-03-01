@@ -22,7 +22,7 @@ export default class pageNotFound extends React.Component
               <div style={{ fontSize: '1.5em', marginTop: '20px',color:"white",textAlign:"center"}}>
               Page Not found.<br />
               Go back to the 
-              <Link style={{color:"white"}} to={Base.baseUrl+"/"}>
+              <Link style={{color:"white"}} to={"/mdecoder/"}>
                [GAME]
               </Link>
               </div>

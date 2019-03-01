@@ -13,7 +13,7 @@ export default class AuthRoute extends React.Component {
       ) : (
         <Redirect
           to={{
-            pathname: Base.baseUrl+"/userlogin",
+            pathname: "/mdecoder/userlogin",
             state: { from: props.location }
           }}
         />

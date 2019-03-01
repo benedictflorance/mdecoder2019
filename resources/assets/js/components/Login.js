@@ -138,7 +138,7 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
-         <img src={Base.baseUrl+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
+         <img src={"/mdecoder/"+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
          </Grid> 
          <Grid
             container
