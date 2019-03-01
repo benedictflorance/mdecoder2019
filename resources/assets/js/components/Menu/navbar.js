@@ -88,7 +88,7 @@ class Navbar extends React.Component {
     </div>
     ) : (
     <div>
-    <img src={pragyan_black} alt="Pragyan logo here" height="300" width="300" />
+    <img src={"/mdecoder/"+pragyan_black} alt="Pragyan logo here" height="300" width="300" />
     <Divider />
     <List>
     <ListItem button onClick={() => {this.props.history.push("/mdecoder/leaderboard")}}>
