@@ -62,7 +62,7 @@ class AnswerBox extends React.Component{
     const level = this.props.difficulty;
     const data = this.props.data;
     const currentDay = data.day;
-    console.log(data);
+    //console.log(data);
     const attempt = data.remaining_attempts;
    // console.log("attempt :"+attempt);
 		return (

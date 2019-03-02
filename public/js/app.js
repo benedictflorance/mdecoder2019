@@ -60337,7 +60337,7 @@ var AnswerBox = function (_React$Component) {
       var level = this.props.difficulty;
       var data = this.props.data;
       var currentDay = data.day;
-      console.log(data);
+      //console.log(data);
       var attempt = data.remaining_attempts;
       // console.log("attempt :"+attempt);
       return _react2.default.createElement(
@@ -65930,10 +65930,10 @@ var SimpleBottomNavigation = function (_React$Component) {
           currDayFlag = _props.currDayFlag;
 
       if (currDayFlag == 0) {
-        console.log("checking uer time");
+        //console.log("checking uer time");
         this.props.getUserRemainingTime();
       } else {
-        console.log("checking contest time");
+        //console.log("checking contest time");
         this.props.getContestRemainingTime();
       }
     }
