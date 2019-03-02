@@ -83,7 +83,7 @@ class Game extends React.Component{
           <Grid container>
             <Grid item xs={6}>
               <br />
-              <Button size="large" style={{width:"100%",fontFamily:"Audiowide" ,padding:"20px",borderRadius:"25px"}} variant="contained" color="primary" 
+              <Button size="large" style={ (disableSubmit || (question.user_solved || question.remaining_attempts < 1)) ? {width:"100%",fontFamily:"Audiowide" ,padding:"20px",borderRadius:"25px" , color:"white",border:"2px solid white"} :{width:"100%",fontFamily:"Audiowide" ,padding:"20px",borderRadius:"25px"}} variant="contained" color="primary" 
               disabled={
                   disableSubmit || (question.user_solved || question.remaining_attempts < 1)
                 } onClick={() => {this.handleSubmit();}}>Submit Answer</Button>

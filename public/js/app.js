@@ -58154,7 +58154,7 @@ var Game = function (_React$Component) {
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 _Button2.default,
-                { size: 'large', style: { width: "100%", fontFamily: "Audiowide", padding: "20px", borderRadius: "25px" }, variant: 'contained', color: 'primary',
+                { size: 'large', style: disableSubmit || question.user_solved || question.remaining_attempts < 1 ? { width: "100%", fontFamily: "Audiowide", padding: "20px", borderRadius: "25px", color: "white", border: "2px solid white" } : { width: "100%", fontFamily: "Audiowide", padding: "20px", borderRadius: "25px" }, variant: 'contained', color: 'primary',
                   disabled: disableSubmit || question.user_solved || question.remaining_attempts < 1, onClick: function onClick() {
                     _this2.handleSubmit();
                   } },
