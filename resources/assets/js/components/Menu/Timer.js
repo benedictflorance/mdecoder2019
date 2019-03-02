@@ -39,8 +39,14 @@ class SimpleBottomNavigation extends React.Component {
       getContestRemainingTime,
       currDayFlag
     } = this.props;
-    if (currDayFlag == 0) getUserRemainingTime();
-    else getContestRemainingTime();
+    if (currDayFlag == 0) {
+      console.log("checking uer time");
+      this.props.getUserRemainingTime();
+    }
+    else{ 
+      console.log("checking contest time");
+      this.props.getContestRemainingTime();
+    }
   }
 
   handleChange = (event, value) => {

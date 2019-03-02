@@ -65929,7 +65929,13 @@ var SimpleBottomNavigation = function (_React$Component) {
           getContestRemainingTime = _props.getContestRemainingTime,
           currDayFlag = _props.currDayFlag;
 
-      if (currDayFlag == 0) getUserRemainingTime();else getContestRemainingTime();
+      if (currDayFlag == 0) {
+        console.log("checking uer time");
+        this.props.getUserRemainingTime();
+      } else {
+        console.log("checking contest time");
+        this.props.getContestRemainingTime();
+      }
     }
   }, {
     key: 'render',
