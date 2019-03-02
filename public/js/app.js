@@ -58259,7 +58259,8 @@ var styles = {
   card: {
     Width: "100vw",
     height: "450px",
-    overflowY: "auto"
+    overflowY: "auto",
+    overflowX: "auto"
   },
   title: {
     fontSize: 14
