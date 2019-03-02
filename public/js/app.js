@@ -35173,7 +35173,7 @@ var MessageContainer = function (_React$Component) {
       var _props$message = this.props.message,
           message = _props$message.message,
           isErr = _props$message.isErr;
-      var isLoading = this.props.isLoading;
+      //const { isLoading } = this.props;
 
       if (message) {
         var toastMessage = _react2.default.createElement(
@@ -35193,16 +35193,13 @@ var MessageContainer = function (_React$Component) {
           _reactToastify.toast.success(toastMessage, toastOptions);
         }
       }
-      var toastLoadingOptions = {
-        position: _reactToastify.toast.POSITION.TOP_CENTER,
-        autoClose: false
-      };
+      ///* const toastLoadingOptions = {
+      // position: toast.POSITION.TOP_CENTER,
+      //autoClose: false
+      // };
 
-      if (isLoading) {
-        _reactToastify.toast.info("Loading ...", toastLoadingOptions);
-      } else {
-        _reactToastify.toast.dismiss();
-      }
+      // if(isLoading) { toast.info("Loading ...", toastLoadingOptions) }
+      //else {toast.dismiss();}*/
       return _react2.default.createElement(_App2.default, null);
     }
   }]);
@@ -35212,9 +35209,9 @@ var MessageContainer = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   var message = state.message;
-  var isLoading = state.loading.isLoading;
+  // const { isLoading } = state.loading;
 
-  return { message: message, isLoading: isLoading };
+  return { message: message /*isLoading*/ };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(MessageContainer);
