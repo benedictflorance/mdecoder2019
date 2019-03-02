@@ -65973,7 +65973,7 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { getContestRemainingTime: _Dashboard.getContestRemainingTime })((0, _styles.withStyles)(styles)(SimpleBottomNavigation));
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { getContestRemainingTime: _Dashboard.getContestRemainingTime, getUserRemainingTime: _Dashboard.getUserRemainingTime })((0, _styles.withStyles)(styles)(SimpleBottomNavigation));
 
 /***/ }),
 /* 494 */

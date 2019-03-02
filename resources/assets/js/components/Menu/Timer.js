@@ -78,4 +78,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, {getContestRemainingTime})(withStyles(styles)(SimpleBottomNavigation));
+export default connect(mapStateToProps, {getContestRemainingTime,getUserRemainingTime})(withStyles(styles)(SimpleBottomNavigation));
