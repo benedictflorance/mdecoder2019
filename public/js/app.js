@@ -53466,7 +53466,7 @@ var mapStateToProps = function mapStateToProps(state) {
       remainingTime = _state$dashboard.remainingTime,
       startTime = _state$dashboard.startTime,
       isContestLive = _state$dashboard.isContestLive;
-  var isLoading = state.responseLoader.isLoading;
+  var isLoading = state.loading.isLoading;
 
   return {
     isAuthenticated: isAuthenticated,

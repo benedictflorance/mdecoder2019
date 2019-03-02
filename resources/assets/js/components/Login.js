@@ -207,7 +207,7 @@ const styles = theme => ({
   const mapStateToProps = state => {
     const { isAuthenticated } = state.user;
     const { remainingTime, startTime, isContestLive } = state.dashboard;
-    const { isLoading } = state.responseLoader;
+    const { isLoading } = state.loading;
     return {
       isAuthenticated,
       remainingTime,
