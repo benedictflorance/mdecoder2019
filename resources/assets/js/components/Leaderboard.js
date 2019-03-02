@@ -204,7 +204,7 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
-              <img src={"/mdecoder/"+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/>
+              <a href="https://www.pragyan.org/19/home"><img src={"/mdecoder/"+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/></a>
            </Grid> 
             <h1 style={headerStyle}>M - D E C O D E R  2019</h1>
             <h2 style={headerStyle}>Leaderboard</h2>
