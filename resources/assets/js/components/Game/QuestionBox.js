@@ -45,9 +45,7 @@ class QuestionBox extends React.Component {
           <Typography variant="h5" className={classes.heading}>
             <u>Question</u>
           </Typography>
-          <div> 
-            {htmlspecialchars_decode(question.description)}
-          </div>
+          <div dangerouslySetInnerHTML={{ __html: question.description }} /> 
         </CardContent>
       </Card>
       );
