@@ -109,7 +109,7 @@ const styles = theme => ({
       if (this.props.isAuthenticated) {
         return <Redirect to={from} />;
       }
-      const { remainingTime, startTime, isContestLive } = this.props;
+      const { remainingTime, startTime, isContestLive , isLoading } = this.props;
        const live = <p style={{fontFamily:"Audiowide",fontSize: '1.5em',color:"White"}}>Contest is LIVE</p>;
       const timer =  (<React.Fragment>
             <Timer
@@ -125,6 +125,30 @@ const styles = theme => ({
           );
 
       const display = isContestLive ? live : remainingTime ? timer : null;
+      const signinbutton = isLoading ? (
+           
+           <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                disabled
+                className={classes.submit}
+              >
+                Signing IN!
+              </Button>
+
+        ) :(
+           <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign in
+              </Button>
+        );
          
       return (
         <React.Fragment>
@@ -168,15 +192,7 @@ const styles = theme => ({
                 <InputLabel className={classes.inputLabel} htmlFor="password">Password</InputLabel>
                 <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.handlePasswordChange} value={this.state.password} />
               </FormControl>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Sign in
-              </Button>
+              {signinbutton}
             </form>
           </Paper>
         </main>
@@ -191,11 +207,13 @@ const styles = theme => ({
   const mapStateToProps = state => {
     const { isAuthenticated } = state.user;
     const { remainingTime, startTime, isContestLive } = state.dashboard;
+    const { isLoading } = state.responseLoader;
     return {
       isAuthenticated,
       remainingTime,
       startTime,
-      isContestLive
+      isContestLive,
+      isLoading
     };
   };
 

@@ -53323,7 +53323,8 @@ var Login = function (_React$Component) {
       var _props = this.props,
           remainingTime = _props.remainingTime,
           startTime = _props.startTime,
-          isContestLive = _props.isContestLive;
+          isContestLive = _props.isContestLive,
+          isLoading = _props.isLoading;
 
       var live = _react2.default.createElement(
         'p',
@@ -53347,6 +53348,28 @@ var Login = function (_React$Component) {
       );
 
       var display = isContestLive ? live : remainingTime ? timer : null;
+      var signinbutton = isLoading ? _react2.default.createElement(
+        _Button2.default,
+        {
+          type: 'submit',
+          fullWidth: true,
+          variant: 'contained',
+          color: 'primary',
+          disabled: true,
+          className: classes.submit
+        },
+        'Signing IN!'
+      ) : _react2.default.createElement(
+        _Button2.default,
+        {
+          type: 'submit',
+          fullWidth: true,
+          variant: 'contained',
+          color: 'primary',
+          className: classes.submit
+        },
+        'Sign in'
+      );
 
       return _react2.default.createElement(
         _react2.default.Fragment,
@@ -53424,17 +53447,7 @@ var Login = function (_React$Component) {
                   ),
                   _react2.default.createElement(_Input2.default, { name: 'password', type: 'password', id: 'password', autoComplete: 'current-password', onChange: this.handlePasswordChange, value: this.state.password })
                 ),
-                _react2.default.createElement(
-                  _Button2.default,
-                  {
-                    type: 'submit',
-                    fullWidth: true,
-                    variant: 'contained',
-                    color: 'primary',
-                    className: classes.submit
-                  },
-                  'Sign in'
-                )
+                signinbutton
               )
             )
           )
@@ -53453,12 +53466,14 @@ var mapStateToProps = function mapStateToProps(state) {
       remainingTime = _state$dashboard.remainingTime,
       startTime = _state$dashboard.startTime,
       isContestLive = _state$dashboard.isContestLive;
+  var isLoading = state.responseLoader.isLoading;
 
   return {
     isAuthenticated: isAuthenticated,
     remainingTime: remainingTime,
     startTime: startTime,
-    isContestLive: isContestLive
+    isContestLive: isContestLive,
+    isLoading: isLoading
   };
 };
 
