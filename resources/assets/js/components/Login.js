@@ -162,7 +162,7 @@ const styles = theme => ({
             justify="center"
             style={{marginTop:'10px',textAlign:"center"}}
           >
-         <a href="https://www.pragyan.org/19/home/"><img src={"/mdecoder/"+pragyan_white} alt="Pragyan Logo here" style={{width: '30%'}}/></a>
+         <a href="https://www.pragyan.org/19/home/"><img src={"/mdecoder/"+pragyan_white} alt="Pragyan Logo here" style={{width: '500px'}}/></a>
          </Grid> 
          <Grid
             container
