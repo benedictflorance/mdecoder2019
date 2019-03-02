@@ -37200,7 +37200,7 @@ var PaginationTable = function (_Component2) {
           _react2.default.createElement(
             'a',
             { href: 'https://www.pragyan.org/19/home' },
-            _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '30%' } })
+            _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '60%' } })
           )
         ),
         _react2.default.createElement(
@@ -53388,7 +53388,7 @@ var Login = function (_React$Component) {
           _react2.default.createElement(
             'a',
             { href: 'https://www.pragyan.org/19/home/' },
-            _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '500px' } })
+            _react2.default.createElement('img', { src: "/mdecoder/" + _Pragyan_white2.default, alt: 'Pragyan Logo here', style: { width: '60%' } })
           )
         ),
         _react2.default.createElement(
