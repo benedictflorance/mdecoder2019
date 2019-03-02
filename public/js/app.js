@@ -57475,7 +57475,7 @@ exports.default = _default;
 /* 456 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/Pragyan_black.png?431b0f7c11ca9bb880b0d2c925db8046";
+module.exports = "/images/Pragyan_black.png?5396ed12c706965733ffbe4c12fd5848";
 
 /***/ }),
 /* 457 */
