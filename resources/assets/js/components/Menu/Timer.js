@@ -81,7 +81,8 @@ const mapStateToProps = state => {
   return {
     remainingTime,
     startTime,
-    isContestLive
+    isContestLive,
+    currDayFlag
   };
 }
 

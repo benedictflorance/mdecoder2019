@@ -65976,7 +65976,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     remainingTime: remainingTime,
     startTime: startTime,
-    isContestLive: isContestLive
+    isContestLive: isContestLive,
+    currDayFlag: currDayFlag
   };
 };
 
