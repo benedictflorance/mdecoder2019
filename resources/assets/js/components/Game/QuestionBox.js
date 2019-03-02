@@ -46,7 +46,7 @@ class QuestionBox extends React.Component {
             <u>Question</u>
           </Typography>
           <div> 
-            {question.description}
+            {htmlspecialchars_decode(question.description)}
           </div>
         </CardContent>
       </Card>

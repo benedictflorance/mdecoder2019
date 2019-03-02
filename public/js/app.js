@@ -58309,7 +58309,7 @@ var QuestionBox = function (_React$Component) {
           _react2.default.createElement(
             'div',
             null,
-            question.description
+            htmlspecialchars_decode(question.description)
           )
         )
       );
