@@ -58,7 +58,7 @@ class Menu extends React.Component{
     	const { difficulty ,questions,selectedQuestion,updateSelectedQuestion,currDayFlag } = this.props;
 
     	return( 
-    	<div>	
+    	<div style={{height:"100vh",overflowY:"auto"}}>	
     	<Dialog
 			    open = {this.state.showModal}
 			    onClose= {this.handleCloseModal}

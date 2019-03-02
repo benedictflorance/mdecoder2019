@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   card: {
     Width: "100vw",
-    minHeight:450
+    height:"450px",
+    overflowY:"auto"
   },
   title: {
     fontSize: 14,
@@ -25,7 +26,6 @@ const styles = {
   },
   content:
   {
-  	overflowY:"scroll"
   }
 };
 

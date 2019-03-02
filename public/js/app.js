@@ -58258,7 +58258,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var styles = {
   card: {
     Width: "100vw",
-    minHeight: 450
+    height: "450px",
+    overflowY: "auto"
   },
   title: {
     fontSize: 14
@@ -58271,9 +58272,7 @@ var styles = {
     fontFamily: "Audiowide",
     color: "blue"
   },
-  content: {
-    overflowY: "scroll"
-  }
+  content: {}
 };
 
 var QuestionBox = function (_React$Component) {
@@ -60519,7 +60518,7 @@ var Menu = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { height: "100vh", overflowY: "auto" } },
         _react2.default.createElement(
           _Dialog2.default,
           {
