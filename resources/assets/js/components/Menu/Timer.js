@@ -77,6 +77,7 @@ SimpleBottomNavigation.propTypes = {
 
 const mapStateToProps = state => {
   const { remainingTime, startTime, isContestLive } = state.dashboard;
+  const { currDayFlag } = state.user;
   return {
     remainingTime,
     startTime,
