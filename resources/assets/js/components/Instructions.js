@@ -14,13 +14,13 @@ class Instructions extends React.Component{
                     <ol>
                       <li>
                        This is an online event spanning over three days and will be
-                       open for 5 hours each day from 19:00 to 00:00.<br />{' '}
+                       open for 3 hours each day from 19:00 to 22:00.<br />{' '}
                       </li>
                     <br />
                       <li>
                        {' '}
                        The participant can start the contest anytime within this time
-                       frame and will be allowed to play for 2 hours from their start
+                       frame and will be allowed to play for 1.5 hours from their start
                        time.<br />
                       </li>
                     <br />
