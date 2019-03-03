@@ -13,7 +13,7 @@ class Instructions extends React.Component{
                    <h2 style={{textAlign:"center"}}>Instructions</h2>
                     <ol>
                       <li>
-                       This is an online event spanning over three days and will be
+                       This is an online event spanning over four days and will be
                        open for 3 hours each day from 19:00 to 22:00.<br />{' '}
                       </li>
                     <br />
