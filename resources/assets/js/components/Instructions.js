@@ -51,6 +51,10 @@ class Instructions extends React.Component{
                       </li>
                     <br />
                       <li>
+                        For Numerical type questions, type in Numerical answer,for MCQ questions type in 'A' or 'B' or 'C' or 'D' corresponding to the correct option in the answerbox<br/>
+                      </li>
+                      <br />
+                      <li>
                        The participant will have a maximum of 3 attempts for each
                        question.
                        <br />
