@@ -51,7 +51,7 @@ class Instructions extends React.Component{
                       </li>
                     <br />
                       <li>
-                        For Numerical type questions, type in Numerical answer,for MCQ questions type in 'A' or 'B' or 'C' or 'D' corresponding to the correct option in the answerbox<br/>
+                        <b>For Numerical type questions, type in Numerical answer</b>,<br /><b>For MCQ questions type in 'A' or 'B' or 'C' or 'D' corresponding to the correct option in the answerbox</b><br/>
                       </li>
                       <br />
                       <li>
