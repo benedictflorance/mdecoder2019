@@ -13197,9 +13197,8 @@ var Instructions = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'For Numerical type questions, type in Numerical answer'
+                  'For Numerical type questions, type in Numerical answer,'
                 ),
-                ',',
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'b',
