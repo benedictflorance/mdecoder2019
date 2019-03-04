@@ -9,7 +9,7 @@
         <title>Mdecoder2019</title>
         <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     </head>
-    <body>
+    <body oncontextmenu="return false">
         <div id="App"></div>
         <script src="{{mix('/mdecoder/js/app.js')}}"></script>
     </body>
