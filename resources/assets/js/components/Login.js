@@ -114,7 +114,7 @@ const styles = theme => ({
       const timer =  (<React.Fragment>
             <Timer
               getContestRemainingTime={getContestRemainingTime}
-              displayText={'Contest starts in'}
+              displayText={'Final Day,Contest starts in'}
               remainingTime={remainingTime}
               startTime={startTime}
             />
