@@ -111,6 +111,7 @@ const styles = theme => ({
       }
       const { remainingTime, startTime, isContestLive , isLoading } = this.props;
        const live = <p style={{fontFamily:"Audiowide",fontSize: '1.5em',color:"White"}}>Contest is LIVE</p>;
+        const over = <p style={{fontFamily:"Audiowide",fontSize: '1.5em',color:"White"}}>Contest is OVER!</p>;
       const timer =  (<React.Fragment>
             <Timer
               getContestRemainingTime={getContestRemainingTime}
@@ -172,6 +173,7 @@ const styles = theme => ({
             style={{marginTop:'10px',textAlign:"center"}}
           >
          {display}
+         {over}
          </Grid> 
          <Grid container style={{marginBottom:'80px'}}>
         <main className={classes.main}>
