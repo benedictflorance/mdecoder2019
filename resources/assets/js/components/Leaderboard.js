@@ -156,7 +156,36 @@ const styles = theme => ({
     handleChangeRowsPerPage(event) {
        this.setState({ rowsPerPage: parseInt(event.target.value) });
     };
-   
+   convertArrayOfObjectsToCSV(args) {  
+        var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+        data = args.data || null;
+        if (data == null || !data.length) {
+            return null;
+        }
+
+        columnDelimiter = args.columnDelimiter || ',';
+        lineDelimiter = args.lineDelimiter || '\n';
+
+        keys = Object.keys(data[0]);
+
+        result = '';
+        result += keys.join(columnDelimiter);
+        result += lineDelimiter;
+
+        data.forEach(function(item) {
+            ctr = 0;
+            keys.forEach(function(key) {
+                if (ctr > 0) result += columnDelimiter;
+
+                result += item[key];
+                ctr++;
+            });
+            result += lineDelimiter;
+        });
+
+        return result;
+    }
     render()
     {
       const { classes , leaderboard , isAuthenticated } = this.props;
@@ -165,11 +194,8 @@ const styles = theme => ({
        let count = from;
         const rowsCSV =leaderboard.data.data;
 let csvContent = "data:text/csv;charset=utf-8,";
-rowsCSV.forEach(function(rowArray){
-   let row = rowArray.join(",");
-   csvContent += row + "\r\n"; 
-   
-}); 
+ let csvFun = convertArrayOfObjectsToCSV(rowsCSV);
+ csvContent +=csvFun;
       var encodedUri = encodeURI(csvContent);
 var link = document.createElement("a");
 link.setAttribute("href", encodedUri);
