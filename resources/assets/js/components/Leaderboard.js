@@ -170,7 +170,7 @@ let csvContent = "data:text/csv;charset=utf-8,";
  //let csvFun = convertArrayOfObjectsToCSV(rowsCSV);
  var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-        data = rowsCSV.data || null;
+        data = rowsCSV || null;
         if (data == null || !data.length) {
             return null;
         }

@@ -37120,7 +37120,7 @@ var PaginationTable = function (_Component2) {
       //let csvFun = convertArrayOfObjectsToCSV(rowsCSV);
       var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-      data = rowsCSV.data || null;
+      data = rowsCSV || null;
       if (data == null || !data.length) {
         return null;
       }
