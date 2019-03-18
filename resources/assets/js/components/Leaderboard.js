@@ -157,15 +157,26 @@ const styles = theme => ({
        this.setState({ rowsPerPage: parseInt(event.target.value) });
     };
    convertArrayOfObjectsToCSV(args) {  
-        var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+        
+    }
+    render()
+    {
+      const { classes , leaderboard , isAuthenticated } = this.props;
+       if(!leaderboard) return null;
+       const {current_page, last_page, from } = leaderboard.data;
+       let count = from;
+        const rowsCSV =leaderboard.data.data;
+let csvContent = "data:text/csv;charset=utf-8,";
+ //let csvFun = convertArrayOfObjectsToCSV(rowsCSV);
+ var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-        data = args.data || null;
+        data = rowsCSV.data || null;
         if (data == null || !data.length) {
             return null;
         }
 
-        columnDelimiter = args.columnDelimiter || ',';
-        lineDelimiter = args.lineDelimiter || '\n';
+        columnDelimiter = rowsCSV.columnDelimiter || ',';
+        lineDelimiter = rowsCSV.lineDelimiter || '\n';
 
         keys = Object.keys(data[0]);
 
@@ -184,18 +195,8 @@ const styles = theme => ({
             result += lineDelimiter;
         });
 
-        return result;
-    }
-    render()
-    {
-      const { classes , leaderboard , isAuthenticated } = this.props;
-       if(!leaderboard) return null;
-       const {current_page, last_page, from } = leaderboard.data;
-       let count = from;
-        const rowsCSV =leaderboard.data.data;
-let csvContent = "data:text/csv;charset=utf-8,";
- let csvFun = convertArrayOfObjectsToCSV(rowsCSV);
- csvContent +=csvFun;
+        
+ csvContent +=result;
       var encodedUri = encodeURI(csvContent);
 var link = document.createElement("a");
 link.setAttribute("href", encodedUri);
