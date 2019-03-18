@@ -163,8 +163,12 @@ const styles = theme => ({
        if(!leaderboard) return null;
        const {current_page, last_page, from } = leaderboard.data;
        let count = from;
-        const rowsCSV = leaderboard.data.data;
-let csvContent = "data:text/csv;charset=utf-8," + rowsCSV.map(e=>e.join(",")).join("\n");
+        const rowsCSV =leaderboard.data.data;
+let csvContent = "data:text/csv;charset=utf-8,";
+rowsCSV.forEach(function(rowArray){
+   let row = rowArray.join(",");
+   csvContent += row + "\r\n";
+}); 
       var encodedUri = encodeURI(csvContent);
 var link = document.createElement("a");
 link.setAttribute("href", encodedUri);
