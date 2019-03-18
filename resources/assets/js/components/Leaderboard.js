@@ -167,7 +167,8 @@ const styles = theme => ({
 let csvContent = "data:text/csv;charset=utf-8,";
 rowsCSV.forEach(function(rowArray){
    let row = rowArray.join(",");
-   csvContent += row + "\r\n";
+   csvContent += row + "\r\n"; 
+   
 }); 
       var encodedUri = encodeURI(csvContent);
 var link = document.createElement("a");
