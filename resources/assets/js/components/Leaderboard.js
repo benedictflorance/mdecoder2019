@@ -163,6 +163,15 @@ const styles = theme => ({
        if(!leaderboard) return null;
        const {current_page, last_page, from } = leaderboard.data;
        let count = from;
+        const rowsCSV = leaderboard.data.data;
+let csvContent = "data:text/csv;charset=utf-8," + rowsCSV.map(e=>e.join(",")).join("\n");
+      var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click(); // This will download the data file named "my_data.csv".
        const mappedLeaderboardRow = leaderboard.data.data.map((item,i,arr) => (
          <TableRow key={item.user_id}>
            <TableCell style={{ fontSize:"1.0em"}}>{count++}</TableCell>
